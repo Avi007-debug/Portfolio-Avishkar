@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { GitHubCalendar } from "react-github-calendar";
 import SectionWrapper from "./SectionWrapper";
 import { useEffect, useState } from "react";
-import { Github, Star, Users, BookOpen, Code } from "lucide-react";
+import { Star, Users, BookOpen, Code } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 
 interface GitHubStats {
   repos: number;
@@ -32,6 +33,7 @@ const StatCard = ({ icon: Icon, label, value, delay }: { icon: any; label: strin
 
 const GitHubCalendarSection = () => {
   const [stats, setStats] = useState<GitHubStats | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -99,7 +101,7 @@ const GitHubCalendarSection = () => {
         <h3 className="mono text-xs text-muted-foreground mb-4 uppercase tracking-wider">Contribution Graph</h3>
         <GitHubCalendar
           username="Avi007-debug"
-          colorScheme="dark"
+          colorScheme={theme === "light" ? "light" : "dark"}
           blockSize={13}
           blockMargin={4}
           fontSize={12}
