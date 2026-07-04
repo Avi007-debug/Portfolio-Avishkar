@@ -1,27 +1,27 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Trophy, Star, Award } from "lucide-react";
+import { Trophy, Star, Award, Users } from "lucide-react";
 
 const achievements = [
   {
-    icon: Award,
-    title: "CGPA 9.75 — RV College of Engineering",
-    description: "Maintaining exceptional academic standing in CSE (Cybersecurity) — top of batch.",
-  },
-  {
-    icon: Star,
-    title: "JEE Advanced AIR 15,207",
-    description: "Ranked in top 1% nationwide out of 1.8M+ JEE Main & Advanced candidates.",
-  },
-  {
     icon: Trophy,
-    title: "99.002 Percentile — MHT-CET 2024",
-    description: "Near-perfect score in Maharashtra state engineering entrance examination.",
+    title: "Prayatna 3.0 Hackathon 2nd Runner-Up",
+    description: "Secured 2nd Runner-Up at Prayatna 3.0 Hackathon among 500+ participants.",
   },
   {
     icon: Star,
-    title: "AIR 779 — COMEDK UGET",
-    description: "Top rank in national engineering entrance, reflecting consistent academic excellence.",
+    title: "National Top 1% in Entrance Exams",
+    description: "Achieved JEE Advanced AIR 15,207, MHT-CET 99.002 percentile, and COMEDK AIR 779.",
+  },
+  {
+    icon: Award,
+    title: "Academic Excellence at RVCE",
+    description: "Maintaining exceptional academic standing (CGPA 9.75) in CSE (Cybersecurity) — top of batch.",
+  },
+  {
+    icon: Users,
+    title: "Developer Community Leadership",
+    description: "Co-Founder & Tech Lead at Heapify Global Community and Junior Core Team Member at GDG RVCE, organizing Google-backed AI initiatives.",
   },
 ];
 

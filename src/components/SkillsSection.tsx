@@ -6,34 +6,34 @@ import {
 
 const skillGroups = [
   {
-    title: "Programming",
+    title: "Core Computer Science",
     icon: Code,
-    skills: ["Python", "C", "C++", "Java", "JavaScript", "TypeScript"],
+    skills: ["DSA", "OOP", "Linux", "Operating Systems", "Computer Networks", "DBMS"],
   },
   {
-    title: "Frameworks",
+    title: "Programming",
+    icon: Code,
+    skills: ["Python", "TypeScript", "JavaScript", "C", "C++", "Java", "SQL"],
+  },
+  {
+    title: "Web & Mobile Frameworks",
     icon: Server,
-    skills: ["React", "Flask", "Express.js", "Django", "Node.js"],
+    skills: ["React", "Flutter", "Node.js", "Express.js", "FastAPI", "Flask", "Django", "REST APIs"],
   },
   {
     title: "AI / ML",
     icon: Brain,
-    skills: ["Machine Learning", "Computer Vision", "NLP", "Feature Engineering", "Model Evaluation"],
+    skills: ["LLMs", "RAG", "Prompt Engineering", "AWS Bedrock", "Computer Vision", "Scikit-learn", "Feature Engineering", "NLP basics"],
   },
   {
     title: "Cybersecurity",
     icon: Shield,
-    skills: ["Network Security", "Intrusion Detection", "Threat Classification", "Cryptography", "Wireshark", "Nmap"],
+    skills: ["Network Security", "Active Directory Security", "Intrusion Detection Systems", "Threat Detection", "Wireshark", "Nmap"],
   },
   {
-    title: "Database & Cloud",
+    title: "Database, Cloud & Tools",
     icon: Database,
-    skills: ["PostgreSQL", "MySQL", "SQLite", "AWS Lambda", "Docker", "Git"],
-  },
-  {
-    title: "Soft Skills",
-    icon: Users,
-    skills: ["Problem Solving", "Teamwork", "Communication", "Adaptability", "Project Collaboration"],
+    skills: ["PostgreSQL", "MySQL", "SQLite", "AWS (Lambda, App Runner)", "Docker", "Git"],
   },
 ];
 

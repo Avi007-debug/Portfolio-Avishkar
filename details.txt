@@ -1,0 +1,119 @@
+# Portfolio Details Source of Truth
+
+This file contains the detailed, ATS-optimized, and narrative-driven content for Avishkar's portfolio and resume.
+
+## Experience
+
+### 1. CatchUpX (Pre-launch EdTech Startup)
+**Title:** Technical Co-Founder & Technical Lead
+**Duration:** Jan 2026 – Present | Remote
+* Developed an AI-powered personalized learning platform using TypeScript, Python, AWS Bedrock, and Docker.
+* Built adaptive learning-gap analysis and personalized study plan generation validated through pilots in 2 schools.
+* Led product architecture, cloud deployment, and technical development through leadership and teamwork.
+
+### 2. Heapify Global Community
+**Title:** Co-Founder & Tech Lead
+**Duration:** 2026 – Present
+* Leading technical strategy and platform development for an international developer community.
+* Managing a team responsible for website development, automation, and community infrastructure.
+* Organizing hackathons, AI workshops, blockchain events, and developer sessions.
+* Building partnerships with universities, developer communities, and industry organizations.
+* Designing scalable systems for registrations, participant management, and event operations.
+
+### 3. Capabl
+**Title:** AI Engineering Intern
+**Duration:** Feb 2026 – Jun 2026 | Remote
+* Developed a RAG-based AI platform using TypeScript, Python, PostgreSQL, and LLM-powered retrieval pipelines.
+* Designed multi-tool agent workflows integrating semantic retrieval, context assembly, and AI-driven response generation.
+* Built backend orchestration APIs and database pipelines through cross-functional collaboration and communication.
+
+### 4. Google Developer Groups (GDG) RVCE
+**Title:** Junior Core Team Member
+**Duration:** May 2025 – Present
+* Contributing to one of RVCE's largest developer communities by organizing technical events, hackathons, and workshops.
+* Worked with cross-functional student teams to improve event execution and participant experience.
+* Managed communication with participants, mentors, judges, and sponsors during community events.
+
+---
+
+## Projects
+
+### 1. Sherlock-D (Hackathon Management Platform)
+* **Description:** A full-stack hackathon management platform featuring secure team formation, role-based access control, file submission pipelines, and real-time administrative leaderboards.
+* **Tech Stack:** Python 3.11, TypeScript, SQL, React 18, Vite, Tailwind CSS, FastAPI, PostgreSQL (Supabase).
+* **Key Features:** Advanced Auth Flow, Team Management (collision-safe codes), Resilient File Submissions (up to 10MB via Supabase & Google Drive), Public Dashboard & Leaderboard.
+
+### 2. SmartStay — AI-Powered PG Accommodation Platform
+* **Description:** Built a full-stack accommodation platform that helps students discover verified PG listings, interact with owners, and receive AI-assisted recommendations and real-time alerts.
+* **Tech Stack:** TypeScript, Python, PL/pgSQL, React 18, Flask, Groq API (Llama 3.1), Supabase.
+* **Key Features:** 6 AI features (recommendations, sentiment analysis, hidden-charges detector, etc.), Real-time chat, Role-based dashboards (User/Owner/Admin).
+
+### 3. TrustCircle — AI-Powered Relationship Health Mobile App
+* **Description:** Built a proactive relationship wellness app that detects early signs of relationship erosion and recommends preventive actions.
+* **Tech Stack:** Dart, Flutter, C++/CMake, Swift.
+* **Key Features:** AI-assisted monitoring, proactive intervention workflows, cross-platform mobile delivery.
+
+### 4. Team_Agent_Wars_Healthcare-Monitoring-AI-Agent
+* **Description:** Engineered an AI healthcare monitoring agent that uses RAG and tool orchestration to deliver contextual health intelligence.
+* **Tech Stack:** TypeScript, Python, PL/pgSQL.
+* **Key Features:** RAG-based health context retrieval, Multi-tool agentic workflow, full-stack interface.
+
+### 5. AegisShield — AI-Enabled Security Intelligence Platform
+* **Description:** Built a security-focused intelligence platform combining web engineering and AI services for threat-aware analysis workflows.
+* **Tech Stack:** TypeScript, Python, CSS.
+* **Key Features:** Security analytics dashboards, AI-assisted threat analysis, modular architecture.
+
+### 6. Perimeter Intrusion Detection — IoT Security Monitoring System
+* **Description:** Developed an IoT-based perimeter monitoring solution to detect intrusions and trigger timely alerts in physical environments.
+* **Tech Stack:** HTML, C++, Python.
+* **Key Features:** Edge/embedded logic in C++, Python processing/control, HTML dashboard.
+
+### 7. ALGO-VISUALIZATION — Interactive Algorithm Learning Platform
+* **Description:** Built an interactive platform to visualize algorithm behavior step-by-step for better conceptual understanding and debugging.
+* **Tech Stack:** JavaScript, C, CSS.
+* **Key Features:** Step-by-step playback, C-backed implementations.
+
+### 8. HyperAD — AI-Powered Active Directory Attack Path Analysis
+* **Description:** Built a graph-intelligence security platform to analyze Active Directory attack paths using temporal hypergraphs and risk reasoning.
+* **Tech Stack:** Python, TypeScript, CSS.
+* **Key Features:** Temporal hypergraph analysis, risk scoring, actionable AI insights.
+
+### 9. Fuel Tracker App
+* **Description:** Built a fuel management app to track consumption, monitor costs, and improve personal/vehicle fuel efficiency decisions.
+* **Tech Stack:** HTML, Dart, JavaScript, C++/CMake.
+* **Key Features:** Fuel entry logging, cost trend visibility, mobile-capable UI.
+
+### 10. Phantom Mode — Proactive Smartphone Context Intelligence Engine
+* **Description:** Engineered an AI context engine that predicts user intent and pre-configures smartphone behavior before critical moments.
+* **Tech Stack:** JavaScript, Python.
+* **Key Features:** Intent prediction, context-triggered workflows, behavior learning.
+
+### 11. Cold-Chain Guardian — Temperature-Sensitive Logistics Monitoring System
+* **Description:** Built a cold-chain monitoring solution to track environmental conditions and safeguard temperature-sensitive assets.
+* **Tech Stack:** Python, JavaScript, CSS, HTML.
+* **Key Features:** Threshold-based anomaly detection, real-time dashboard.
+
+### 12. Chyrp Rebuild — Modern Full‑Stack Blogging Platform
+* **Description:** Rebuilt the lightweight Chyrp blog engine as a modern, extensible full‑stack web application.
+* **Tech Stack:** TypeScript, React, Python (Flask), PostgreSQL, Supabase.
+* **Key Features:** Multi-format content, extension modules, JWT auth.
+
+### 13. Urban Canopy Health Index (UCHI)
+* **Description:** Deterministic, RGB‑based computer vision pipeline to compute a reproducible Canopy Health Index.
+* **Tech Stack:** TypeScript, React, Python (Flask), OpenCV.
+* **Key Features:** HSV-based detection, area-aware thresholds, batch processing.
+
+### 14. NetChat — Multi‑Mode Multithreaded Chat System
+* **Description:** Multi‑flavor chat application demonstrating OS and networking concepts: C implementations and a Node.js/WebSocket server.
+* **Tech Stack:** C (POSIX), Node.js, Socket.IO, JWT.
+* **Key Features:** pthreads, IPC, AES encryption, WebSockets.
+
+### 15. Master Algorithm
+* **Description:** Web platform visualizing 57 data-structure & algorithm implementations with step-by-step playback.
+* **Tech Stack:** React, TypeScript, C, Node.js.
+* **Key Features:** 57 visualizations, CI/CD pipeline, C implementations.
+
+### 16. SmartSecure — Multi‑Stage ML‑Powered Intrusion Detection System
+* **Description:** Real‑time IDS combining packet capture, flow aggregation, and multi‑stage ML classifiers.
+* **Tech Stack:** Python, FastAPI, Scikit-Learn, Scapy, React.
+* **Key Features:** Random Forest models, SHAP explainability, packet sniffing.

@@ -4,10 +4,6 @@ import { BadgeCheck, ExternalLink } from "lucide-react";
 
 const certs = [
   {
-    title: "Oracle Data Platform 2025 Certified Foundations Associate",
-    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=084C104EBF0BF50B96CD0A951E0CF91BFD7ED4F1A22F0A56000F90E3347DC655",
-  },
-  {
     title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
     url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=453503E952833C909828DD47F8E97D716421243610E7589BE4142463219C071A",
   },
@@ -18,6 +14,10 @@ const certs = [
   {
     title: "Oracle Cloud Infrastructure 2025 Certified Data Science Professional",
     url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=084C104EBF0BF50B96CD0A951E0CF91BA75630D6CE283BC9E823E4298DCA54D9",
+  },
+  {
+    title: "Oracle Data Platform 2025 Foundations Associate",
+    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=084C104EBF0BF50B96CD0A951E0CF91BFD7ED4F1A22F0A56000F90E3347DC655",
   },
 ];
 
