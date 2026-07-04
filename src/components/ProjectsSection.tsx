@@ -66,20 +66,22 @@ const projects: Project[] = [
     impact: "Translates high-velocity packet buffers into explained ML inferences under low-latency boundaries."
   },
   {
-    title: "Master Algorithm",
-    subtitle: "Interactive Algorithm Visualization Platform",
-    description: "Web platform visualizing 57 data-structure & algorithm implementations with step-by-step playback.",
-    tech: ["React", "TypeScript", "C", "Node.js", "GitHub Actions"],
+    title: "Master Algorithm Platform",
+    subtitle: "High-Performance Algorithm Visualization Engine",
+    description: "A high-performance, interactive algorithm visualization platform bridging a React frontend with a pure C execution engine.",
+    tech: ["React", "Node.js", "Express", "C", "Framer Motion", "Docker", "Vercel"],
     github: "https://github.com/Avi007-debug/Master_Algorithm",
     live: "https://master-algorithm.vercel.app/",
     highlight: "SDE",
     categories: ["Full Stack"],
     points: [
-      "Built a React + Vite visualization UI for 57 algorithms with step-by-step playback, speed control, and accessibility features.",
-      "Integrated C algorithm implementations with a Node.js backend and automated CI (lint, tests, build, deploy).",
-      "Implemented persistent filters, keyboard shortcuts, and detailed complexity metadata for educational use."
+      "Engineered a full-stack platform utilizing a Node.js API to safely spawn and trace exactly 100 compiled C executables via IPC.",
+      "Developed a dynamic React/Vite frontend using Framer Motion to parse complex JSON execution traces into GPU-accelerated step-by-step visual animations.",
+      "Implemented robust backend security protocols, including Regex sanitization and strict execution timeouts to prevent command injection.",
+      "Authored a comprehensive algorithmic database detailing asymptotic derivations and space complexity bounds for over 100 distinct algorithms.",
+      "Built Interactive MCQ Guided Tutorials, DAA Theory sections, and an Interview Preparation Mode with timers."
     ],
-    impact: "Helps student developers benchmark C-based algorithm execution and visualize the inner states interactively."
+    impact: "Provides an ultra-low latency, highly secure sandbox for evaluating and visualizing exact C memory states via inter-process communication."
   },
   {
     title: "Sherlock-D",

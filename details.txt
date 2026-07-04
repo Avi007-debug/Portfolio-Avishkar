@@ -219,19 +219,23 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **GitHub Link:** https://github.com/Avi007-debug/SmartSecure
 
 ### 4. Master Algorithm (SDE)
-* **Description:** Web platform visualizing 57 data structure and algorithm implementations with step-by-step playback.
-* **Tech Stack:** React, TypeScript, C, Node.js, GitHub Actions
+* **Description:** A high-performance, interactive algorithm visualization platform bridging a React frontend with a pure C execution engine.
+* **Tech Stack:** React, Node.js, Express, C, Docker, Tailwind CSS, Framer Motion, Vercel, Render
 * **Key Features:**
-  * 57 algorithm visualizations with playback control, speed adjustments, and accessibility.
-  * Tree & graph visualizations, syllabus filters, persistent dashboard state.
+  * Exactly 100 algorithms with step-by-step visualizations and playback controls.
+  * Interactive MCQ Guided Tutorials with Checkpoints.
+  * Interview Preparation Mode with timers and constraints.
+  * Automated complexity derivations, DAA Theory, and NP-Hard reductions.
 * **Technical Implementation:**
-  * React frontend runs visualizer engine and UI controls.
-  * Node.js backend serves algorithm data and compiles C binaries via Makefile.
+  * Full-stack integration executing pure C compiled binaries securely via Node.js `child_process.exec`.
+  * Advanced JSON tracing via `stdout` from C memory to a Framer Motion UI.
+  * Rigorous security sandbox: Regex allow-listing, strict timeouts, buffer size maximums to prevent command injection.
 * **Resume Bullet Points:**
-  * Built a React + Vite visualization UI for 57 algorithms with step-by-step playback, speed control, and accessibility features.
-  * Integrated C algorithm implementations with a Node.js backend and automated CI (lint, tests, build, deploy).
-  * Implemented persistent filters, keyboard shortcuts, and detailed complexity metadata for educational use.
-* **Impact / Complexity:** Cross-language integration (C + Web UI), accessibility (WCAG), CI/CD automation, state-machine visualization.
+  * Engineered a full-stack algorithm visualization platform utilizing a Node.js/Express API to safely spawn and trace 100 compiled C executables via inter-process communication.
+  * Developed a dynamic React/Vite frontend using Framer Motion to parse complex JSON execution traces into smooth, GPU-accelerated step-by-step visual animations.
+  * Implemented robust backend security protocols, including strict Regex input sanitization, max-buffer limits, and execution timeouts to prevent command injection and resource exhaustion attacks.
+  * Authored a comprehensive algorithmic database detailing asymptotic derivations, recurrence relations, and space complexity bounds for over 100 distinct algorithms.
+* **Impact / Complexity:** Engineered a custom IPC pipeline safely executing C binaries from Node.js, handling complex state tracing via stdout.
 * **GitHub Link:** https://github.com/Avi007-debug/Master_Algorithm
 * **Live Link:** https://master-algorithm.vercel.app/
 
