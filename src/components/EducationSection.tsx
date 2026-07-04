@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { GraduationCap, Award, BookOpen } from "lucide-react";
+import { GraduationCap, BookOpen, Award } from "lucide-react";
 
 const EducationSection = () => (
   <SectionWrapper id="education">
@@ -22,7 +22,7 @@ const EducationSection = () => (
           className="flex gap-6"
         >
           <div className="hidden md:flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 z-10">
+            <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_15px_rgba(var(--neon-blue-rgb),0.15)]">
               <GraduationCap className="w-5 h-5 text-accent" />
             </div>
           </div>
@@ -30,8 +30,8 @@ const EducationSection = () => (
             <div className="flex items-start justify-between flex-wrap gap-2">
               <div>
                 <h3 className="text-xl font-bold text-foreground heading-font">RV College of Engineering</h3>
-                <p className="text-accent font-medium">B.E. Computer Science (Cybersecurity)</p>
-                <p className="text-sm text-muted-foreground mono mt-1">2024 – 2028</p>
+                <p className="text-accent font-medium">B.E. Computer Science and Engineering (Cyber Security)</p>
+                <p className="text-sm text-muted-foreground mono mt-1">2024 – 2028 | Bangalore, India</p>
               </div>
               <motion.div
                 initial={{ scale: 0 }}
@@ -61,20 +61,56 @@ const EducationSection = () => (
             </div>
           </div>
           <div className="glass-card p-6 md:p-8 flex-1">
-            <h3 className="text-lg font-bold text-foreground heading-font">GT School and Junior College</h3>
-            <p className="text-primary font-medium text-sm">Science (PCM + CS)</p>
-            <p className="text-sm text-muted-foreground mono mt-1">2022 – 2024</p>
-            <div className="mt-4 space-y-2">
-              {[
-                "AIR 15,207 — JEE Advanced 2024",
-                "99.002 percentile — MHT-CET 2024",
-                "AIR 779 — COMEDK UGET",
-              ].map((a) => (
-                <p key={a} className="text-sm text-secondary-foreground flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                  {a}
-                </p>
-              ))}
+            <div className="flex items-start justify-between flex-wrap gap-2">
+              <div>
+                <h3 className="text-lg font-bold text-foreground heading-font">GT School and Junior College</h3>
+                <p className="text-primary font-medium text-sm">Science (PCM + CS), Grade 12</p>
+                <p className="text-sm text-muted-foreground mono mt-1">2022 – 2024 | Pune, India</p>
+                <div className="mt-4 space-y-2">
+                  {[
+                    "AIR 15,207 — JEE Advanced 2024",
+                    "99.002 percentile — MHT-CET 2024",
+                    "AIR 779 — COMEDK UGET",
+                  ].map((a) => (
+                    <p key={a} className="text-sm text-secondary-foreground flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                      {a}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/20">
+                <p className="text-xs text-muted-foreground">HSC Board</p>
+                <p className="text-2xl font-bold text-primary heading-font">89%</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Pawar Public School */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="flex gap-6"
+        >
+          <div className="hidden md:flex flex-col items-center">
+            <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 z-10">
+              <Award className="w-5 h-5 text-accent" />
+            </div>
+          </div>
+          <div className="glass-card p-6 md:p-8 flex-1">
+            <div className="flex items-start justify-between flex-wrap gap-2">
+              <div>
+                <h3 className="text-lg font-bold text-foreground heading-font">Pawar Public School</h3>
+                <p className="text-accent font-medium text-sm">Nanded City, Pune, Maharashtra</p>
+                <p className="text-sm text-muted-foreground mono mt-1">Grade 10</p>
+              </div>
+              <div className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/20">
+                <p className="text-xs text-muted-foreground">Score</p>
+                <p className="text-2xl font-bold text-accent heading-font">97.6%</p>
+              </div>
             </div>
           </div>
         </motion.div>

@@ -3,12 +3,12 @@ import SectionWrapper from "./SectionWrapper";
 import { Code, Server, Brain, Shield, Cloud, Wrench } from "lucide-react";
 
 const categories = [
-  { name: "Languages",  icon: Code,   items: ["Python", "TypeScript", "JavaScript", "C / C++", "Java"],           angle: 0   },
-  { name: "Frameworks", icon: Server, items: ["React", "Flask", "FastAPI", "Node.js", "Express"],                  angle: 60  },
-  { name: "AI / ML",    icon: Brain,  items: ["Scikit-Learn", "DeepFace", "OpenCV", "SHAP", "AWS Bedrock"],        angle: 120 },
-  { name: "Security",   icon: Shield, items: ["JWT / Bcrypt", "IDS / IPS", "Scapy", "AES-256", "RBAC / RLS"],     angle: 180 },
-  { name: "Cloud",      icon: Cloud,  items: ["AWS Lambda", "Supabase", "PostgreSQL", "Docker", "Vercel / Render"], angle: 240 },
-  { name: "Tools",      icon: Wrench, items: ["Git / GitHub", "Linux", "Arduino", "Postman", "Gunicorn"],          angle: 300 },
+  { name: "Languages",  icon: Code,   items: ["Python", "TypeScript", "JavaScript", "C / C++", "Java", "SQL"],      angle: 0   },
+  { name: "Frameworks", icon: Server, items: ["React", "Flutter", "Node.js", "Express.js", "FastAPI", "Flask", "Django"], angle: 60  },
+  { name: "AI / ML",    icon: Brain,  items: ["LLMs", "RAG", "Prompt Eng.", "AWS Bedrock", "Computer Vision", "Scikit-learn"], angle: 120 },
+  { name: "Security",   icon: Shield, items: ["Net Security", "AD Security", "IDS / IPS", "Threat Detection", "Wireshark / Nmap"], angle: 180 },
+  { name: "Database & Cloud", icon: Cloud,  items: ["PostgreSQL", "Supabase", "AWS Lambda", "Docker", "MySQL / SQLite"], angle: 240 },
+  { name: "Tools",      icon: Wrench, items: ["Git / GitHub", "Linux", "Arduino", "Postman", "Vercel / Render"],    angle: 300 },
 ];
 
 // Orbit geometry constants — all pixel math uses these so center is always consistent
@@ -118,7 +118,7 @@ const TechStackVisualization = () => (
                 className="w-full h-full glass-card rounded-2xl flex flex-col items-center justify-center gap-1 cursor-default group-hover:border-accent/40 transition-colors"
               >
                 <cat.icon className="w-5 h-5 text-accent" />
-                <span className="text-xs font-medium text-foreground">{cat.name}</span>
+                <span className="text-xs font-medium text-foreground text-center px-1">{cat.name}</span>
                 <span className="text-[10px] text-muted-foreground mono">{cat.items.length} skills</span>
               </motion.div>
 

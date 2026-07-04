@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Trophy, Star, Award, Users } from "lucide-react";
+import { Trophy, Star, Award, Users, ShieldAlert } from "lucide-react";
 
 const achievements = [
   {
@@ -20,8 +20,13 @@ const achievements = [
   },
   {
     icon: Users,
-    title: "Developer Community Leadership",
-    description: "Co-Founder & Tech Lead at Heapify Global Community and Junior Core Team Member at GDG RVCE, organizing Google-backed AI initiatives.",
+    title: "Co-Founder & Tech Lead — Heapify",
+    description: "Co-founded Heapify Global Community, managing web infrastructure, technical strategy, and hosting developer sessions.",
+  },
+  {
+    icon: Trophy, // Or another relevant icon like Calendar/Sparkles
+    title: "Junior Core Team Member — GDG RVCE",
+    description: "Coordinated technical workshops and hackathons, managing logistics and communication for 800+ participants.",
   },
 ];
 
@@ -31,24 +36,24 @@ const AchievementsSection = () => (
       <span className="gradient-text">Achievements</span>
     </h2>
 
-    <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {achievements.map((a, i) => (
         <motion.div
           key={i}
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: i * 0.15, duration: 0.5, type: "spring" }}
+          transition={{ delay: i * 0.1, duration: 0.5, type: "spring" }}
           whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
           className="glass-card p-6 gradient-border"
         >
           <div className="flex items-start gap-4">
-            <div className="p-3 rounded-xl bg-accent/10 neon-glow-cyan">
+            <div className="p-3 rounded-xl bg-accent/10 neon-glow-cyan flex-shrink-0">
               <a.icon className="w-5 h-5 text-accent" />
             </div>
             <div>
-              <h3 className="font-bold text-foreground heading-font text-lg">{a.title}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{a.description}</p>
+              <h3 className="font-bold text-foreground heading-font text-base leading-snug">{a.title}</h3>
+              <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{a.description}</p>
             </div>
           </div>
         </motion.div>

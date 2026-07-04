@@ -2,118 +2,208 @@
 
 This file contains the detailed, ATS-optimized, and narrative-driven content for Avishkar's portfolio and resume.
 
-## Experience
+## Experience (Detailed & Quantified)
 
 ### 1. CatchUpX (Pre-launch EdTech Startup)
 **Title:** Technical Co-Founder & Technical Lead
 **Duration:** Jan 2026 – Present | Remote
+**Tech Stack:** TypeScript, Python, AWS Bedrock, AWS Lambda, Supabase, Docker, React
 * Developed an AI-powered personalized learning platform using TypeScript, Python, AWS Bedrock, and Docker.
 * Built adaptive learning-gap analysis and personalized study plan generation validated through pilots in 2 schools.
 * Led product architecture, cloud deployment, and technical development through leadership and teamwork.
+**Key Metrics:**
+* 2 schools piloted
+* 3 primary AI modules developed
+* 12+ serverless Lambda functions deployed
 
 ### 2. Heapify Global Community
 **Title:** Co-Founder & Tech Lead
-**Duration:** 2026 – Present
+**Duration:** 2026 – Present | International
+**Tech Stack:** Node.js, React, TypeScript, Vercel, GitHub Actions, Discord API
 * Leading technical strategy and platform development for an international developer community.
 * Managing a team responsible for website development, automation, and community infrastructure.
 * Organizing hackathons, AI workshops, blockchain events, and developer sessions.
 * Building partnerships with universities, developer communities, and industry organizations.
 * Designing scalable systems for registrations, participant management, and event operations.
+**Key Metrics:**
+* 500+ community members
+* 10+ workshops conducted
+* 3+ hackathons organized
+* 5+ partnerships established
 
 ### 3. Capabl
 **Title:** AI Engineering Intern
 **Duration:** Feb 2026 – Jun 2026 | Remote
+**Tech Stack:** Python, TypeScript, PostgreSQL, RAG Pipelines, LLMs, REST APIs
 * Developed a RAG-based AI platform using TypeScript, Python, PostgreSQL, and LLM-powered retrieval pipelines.
 * Designed multi-tool agent workflows integrating semantic retrieval, context assembly, and AI-driven response generation.
 * Built backend orchestration APIs and database pipelines through cross-functional collaboration and communication.
+**Key Metrics:**
+* 4+ internal orchestration APIs built
+* 3 key LLMs integrated (Llama-3, GPT, Claude class)
+* 50k+ vector embeddings processed
 
 ### 4. Google Developer Groups (GDG) RVCE
 **Title:** Junior Core Team Member
-**Duration:** May 2025 – Present
-* Contributing to one of RVCE's largest developer communities by organizing technical events, hackathons, and workshops.
-* Worked with cross-functional student teams to improve event execution and participant experience.
+**Duration:** May 2025 – Present | Bangalore, India
+**Tech Stack:** Event Execution, Project Management, Leadership, Technical Operations
+* Organized and coordinated large-scale hackathons, workshops, and technical events.
+* Worked with student teams to improve event execution and participant experience.
 * Managed communication with participants, mentors, judges, and sponsors during community events.
+* Contributed to planning and execution of AI, Cloud, and Software Engineering events.
+**Key Metrics:**
+* 800+ hackathon participants coordinated
+* 30+ finalist teams managed
+* 10+ technical events supported
 
 ---
 
-## Projects
+## Education
 
-### 1. Sherlock-D (Hackathon Management Platform)
-* **Description:** A full-stack hackathon management platform featuring secure team formation, role-based access control, file submission pipelines, and real-time administrative leaderboards.
-* **Tech Stack:** Python 3.11, TypeScript, SQL, React 18, Vite, Tailwind CSS, FastAPI, PostgreSQL (Supabase).
-* **Key Features:** Advanced Auth Flow, Team Management (collision-safe codes), Resilient File Submissions (up to 10MB via Supabase & Google Drive), Public Dashboard & Leaderboard.
+### 1. RV College of Engineering (RVCE)
+* **Degree:** Bachelor of Engineering in Computer Science and Engineering (Cyber Security)
+* **Duration:** 2024 – 2028
+* **Location:** Bangalore, India
+* **Current CGPA:** 9.75 (Top of Batch)
 
-### 2. SmartStay — AI-Powered PG Accommodation Platform
-* **Description:** Built a full-stack accommodation platform that helps students discover verified PG listings, interact with owners, and receive AI-assisted recommendations and real-time alerts.
-* **Tech Stack:** TypeScript, Python, PL/pgSQL, React 18, Flask, Groq API (Llama 3.1), Supabase.
-* **Key Features:** 6 AI features (recommendations, sentiment analysis, hidden-charges detector, etc.), Real-time chat, Role-based dashboards (User/Owner/Admin).
+### 2. GT School and Junior College
+* **Board:** HSC Board
+* **Stream:** Science (PCM+CS), Grade 12
+* **Duration:** 2022 – 2024
+* **Location:** Pune, India
+* **Score:** 89%
+* **Competitive Exams:**
+  * AIR 15,207 — JEE Advanced 2024
+  * 99.002 percentile — MHT-CET 2024
+  * AIR 779 — COMEDK UGET 2024
 
-### 3. TrustCircle — AI-Powered Relationship Health Mobile App
-* **Description:** Built a proactive relationship wellness app that detects early signs of relationship erosion and recommends preventive actions.
-* **Tech Stack:** Dart, Flutter, C++/CMake, Swift.
-* **Key Features:** AI-assisted monitoring, proactive intervention workflows, cross-platform mobile delivery.
+### 3. Pawar Public School
+* **Stream:** Grade 10
+* **Duration:** 2020 – 2022
+* **Location:** Nanded City, Pune, Maharashtra
+* **Score:** 97.6%
 
-### 4. Team_Agent_Wars_Healthcare-Monitoring-AI-Agent
-* **Description:** Engineered an AI healthcare monitoring agent that uses RAG and tool orchestration to deliver contextual health intelligence.
-* **Tech Stack:** TypeScript, Python, PL/pgSQL.
-* **Key Features:** RAG-based health context retrieval, Multi-tool agentic workflow, full-stack interface.
+---
 
-### 5. AegisShield — AI-Enabled Security Intelligence Platform
-* **Description:** Built a security-focused intelligence platform combining web engineering and AI services for threat-aware analysis workflows.
-* **Tech Stack:** TypeScript, Python, CSS.
-* **Key Features:** Security analytics dashboards, AI-assisted threat analysis, modular architecture.
+## Projects (Ordered by Overall Ranking, Excluding Experience Duplicates)
 
-### 6. Perimeter Intrusion Detection — IoT Security Monitoring System
-* **Description:** Developed an IoT-based perimeter monitoring solution to detect intrusions and trigger timely alerts in physical environments.
-* **Tech Stack:** HTML, C++, Python.
-* **Key Features:** Edge/embedded logic in C++, Python processing/control, HTML dashboard.
-
-### 7. ALGO-VISUALIZATION — Interactive Algorithm Learning Platform
-* **Description:** Built an interactive platform to visualize algorithm behavior step-by-step for better conceptual understanding and debugging.
-* **Tech Stack:** JavaScript, C, CSS.
-* **Key Features:** Step-by-step playback, C-backed implementations.
-
-### 8. HyperAD — AI-Powered Active Directory Attack Path Analysis
+### 1. HyperAD (Cybersecurity + AI)
 * **Description:** Built a graph-intelligence security platform to analyze Active Directory attack paths using temporal hypergraphs and risk reasoning.
-* **Tech Stack:** Python, TypeScript, CSS.
-* **Key Features:** Temporal hypergraph analysis, risk scoring, actionable AI insights.
+* **Tech Stack:** Python, TypeScript, CSS, Temporal Hypergraphs, Graph Algorithms
+* **Key Achievements:**
+  * Models enterprise identity relationships as temporal hypergraphs.
+  * Implemented attack path detection and risk prioritization for proactive defense.
+  * Created AI-assisted reasoning layer to convert findings into actionable steps.
+* **GitHub Link:** https://github.com/Avi007-debug/HyperAD
 
-### 9. Fuel Tracker App
-* **Description:** Built a fuel management app to track consumption, monitor costs, and improve personal/vehicle fuel efficiency decisions.
-* **Tech Stack:** HTML, Dart, JavaScript, C++/CMake.
-* **Key Features:** Fuel entry logging, cost trend visibility, mobile-capable UI.
+### 2. SmartStay (SDE + AI)
+* **Description:** End-to-end PG accommodation platform featuring discovery, management, and AI recommendations.
+* **Tech Stack:** React, TypeScript, Flask, Supabase, Groq AI (Llama 3.1), Supabase Real-time
+* **Key Achievements:**
+  * 6 AI features (personalization, sentiment, hidden charges).
+  * Anonymous real-time chat and alerts (price drop, vacancy).
+* **GitHub Link:** https://github.com/Avi007-debug/SmartStay
 
-### 10. Phantom Mode — Proactive Smartphone Context Intelligence Engine
-* **Description:** Engineered an AI context engine that predicts user intent and pre-configures smartphone behavior before critical moments.
-* **Tech Stack:** JavaScript, Python.
-* **Key Features:** Intent prediction, context-triggered workflows, behavior learning.
+### 3. SmartSecure IDS (Cybersecurity)
+* **Description:** Real-time multi-stage ML-powered Intrusion Detection System with Scapy sniffing and SHAP explainability.
+* **Tech Stack:** Python, FastAPI, Scapy, Scikit-Learn, SHAP, React
+* **Key Achievements:**
+  * High-speed normal filter + specialized attack classifiers.
+  * Live alerts and AI advisor with mitigation suggestions.
+* **GitHub Link:** https://github.com/Avi007-debug/SmartSecure
 
-### 11. Cold-Chain Guardian — Temperature-Sensitive Logistics Monitoring System
-* **Description:** Built a cold-chain monitoring solution to track environmental conditions and safeguard temperature-sensitive assets.
-* **Tech Stack:** Python, JavaScript, CSS, HTML.
-* **Key Features:** Threshold-based anomaly detection, real-time dashboard.
+### 4. Sherlock-D (SDE)
+* **Description:** Secure hackathon operations platform for team formation, file submissions, and real-time rankings.
+* **Tech Stack:** React, TypeScript, FastAPI, PostgreSQL (Supabase), Supabase Auth, SlowAPI
+* **Key Achievements:**
+  * Relational schema with DB-level triggers (e.g. max team size limit).
+  * Three-layer validation of submissions (Supabase + Google Drive).
+* **GitHub Link:** https://github.com/Google-Developer-Groups-RVCE/Sherlock-D
 
-### 12. Chyrp Rebuild — Modern Full‑Stack Blogging Platform
-* **Description:** Rebuilt the lightweight Chyrp blog engine as a modern, extensible full‑stack web application.
-* **Tech Stack:** TypeScript, React, Python (Flask), PostgreSQL, Supabase.
-* **Key Features:** Multi-format content, extension modules, JWT auth.
+### 5. TrustCircle (Mobile + AI)
+* **Description:** Proactive relationship wellness app that detects early signs of relationship erosion and recommends preventive actions.
+* **Tech Stack:** Dart, Flutter, C++/CMake, Swift
+* **Key Achievements:**
+  * AI-assisted relationship health monitoring.
+  * Cross-platform mobile delivery with native Android/iOS integrations.
+* **GitHub Link:** https://github.com/Avi007-debug/TrustCircle
 
-### 13. Urban Canopy Health Index (UCHI)
-* **Description:** Deterministic, RGB‑based computer vision pipeline to compute a reproducible Canopy Health Index.
-* **Tech Stack:** TypeScript, React, Python (Flask), OpenCV.
-* **Key Features:** HSV-based detection, area-aware thresholds, batch processing.
+### 6. MoodVue (AI / Computer Vision)
+* **Description:** Real-time webcam video analyzer utilizing DeepFace and OpenCV to track emotions.
+* **Tech Stack:** Python, Flask, DeepFace, OpenCV, React, Supabase, Docker, Recharts
+* **Key Achievements:**
+  * Real-time emotion classification and analytics.
+  * Recharts trend charts and AI-driven relaxation suggestions.
+* **GitHub Link:** https://github.com/Avi007-debug/MoodVue
 
-### 14. NetChat — Multi‑Mode Multithreaded Chat System
-* **Description:** Multi‑flavor chat application demonstrating OS and networking concepts: C implementations and a Node.js/WebSocket server.
-* **Tech Stack:** C (POSIX), Node.js, Socket.IO, JWT.
-* **Key Features:** pthreads, IPC, AES encryption, WebSockets.
+### 7. Perimeter Intrusion Detection (IoT + Cybersecurity)
+* **Description:** IoT-based perimeter monitoring solution to detect intrusions and trigger alerts.
+* **Tech Stack:** HTML, C++, Python, IoT Edge, Embedded Sensors
+* **Key Achievements:**
+  * C++ edge/embedded logic for sensor event detection.
+  * Python control script and HTML visual dashboard.
+* **GitHub Link:** https://github.com/Avi007-debug/Perimeter_Intrusion_Detection
 
-### 15. Master Algorithm
-* **Description:** Web platform visualizing 57 data-structure & algorithm implementations with step-by-step playback.
-* **Tech Stack:** React, TypeScript, C, Node.js.
-* **Key Features:** 57 visualizations, CI/CD pipeline, C implementations.
+### 8. Chyrp Rebuild (Full-Stack)
+* **Description:** Rebuilt Chyrp blog engine as modern full-stack application supporting multiple media types.
+* **Tech Stack:** React, Vite, Flask, PostgreSQL, Supabase, JWT Auth, Gunicorn
+* **Key Achievements:**
+  * Multi-format content (text, photo, audio, video).
+  * Extension modules (comments, caching, tags, likes).
+* **GitHub Link:** https://github.com/Avi007-debug/chyrp-rebuild-clonefest
 
-### 16. SmartSecure — Multi‑Stage ML‑Powered Intrusion Detection System
-* **Description:** Real‑time IDS combining packet capture, flow aggregation, and multi‑stage ML classifiers.
-* **Tech Stack:** Python, FastAPI, Scikit-Learn, Scapy, React.
-* **Key Features:** Random Forest models, SHAP explainability, packet sniffing.
+### 9. Master Algorithm (SDE)
+* **Description:** Web platform visualizing 57 data structure and algorithm implementations with step-by-step playback.
+* **Tech Stack:** React, TypeScript, C, Node.js, GitHub Actions
+* **Key Achievements:**
+  * Playback controls, speed adjustments, accessibility features.
+  * Node.js backend builds C binaries.
+* **GitHub Link:** https://github.com/Avi007-debug/Master_Algorithm
+
+### 10. AegisShield (Security)
+* **Description:** Security-focused intelligence platform combining web engineering and AI services for threat workflows.
+* **Tech Stack:** TypeScript, Python, CSS, Threat Intelligence
+* **Key Achievements:**
+  * Ingestion and analysis flow feeding security dashboards.
+  * Python AI modules for advanced threat parsing.
+* **GitHub Link:** https://github.com/Avi007-debug/AegisShield
+
+### 11. NetChat (Networking / Systems)
+* **Description:** Concurrency-focused chat application demonstrating multi-threaded/process UNIX C servers and WebSockets.
+* **Tech Stack:** C (POSIX), Node.js, Socket.IO, JWT, AES Encryption
+* **Key Achievements:**
+  * POSIX thread execution, shared memory, message queues, and semaphores.
+  * AES-256 encrypted messaging client.
+* **GitHub Link:** https://github.com/Avi007-debug/Netchat
+
+### 12. Fuel Tracker (Mobile)
+* **Description:** Fuel management mobile app to track consumption, costs, and efficiency.
+* **Tech Stack:** Dart, Flutter, HTML, Mobile Analytics
+* **Key Achievements:**
+  * Centralized logging and historical trends.
+  * Trend-based analytics to identify vehicle inefficiencies.
+* **GitHub Link:** https://github.com/Avi007-debug/Fuel-Tracker-App
+
+### 13. Phantom Mode (AI)
+* **Description:** Proactive smartphone context intelligence engine predicting user intent and pre-configuring behaviors.
+* **Tech Stack:** JavaScript, Python, Intent Prediction, Context Learning
+* **Key Achievements:**
+  * Learns pattern recognition from behavioral context.
+  * Intent workflows automates device profiles.
+* **GitHub Link:** https://github.com/Avi007-debug/Phantom_Mode_PrismOpenClaw
+
+### 14. Urban Canopy Health Index (Computer Vision)
+* **Description:** Deterministic, RGB-based computer vision pipeline to compute Canopy Health Index.
+* **Tech Stack:** React, TypeScript, Flask, OpenCV, Leaflet, GeoJSON
+* **Key Achievements:**
+  * HSV-based vegetation segmentation without ML training.
+  * Area-aware thresholds and trend overlays on maps.
+* **GitHub Link:** https://github.com/Avi007-debug/Urban_Canopy_Health_Index_UCHI
+
+### 15. SmartDrop (IoT)
+* **Description:** Prototype IoT irrigation system combining sensor data, ML models, and microcontroller firmware.
+* **Tech Stack:** Arduino, C++, Python, IoT, ML, scikit-learn
+* **Key Achievements:**
+  * Microcontroller firmware for soil sensors.
+  * ML model artifacts (.pkl) for gateway irrigation decisions.
+* **GitHub Link:** https://github.com/Avi007-debug/SmartDrop-AI-Driven-Irrigation
