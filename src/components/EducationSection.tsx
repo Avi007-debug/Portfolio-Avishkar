@@ -41,7 +41,7 @@ const EducationSection = () => (
                 className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/20"
               >
                 <p className="text-xs text-muted-foreground">Current CGPA</p>
-                <p className="text-2xl font-bold text-accent heading-font">9.75</p>
+                <p className="text-2xl font-bold text-accent heading-font">9.70</p>
               </motion.div>
             </div>
           </div>
@@ -105,7 +105,7 @@ const EducationSection = () => (
               <div>
                 <h3 className="text-lg font-bold text-foreground heading-font">Pawar Public School</h3>
                 <p className="text-accent font-medium text-sm">Nanded City, Pune, Maharashtra</p>
-                <p className="text-sm text-muted-foreground mono mt-1">Grade 10</p>
+                <p className="text-sm text-muted-foreground mono mt-1">10th CBSE Board</p>
               </div>
               <div className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/20">
                 <p className="text-xs text-muted-foreground">Score</p>

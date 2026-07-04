@@ -49,38 +49,42 @@
     --glass-border: 222 20% 18%;
   }
 
-  /* ── Light mode overrides ── */
+  /* ── Sleek Light Mode Theme ── */
   .light {
-    --background: 210 33% 97%;
-    --foreground: 222 47% 10%;
+    --background: 210 40% 98%;
+    --foreground: 224 71% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 10%;
+    --card-foreground: 224 71% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 10%;
+    --popover-foreground: 224 71% 8%;
 
-    --primary: 245 58% 51%;
+    --primary: 265 80% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 20% 93%;
-    --secondary-foreground: 222 47% 20%;
+    --secondary: 215 20% 94%;
+    --secondary-foreground: 224 71% 15%;
 
-    --muted: 215 20% 93%;
-    --muted-foreground: 215 15% 42%;
+    --muted: 215 20% 94%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 187 70% 32%;
+    --accent: 180 90% 35%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 20% 82%;
-    --input: 215 20% 82%;
-    --ring: 245 58% 51%;
+    --border: 215 20% 86%;
+    --input: 215 20% 86%;
+    --ring: 265 80% 50%;
+
+    --neon-blue: 220 90% 52%;
+    --neon-violet: 270 85% 58%;
+    --neon-cyan: 180 90% 38%;
 
     --glass-bg: 0 0% 100%;
-    --glass-border: 215 20% 82%;
+    --glass-border: 215 20% 86%;
   }
 }
 

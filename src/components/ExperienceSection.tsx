@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Briefcase, Users, Smartphone, ChevronDown, ChevronUp, Sparkles, MapPin } from "lucide-react";
+import { Briefcase, Users, Smartphone, ChevronDown, ChevronUp, Sparkles, MapPin, Github, Globe, Linkedin } from "lucide-react";
 
 interface Experience {
   title: string;
@@ -13,6 +13,10 @@ interface Experience {
   tech: string[];
   points: string[];
   metrics?: { label: string; value: string }[];
+  github?: string;
+  live?: string;
+  linkedin?: string;
+  note?: string;
 }
 
 const experiences: Experience[] = [
@@ -22,19 +26,22 @@ const experiences: Experience[] = [
     period: "Jan 2026 – Present",
     location: "Remote",
     icon: Briefcase,
-    shortDescription: "Co-founding and leading the architectural development of an AI-powered personalized learning platform.",
-    tech: ["TypeScript", "Python", "AWS Bedrock", "AWS Lambda", "Supabase", "Docker", "React"],
+    shortDescription: "Architecting an AI-powered EdTech platform functioning as a multi-tenant School Management System integrated with an adaptive learning gap diagnostic engine.",
+    tech: ["Python", "FastAPI", "Next.js", "TypeScript", "PostgreSQL", "AWS App Runner", "Groq LLM API", "Docker", "SQLAlchemy", "JWT"],
     points: [
-      "Developed an AI-powered personalized learning platform using TypeScript, Python, AWS Bedrock, and Docker.",
-      "Built adaptive learning-gap analysis and personalized study plan generation validated through pilots.",
-      "Led product architecture, cloud deployment, and technical development through leadership and teamwork.",
-      "Optimized backend latencies for diagnostic quizzes and context mapping flows."
+      "Architected and deployed an AI-driven EdTech platform using Next.js and FastAPI, supporting multi-tenant role-based access for students, teachers, and parents.",
+      "Engineered a real-time learning gap diagnostic engine integrating Groq LLM API, reducing cognitive analysis latency to sub-seconds while enforcing strict JSON schemas.",
+      "Designed a highly relational PostgreSQL database schema with 19+ tables using SQLAlchemy, optimizing for multi-tenancy isolation and predictive exam analytics.",
+      "Deployed scalable backend microservices on AWS App Runner via Docker ECR, implementing strict security middlewares, rate-limiting, and custom JWT authentication."
     ],
     metrics: [
       { label: "Schools Piloted", value: "2" },
-      { label: "AI Modules", value: "3" },
-      { label: "Lambda Functions", value: "12+" }
-    ]
+      { label: "AI Latency", value: "<1s" },
+      { label: "DB Tables", value: "19+" }
+    ],
+    github: "https://github.com/GhostRiderGaming/CatchupXV1.git",
+    live: "https://CatchupX.in",
+    linkedin: "https://www.linkedin.com/company/catchupx/about/?viewAsMember=true",
   },
   {
     title: "Co-Founder & Tech Lead",
@@ -55,7 +62,8 @@ const experiences: Experience[] = [
       { label: "Workshops Conducted", value: "10+" },
       { label: "Hackathons Organized", value: "3+" },
       { label: "Partnerships", value: "5+" }
-    ]
+    ],
+    linkedin: "https://www.linkedin.com/in/heapify-global-community-7bb767414/",
   },
   {
     title: "AI Engineering Intern",
@@ -74,7 +82,10 @@ const experiences: Experience[] = [
       { label: "Orchestration APIs", value: "4+" },
       { label: "LLMs Integrated", value: "3" },
       { label: "Vector Embeddings", value: "50k+" }
-    ]
+    ],
+    github: "https://github.com/Avi007-debug/Team_Agent_Wars_Healthcare-Monitoring-AI-Agent",
+    live: "https://team-agent-wars-healthcare-monitori.vercel.app/",
+    note: "The backend server for this prototype is temporarily offline to reduce cost."
   },
   {
     title: "Junior Core Team Member",
@@ -171,7 +182,52 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="overflow-hidden mt-4 pt-4 border-t border-border/50 space-y-4"
+              onClick={(e) => e.stopPropagation()} // Prevent card collapse on clicking buttons or links
             >
+              {/* Cost Saving Note */}
+              {exp.note && (
+                <div className="px-4 py-2.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse flex-shrink-0" />
+                  <span>{exp.note}</span>
+                </div>
+              )}
+
+              {/* Links Row */}
+              {(exp.github || exp.live || exp.linkedin) && (
+                <div className="flex flex-wrap gap-3">
+                  {exp.github && (
+                    <a
+                      href={exp.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-outline flex items-center gap-2 text-xs py-1.5 px-3.5 bg-card/45"
+                    >
+                      <Github className="w-4 h-4" /> Code Repository
+                    </a>
+                  )}
+                  {exp.live && (
+                    <a
+                      href={exp.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-primary flex items-center gap-2 text-xs py-1.5 px-3.5"
+                    >
+                      <Globe className="w-4 h-4" /> Live Site
+                    </a>
+                  )}
+                  {exp.linkedin && (
+                    <a
+                      href={exp.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-outline flex items-center gap-2 text-xs py-1.5 px-3.5 border-accent/30 text-accent hover:bg-accent/5 hover:border-accent/60"
+                    >
+                      <Linkedin className="w-4 h-4 text-accent" /> LinkedIn Profile
+                    </a>
+                  )}
+                </div>
+              )}
+
               {/* Metrics Grid */}
               {exp.metrics && (
                 <div>

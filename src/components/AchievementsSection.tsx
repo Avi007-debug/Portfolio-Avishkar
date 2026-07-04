@@ -16,7 +16,7 @@ const achievements = [
   {
     icon: Award,
     title: "Academic Excellence at RVCE",
-    description: "Maintaining exceptional academic standing (CGPA 9.75) in CSE (Cybersecurity) — top of batch.",
+    description: "Maintaining exceptional academic standing (CGPA 9.70) in CSE (Cybersecurity) — top of batch.",
   },
   {
     icon: Users,

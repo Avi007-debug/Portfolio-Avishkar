@@ -39,6 +39,7 @@ const projects: Project[] = [
     description: "End-to-end platform for discovering paying-guest (PG) accommodations with multiple AI features and real-time chat/notifications.",
     tech: ["React", "TypeScript", "Flask", "Supabase", "Groq AI", "Llama 3.1", "Realtime"],
     github: "https://github.com/Avi007-debug/SmartStay",
+    live: "https://smartstay-ruddy.vercel.app/",
     highlight: "SDE + AI",
     categories: ["AI & ML", "Full Stack"],
     points: [
@@ -63,6 +64,22 @@ const projects: Project[] = [
       "Delivered an interactive React dashboard for live threat feed, severity visualization, and historical threat intelligence."
     ],
     impact: "Translates high-velocity packet buffers into explained ML inferences under low-latency boundaries."
+  },
+  {
+    title: "Master Algorithm",
+    subtitle: "Interactive Algorithm Visualization Platform",
+    description: "Web platform visualizing 57 data-structure & algorithm implementations with step-by-step playback.",
+    tech: ["React", "TypeScript", "C", "Node.js", "GitHub Actions"],
+    github: "https://github.com/Avi007-debug/Master_Algorithm",
+    live: "https://master-algorithm.vercel.app/",
+    highlight: "SDE",
+    categories: ["Full Stack"],
+    points: [
+      "Built a React + Vite visualization UI for 57 algorithms with step-by-step playback, speed control, and accessibility features.",
+      "Integrated C algorithm implementations with a Node.js backend and automated CI (lint, tests, build, deploy).",
+      "Implemented persistent filters, keyboard shortcuts, and detailed complexity metadata for educational use."
+    ],
+    impact: "Helps student developers benchmark C-based algorithm execution and visualize the inner states interactively."
   },
   {
     title: "Sherlock-D",
@@ -129,34 +146,20 @@ const projects: Project[] = [
     impact: "Integrates low-level hardware sensors with a centralized visualization dashboard."
   },
   {
-    title: "Chyrp Rebuild",
-    subtitle: "Modern Full-Stack Blogging Platform",
-    description: "Rebuilt the lightweight Chyrp blog engine as a modern, extensible full-stack web application.",
-    tech: ["React", "Vite", "Flask", "PostgreSQL", "Supabase", "JWT Auth", "Gunicorn"],
-    github: "https://github.com/Avi007-debug/chyrp-rebuild-clonefest",
-    highlight: "Full-Stack",
+    title: "Urban Canopy Health Index",
+    subtitle: "RGB Vegetation Monitoring & Visualization",
+    description: "Deterministic, RGB-based CV pipeline to compute a reproducible Canopy Health Index (CHI).",
+    tech: ["React", "TypeScript", "Flask", "OpenCV", "Leaflet Maps", "GeoJSON"],
+    github: "https://github.com/Avi007-debug/Urban_Canopy_Health_Index_UCHI",
+    live: "https://dynamicurbancanopyhealthindex.vercel.app/",
+    highlight: "Computer Vision",
     categories: ["Full Stack"],
     points: [
-      "Rebuilt a legacy blog engine into a modern React + Flask full-stack platform with PostgreSQL and Supabase media storage.",
-      "Implemented modular content types (text, photo, audio, video) and extensions (comments, caching, tags) to maintain Chyrp's extensibility.",
-      "Designed REST API with JWT auth and integrated cloud hosting pipelines (Vercel frontend, Render backend)."
+      "Designed and implemented a deterministic CV pipeline (HSV segmentation, pixel-based metrics) to compute an interpretable Canopy Health Index and store results in Supabase.",
+      "Built interactive React dashboards and Leaflet visualizations for region comparisons, temporal trends, and GeoJSON overlays.",
+      "Automated batch processing and API endpoints for image upload, CHI computation, and data exports."
     ],
-    impact: "Restores flexibility and speed of a legacy engine with a secure, production-grade decoupled stack."
-  },
-  {
-    title: "Master Algorithm",
-    subtitle: "Interactive Algorithm Visualization Platform",
-    description: "Web platform visualizing 57 data-structure & algorithm implementations with step-by-step playback.",
-    tech: ["React", "TypeScript", "C", "Node.js", "GitHub Actions"],
-    github: "https://github.com/Avi007-debug/Master_Algorithm",
-    highlight: "SDE",
-    categories: ["Full Stack"],
-    points: [
-      "Built a React + Vite visualization UI for 57 algorithms with step-by-step playback, speed control, and accessibility features.",
-      "Integrated C algorithm implementations with a Node.js backend and automated CI (lint, tests, build, deploy).",
-      "Implemented persistent filters, keyboard shortcuts, and detailed complexity metadata for educational use."
-    ],
-    impact: "Helps student developers benchmark C-based algorithm execution and visualize the inner states interactively."
+    impact: "Provides a reproducible environmental health score without relying on resource-heavy ML model training."
   },
   {
     title: "AegisShield",
@@ -173,21 +176,6 @@ const projects: Project[] = [
       "Built scalable foundations for future expansion into advanced detection and risk prioritization."
     ],
     impact: "Connects raw event streams to intelligent reasoning backends for accelerated threat triage."
-  },
-  {
-    title: "NetChat",
-    subtitle: "Multi-Mode Multithreaded Chat System",
-    description: "Multi-flavor chat application demonstrating OS and networking concepts in both C and WebSockets.",
-    tech: ["C", "POSIX", "Node.js", "Socket.IO", "JWT", "AES Encryption"],
-    github: "https://github.com/Avi007-debug/Netchat",
-    highlight: "Networking / Systems",
-    categories: ["Full Stack", "IoT & Systems"],
-    points: [
-      "Implemented multi-threaded and multi-process C servers demonstrating pthreads, shared memory, message queues, and semaphores for IPC and concurrency.",
-      "Built a modern Node.js/Socket.IO web server with JWT authentication, AES message encryption, and file upload support.",
-      "Integrated persistent storage and logging mechanisms for user auth and message history."
-    ],
-    impact: "Highlights low-level UNIX socket programming alongside modern JavaScript real-time patterns."
   },
   {
     title: "Fuel Tracker",
@@ -222,19 +210,19 @@ const projects: Project[] = [
     impact: "Builds a continuous learning loop of human behavior directly on edge device simulations."
   },
   {
-    title: "Urban Canopy Health Index",
-    subtitle: "RGB Vegetation Monitoring & Visualization",
-    description: "Deterministic, RGB-based CV pipeline to compute a reproducible Canopy Health Index (CHI).",
-    tech: ["React", "TypeScript", "Flask", "OpenCV", "Leaflet Maps", "GeoJSON"],
-    github: "https://github.com/Avi007-debug/Urban_Canopy_Health_Index_UCHI",
-    highlight: "Computer Vision",
-    categories: ["Full Stack"],
+    title: "NetChat",
+    subtitle: "Multi-Mode Multithreaded Chat System",
+    description: "Multi-flavor chat application demonstrating OS and networking concepts in both C and WebSockets.",
+    tech: ["C", "POSIX", "Node.js", "Socket.IO", "JWT", "AES Encryption"],
+    github: "https://github.com/Avi007-debug/Netchat",
+    highlight: "Networking / Systems",
+    categories: ["Full Stack", "IoT & Systems"],
     points: [
-      "Designed and implemented a deterministic CV pipeline (HSV segmentation, pixel-based metrics) to compute an interpretable Canopy Health Index and store results in Supabase.",
-      "Built interactive React dashboards and Leaflet visualizations for region comparisons, temporal trends, and GeoJSON overlays.",
-      "Automated batch processing and API endpoints for image upload, CHI computation, and data exports."
+      "Implemented multi-threaded and multi-process C servers demonstrating pthreads, shared memory, message queues, and semaphores for IPC and concurrency.",
+      "Built a modern Node.js/Socket.IO web server with JWT authentication, AES message encryption, and file upload support.",
+      "Integrated persistent storage and logging mechanisms for user auth and message history."
     ],
-    impact: "Provides a reproducible environmental health score without relying on resource-heavy ML model training."
+    impact: "Highlights low-level UNIX socket programming alongside modern JavaScript real-time patterns."
   },
   {
     title: "SmartDrop",
@@ -250,6 +238,21 @@ const projects: Project[] = [
       "Logged field data records and created dynamic visualization dashboards to assess water saving thresholds."
     ],
     impact: "Brings ML decision cycles to localized agricultural sensors, reducing water waste."
+  },
+  {
+    title: "Chyrp Rebuild",
+    subtitle: "Modern Full-Stack Blogging Platform",
+    description: "Rebuilt the lightweight Chyrp blog engine as a modern, extensible full-stack web application.",
+    tech: ["React", "Vite", "Flask", "PostgreSQL", "Supabase", "JWT Auth", "Gunicorn"],
+    github: "https://github.com/Avi007-debug/chyrp-rebuild-clonefest",
+    highlight: "Full-Stack",
+    categories: ["Full Stack"],
+    points: [
+      "Rebuilt a legacy blog engine into a modern React + Flask full-stack platform with PostgreSQL and Supabase media storage.",
+      "Implemented modular content types (text, photo, audio, video) and extensions (comments, caching, tags) to maintain Chyrp's extensibility.",
+      "Designed REST API with JWT auth and integrated cloud hosting pipelines (Vercel frontend, Render backend)."
+    ],
+    impact: "Restores flexibility and speed of a legacy engine with a secure, production-grade decoupled stack."
   }
 ];
 
@@ -351,14 +354,10 @@ const ProjectsSection = () => {
             >
               {/* Card Hover Border Glow */}
               <div
-                className="absolute inset-[-1px] rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[inherit]"
+                className="absolute inset-[-1px] rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
-                  background: "linear-gradient(135deg, hsl(var(--neon-blue) / 0.4), transparent, hsl(var(--neon-violet) / 0.3))",
-                  mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                  WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                  maskComposite: "exclude",
-                  WebkitMaskComposite: "xor",
-                  padding: "1px",
+                  background: "gradient-border", // Fallback helper or CSS class
+                  borderColor: "hsl(var(--neon-blue) / 0.15)",
                 }}
               />
 
@@ -448,6 +447,14 @@ const ProjectsSection = () => {
                 <p className="text-sm text-accent font-medium">{selectedProject.subtitle}</p>
               </div>
 
+              {/* Cost Saving Alert for paused backends */}
+              {selectedProject.live && !["Master Algorithm", "CatchUpX"].includes(selectedProject.title) && (
+                <div className="px-4 py-2.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse flex-shrink-0" />
+                  <span>Note: The backend database and AI services for this live demo are temporarily offline to reduce hosting costs.</span>
+                </div>
+              )}
+
               {/* Action Links */}
               <div className="flex gap-3">
                 <a
@@ -472,7 +479,7 @@ const ProjectsSection = () => {
 
               <div className="space-y-4">
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mono mb-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mono mono mb-2">
                     Key Achievements & Contributions
                   </h4>
                   <ul className="space-y-2">
@@ -487,7 +494,7 @@ const ProjectsSection = () => {
 
                 {selectedProject.impact && (
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mono mb-1">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mono mono mb-1">
                       Technical Impact / Complexity
                     </h4>
                     <p className="text-sm text-secondary-foreground leading-relaxed">
@@ -497,7 +504,7 @@ const ProjectsSection = () => {
                 )}
 
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mono mb-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mono mono mb-2">
                     Technologies Implemented
                   </h4>
                   <div className="flex flex-wrap gap-2">
