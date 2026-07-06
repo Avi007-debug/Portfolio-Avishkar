@@ -40,7 +40,7 @@ const skillGroups = [
 const SkillsSection = () => (
   <SectionWrapper id="skills">
     <h2 className="section-heading">
-      <span className="gradient-text">Skills</span> & Tools
+      <span className="gradient-text">Skills & Tools</span>
     </h2>
 
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -77,7 +77,7 @@ const GitHubCalendarSection = () => {
   return (
     <SectionWrapper id="github">
       <h2 className="section-heading">
-        <span className="gradient-text">GitHub</span> Activity
+        <span className="gradient-text">GitHub Activity</span>
       </h2>
 
       {/* Stats cards */}

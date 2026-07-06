@@ -46,7 +46,7 @@ const SkillBar = ({ skill, index }: { skill: { name: string; level: number; colo
 const SkillBars = () => (
   <SectionWrapper id="skills-proficiency">
     <h2 className="section-heading text-center">
-      <span className="gradient-text">Skills</span> & Proficiency
+      <span className="gradient-text">Skills & Proficiency</span>
     </h2>
 
     <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">

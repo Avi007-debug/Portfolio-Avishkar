@@ -20,7 +20,7 @@ const AboutSection = () => (
   <SectionWrapper id="about">
     <div className="flex flex-col gap-2 mb-12">
       <h2 className="section-heading mb-1">
-        <span className="gradient-text">&gt;_ Security</span> Profile
+        <span className="gradient-text">&gt;_ Security Profile</span>
       </h2>
       <p className="text-xs text-accent mono uppercase tracking-widest">// decrypting candidate payload...</p>
     </div>

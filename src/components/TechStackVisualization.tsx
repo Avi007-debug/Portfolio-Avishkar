@@ -30,7 +30,7 @@ function tooltipClass(angle: number): string {
 const TechStackVisualization = () => (
   <SectionWrapper id="tech-stack">
     <h2 className="section-heading text-center">
-      <span className="gradient-text">Tech</span> Stack
+      <span className="gradient-text">Tech Stack</span>
     </h2>
 
     {/* ── Orbit visualization — desktop only ── */}

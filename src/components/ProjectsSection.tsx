@@ -281,7 +281,7 @@ const ProjectsSection = () => {
       <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
         <div>
           <h2 className="section-heading mb-2">
-            <span className="gradient-text">Projects</span> Portfolio
+            <span className="gradient-text">Projects Portfolio</span>
           </h2>
           <p className="text-sm text-muted-foreground">
             Explore {projects.length} advanced AI, Cybersecurity, Full-Stack, and IoT implementations ranked by relevance.

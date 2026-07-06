@@ -4,7 +4,7 @@ import SectionWrapper from "./SectionWrapper";
 const GitHubSection = () => (
   <SectionWrapper id="github">
     <h2 className="section-heading">
-      <span className="gradient-text">GitHub</span> Activity
+      <span className="gradient-text">GitHub Activity</span>
     </h2>
 
     <div className="space-y-8">

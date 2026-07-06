@@ -284,7 +284,7 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
 const ExperienceSection = () => (
   <SectionWrapper id="experience">
     <h2 className="section-heading">
-      <span className="gradient-text">Experience</span> History
+      <span className="gradient-text">Experience History</span>
     </h2>
 
     <div className="relative">
