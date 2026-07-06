@@ -55,7 +55,9 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="text-lg font-black gradient-text mono tracking-tight">AM</a>
+        <a href="#">
+          <img src="/portfoliio.png" alt="AM Logo" className="h-8 md:h-10 w-auto object-contain" />
+        </a>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-5">

@@ -14,10 +14,9 @@ const Footer = () => (
       <div className="flex flex-col items-center gap-6">
         <motion.a
           href="#"
-          className="text-2xl font-black gradient-text mono tracking-tight"
           whileHover={{ scale: 1.06 }}
         >
-          AM
+          <img src="/portfoliio.png" alt="AM Logo" className="h-12 md:h-16 w-auto object-contain" />
         </motion.a>
 
         <div className="flex items-center gap-3">
