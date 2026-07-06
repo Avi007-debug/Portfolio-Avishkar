@@ -229,6 +229,24 @@
   .neon-glow-cyan {
     box-shadow: 0 0 20px -5px hsl(var(--neon-cyan) / 0.4);
   }
+
+  .logo-text-a {
+    color: hsl(var(--neon-cyan));
+    text-shadow: 0 0 12px hsl(var(--neon-cyan) / 0.7), 0 0 24px hsl(var(--neon-blue) / 0.5);
+  }
+  .light .logo-text-a {
+    color: hsl(200 90% 35%); /* Darker for light mode contrast */
+    text-shadow: 0 0 8px hsl(var(--neon-cyan) / 0.4);
+  }
+
+  .logo-text-m {
+    color: hsl(var(--neon-violet));
+    text-shadow: 0 0 12px hsl(var(--neon-violet) / 0.7);
+  }
+  .light .logo-text-m {
+    color: hsl(270 80% 45%); /* Darker for light mode contrast */
+    text-shadow: 0 0 8px hsl(var(--neon-violet) / 0.4);
+  }
 }
 
 /* Scrollbar */

@@ -55,8 +55,9 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#">
-          <img src="/portfoliio.png" alt="AM Logo" className="h-8 md:h-10 w-auto object-contain" />
+        <a href="#" className="flex items-center text-3xl font-black mono tracking-tighter hover:scale-105 transition-transform duration-300">
+          <span className="logo-text-a">A</span>
+          <span className="logo-text-m">M</span>
         </a>
 
         {/* Desktop */}
