@@ -16,7 +16,7 @@ const achievements = [
   {
     icon: Award,
     title: "Academic Excellence at RVCE",
-    description: "Maintaining exceptional academic standing (CGPA 9.70) in CSE (Cybersecurity) — top of batch.",
+    description: "Maintaining exceptional academic standing (CGPA 9.74) in CSE (Cybersecurity) — top of batch.",
   },
   {
     icon: Users,
@@ -25,7 +25,7 @@ const achievements = [
   },
   {
     icon: Trophy, // Or another relevant icon like Calendar/Sparkles
-    title: "Junior Core Team Member — GDG RVCE",
+    title: "Development Lead — GDG RVCE",
     description: "Coordinated technical workshops and hackathons, managing logistics and communication for 800+ participants.",
   },
 ];

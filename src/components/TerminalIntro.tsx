@@ -5,7 +5,7 @@ const commands = [
   { cmd: "whoami", output: "Avishkar More" },
   { cmd: "cat role.txt", output: "Cybersecurity Engineering Student" },
   { cmd: "ls skills/", output: "AI  CV  IoT  Cybersecurity  FullStack" },
-  { cmd: "echo $CGPA", output: "9.70 @ RV College of Engineering" },
+  { cmd: "echo $CGPA", output: "9.74 @ RV College of Engineering" },
   { cmd: "./status.sh", output: "⚡ Open to internships & research roles" },
 ];
 

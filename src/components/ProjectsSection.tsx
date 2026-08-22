@@ -51,6 +51,23 @@ const projects: Project[] = [
     impact: "Combines full-stack web engineering, real-time messaging, and Groq-backed AI pipelines into a cohesive platform."
   },
   {
+    title: "MedAssist",
+    subtitle: "Healthcare Patient Monitoring & AI Agent Platform",
+    description: "RAG-based AI healthcare assistant & patient monitoring platform with LLM retrieval pipelines and multi-tool agent workflows.",
+    tech: ["React", "TypeScript", "Python", "PostgreSQL", "RAG Pipelines", "LLMs"],
+    github: "https://github.com/Avi007-debug/Team_Agent_Wars_Healthcare-Monitoring-AI-Agent",
+    live: "https://team-agent-wars-healthcare-monitori.vercel.app/",
+    highlight: "SDE + AI",
+    categories: ["AI & ML", "Full Stack"],
+    points: [
+      "Developed a RAG-powered healthcare monitoring system integrating semantic retrieval, multi-tool agents, and clinical context assembly.",
+      "Designed a responsive React frontend interface for patient status visualization and interactive AI assistant communication.",
+      "Engineered backend orchestration APIs utilizing vector embeddings (50k+) and multi-LLM retrieval pipelines.",
+      "Frontend application interface is deployed and live; backend cloud services are currently offline due to free trial expiration."
+    ],
+    impact: "Demonstrates production-ready AI healthcare agent orchestration with modular vector retrieval."
+  },
+  {
     title: "SmartSecure IDS",
     subtitle: "Multi-Stage ML-Powered Intrusion Detection System",
     description: "Real-time IDS combining packet capture, flow aggregation, multi-stage ML classifiers, and a dashboard for live alerts.",
@@ -449,11 +466,15 @@ const ProjectsSection = () => {
                 <p className="text-sm text-accent font-medium">{selectedProject.subtitle}</p>
               </div>
 
-              {/* Cost Saving Alert for paused backends */}
+              {/* Cost Saving / Free Trial Alert for paused backends */}
               {selectedProject.live && !["Master Algorithm", "CatchUpX"].includes(selectedProject.title) && (
                 <div className="px-4 py-2.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse flex-shrink-0" />
-                  <span>Note: The backend database and AI services for this live demo are temporarily offline to reduce hosting costs.</span>
+                  <span>
+                    {selectedProject.title === "MedAssist"
+                      ? "Note: The frontend interface is live and UI-ready, but the backend AI cloud server is currently offline because the free trial expired."
+                      : "Note: The backend database and AI services for this live demo are temporarily offline to reduce hosting costs."}
+                  </span>
                 </div>
               )}
 

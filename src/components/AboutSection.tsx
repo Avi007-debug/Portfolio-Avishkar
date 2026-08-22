@@ -36,7 +36,7 @@ const AboutSection = () => (
             <Lock className="w-3.5 h-3.5" /> Identity & Objective
           </h3>
           <p className="text-secondary-foreground leading-relaxed text-sm md:text-base">
-            I'm a 2nd-year CSE (Cybersecurity) student at RV College of Engineering with a strong focus on building <strong className="text-accent font-semibold">secure, intelligent, and distributed full-stack systems</strong>.
+            I'm a 3rd-year CSE (Cybersecurity) student at RV College of Engineering with a strong focus on building <strong className="text-accent font-semibold">secure, intelligent, and distributed full-stack systems</strong>.
           </p>
           <p className="text-secondary-foreground leading-relaxed mt-4 text-sm md:text-base">
             My work sits at the intersection of <strong className="text-accent font-semibold">Cybersecurity, Artificial Intelligence (AI/ML), and Cloud Architecture</strong>. I specialize in developing graph-based threat analysis engines, real-time ML pipelines, and serverless full-stack web applications.
@@ -89,7 +89,7 @@ const AboutSection = () => (
             </div>
             <div className="flex justify-between">
               <span>[INTEGRITY_CHECK]</span>
-              <span className="text-white">9.70 CGPA (VERIFIED)</span>
+              <span className="text-white">9.74 CGPA (VERIFIED)</span>
             </div>
             <div className="border-t border-white/10 my-2 pt-2 text-[10px] text-muted-foreground uppercase">
               // Threat Specialization Map

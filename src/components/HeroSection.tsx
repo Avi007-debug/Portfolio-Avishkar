@@ -75,8 +75,8 @@ const HeroSection = () => {
               transition={{ delay: 0.55, duration: 0.6 }}
               className="text-secondary-foreground max-w-md mb-10 leading-relaxed text-sm md:text-base mx-auto lg:mx-0"
             >
-              2nd-year CSE (Cybersecurity) student at RV College of Engineering
-              with a <span className="text-accent font-semibold">CGPA of 9.70</span>, building secure, intelligent systems
+              3rd-year CSE (Cybersecurity) student at RV College of Engineering
+              with a <span className="text-accent font-semibold">CGPA of 9.74</span>, building secure, intelligent systems
               that solve real-world problems.
             </motion.p>
 

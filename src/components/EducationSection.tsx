@@ -29,7 +29,10 @@ const EducationSection = () => (
           <div className="glass-card p-6 md:p-8 flex-1 gradient-border">
             <div className="flex items-start justify-between flex-wrap gap-2">
               <div>
-                <h3 className="text-xl font-bold text-foreground heading-font">RV College of Engineering</h3>
+                <div className="flex items-center gap-2 flex-wrap mb-1">
+                  <h3 className="text-xl font-bold text-foreground heading-font">RV College of Engineering</h3>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-accent/15 text-accent border border-accent/20 font-semibold">3rd Year</span>
+                </div>
                 <p className="text-accent font-medium">B.E. Computer Science and Engineering (Cyber Security)</p>
                 <p className="text-sm text-muted-foreground mono mt-1">2024 – 2028 | Bangalore, India</p>
               </div>
@@ -41,7 +44,7 @@ const EducationSection = () => (
                 className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/20"
               >
                 <p className="text-xs text-muted-foreground">Current CGPA</p>
-                <p className="text-2xl font-bold text-accent heading-font">9.70</p>
+                <p className="text-2xl font-bold text-accent heading-font">9.74</p>
               </motion.div>
             </div>
           </div>

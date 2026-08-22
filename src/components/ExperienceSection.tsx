@@ -21,29 +21,6 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    title: "Technical Co-Founder & Technical Lead",
-    org: "CatchUpX (Pre-launch EdTech Startup)",
-    period: "Jan 2026 – Present",
-    location: "Remote",
-    icon: Briefcase,
-    shortDescription: "Architecting an AI-powered EdTech platform functioning as a multi-tenant School Management System integrated with an adaptive learning gap diagnostic engine.",
-    tech: ["Python", "FastAPI", "Next.js", "TypeScript", "PostgreSQL", "AWS App Runner", "Groq LLM API", "Docker", "SQLAlchemy", "JWT"],
-    points: [
-      "Architected and deployed an AI-driven EdTech platform using Next.js and FastAPI, supporting multi-tenant role-based access for students, teachers, and parents.",
-      "Engineered a real-time learning gap diagnostic engine integrating Groq LLM API, reducing cognitive analysis latency to sub-seconds while enforcing strict JSON schemas.",
-      "Designed a highly relational PostgreSQL database schema with 19+ tables using SQLAlchemy, optimizing for multi-tenancy isolation and predictive exam analytics.",
-      "Deployed scalable backend microservices on AWS App Runner via Docker ECR, implementing strict security middlewares, rate-limiting, and custom JWT authentication."
-    ],
-    metrics: [
-      { label: "Schools Piloted", value: "2" },
-      { label: "AI Latency", value: "<1s" },
-      { label: "DB Tables", value: "19+" }
-    ],
-    github: "https://github.com/GhostRiderGaming/CatchupXV1.git",
-    live: "https://CatchupX.in",
-    linkedin: "https://www.linkedin.com/company/catchupx/about/?viewAsMember=true",
-  },
-  {
     title: "Co-Founder & Tech Lead",
     org: "Heapify Global Community",
     period: "June 2026 – Present",
@@ -66,15 +43,38 @@ const experiences: Experience[] = [
     linkedin: "https://www.linkedin.com/in/heapify-global-community-7bb767414/",
   },
   {
+    title: "Technical Co-Founder & Technical Lead",
+    org: "CatchUpX (Pre-launch EdTech Startup)",
+    period: "Jan 2026 – Aug 2026",
+    location: "Remote",
+    icon: Briefcase,
+    shortDescription: "Architected an AI-powered EdTech platform functioning as a multi-tenant School Management System integrated with an adaptive learning gap diagnostic engine.",
+    tech: ["Python", "FastAPI", "Next.js", "TypeScript", "PostgreSQL", "AWS App Runner", "Groq LLM API", "Docker", "SQLAlchemy", "JWT"],
+    points: [
+      "Architected and deployed an AI-driven EdTech platform using Next.js and FastAPI, supporting multi-tenant role-based access for students, teachers, and parents.",
+      "Engineered a real-time learning gap diagnostic engine integrating Groq LLM API, reducing cognitive analysis latency to sub-seconds while enforcing strict JSON schemas.",
+      "Designed a highly relational PostgreSQL database schema with 19+ tables using SQLAlchemy, optimizing for multi-tenancy isolation and predictive exam analytics.",
+      "Deployed scalable backend microservices on AWS App Runner via Docker ECR, implementing strict security middlewares, rate-limiting, and custom JWT authentication."
+    ],
+    metrics: [
+      { label: "Schools Piloted", value: "2" },
+      { label: "AI Latency", value: "<1s" },
+      { label: "DB Tables", value: "19+" }
+    ],
+    github: "https://github.com/GhostRiderGaming/CatchupXV1.git",
+    live: "https://CatchupX.in",
+    linkedin: "https://www.linkedin.com/company/catchupx/about/?viewAsMember=true",
+  },
+  {
     title: "AI Engineering Intern",
     org: "Capabl",
     period: "Feb 2026 – Jun 2026",
     location: "Remote",
     icon: Smartphone,
-    shortDescription: "Built RAG pipelines and multi-tool agent workflows for a production-grade AI platform.",
+    shortDescription: "Built RAG pipelines and multi-tool agent workflows for a production-grade AI platform (MedAssist Healthcare Agent).",
     tech: ["Python", "TypeScript", "PostgreSQL", "RAG Pipelines", "LLMs", "REST APIs"],
     points: [
-      "Developed a RAG-based AI platform using TypeScript, Python, PostgreSQL, and LLM-powered retrieval pipelines.",
+      "Developed a RAG-based AI platform (MedAssist) using TypeScript, Python, PostgreSQL, and LLM-powered retrieval pipelines.",
       "Designed multi-tool agent workflows integrating semantic retrieval, context assembly, and AI-driven response generation.",
       "Built backend orchestration APIs and database pipelines through cross-functional collaboration and communication."
     ],
@@ -85,15 +85,15 @@ const experiences: Experience[] = [
     ],
     github: "https://github.com/Avi007-debug/Team_Agent_Wars_Healthcare-Monitoring-AI-Agent",
     live: "https://team-agent-wars-healthcare-monitori.vercel.app/",
-    note: "The backend server for this prototype is temporarily offline to reduce cost."
+    note: "Frontend application interface is live & ready; backend AI API cloud server free trial has expired (offline)."
   },
   {
-    title: "Junior Core Team Member",
+    title: "Development Lead",
     org: "Google Developer Groups (GDG) RVCE",
     period: "May 2025 – Present",
     location: "Bangalore, India",
     icon: Briefcase,
-    shortDescription: "Contributing to one of RVCE's largest developer communities by organizing major technical events and hackathons.",
+    shortDescription: "Leading technical initiatives and contributing to one of RVCE's largest developer communities by organizing major technical events and hackathons.",
     tech: ["Event Execution", "Project Management", "Leadership", "Technical Operations"],
     points: [
       "Organized and coordinated large-scale hackathons, workshops, and technical events.",
