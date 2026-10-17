@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, FileText, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 import TerminalIntro from "./TerminalIntro";
+import CyberScrambleText from "./CyberScrambleText";
 
 export const HeroSection = () => {
   // Coordinated timeline animation variants with subtle cubic-bezier easing
@@ -54,8 +55,8 @@ export const HeroSection = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 border-2 border-emerald-500/80 bg-emerald-950/40 text-emerald-400 text-[10px] font-black tracking-wide shadow-[2px_2px_0px_0px_#10b981]">
-            <span className="w-2 h-2 bg-emerald-400 animate-pulse" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 border-2 border-emerald-600 dark:border-emerald-400 bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 text-[10px] font-black tracking-wide shadow-[2px_2px_0px_0px_#065f46] dark:shadow-[2px_2px_0px_0px_#10b981]">
+            <span className="w-2 h-2 bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
             <span>PROFILE / ACTIVE</span>
           </div>
           <span className="hidden md:inline text-muted-foreground/80 font-mono">
@@ -83,7 +84,7 @@ export const HeroSection = () => {
           </motion.div>
 
           {/* ── Stage 2: Signature Line-by-Line Typographic Reveal ── */}
-          <h1 className="heading-font text-5xl sm:text-7xl md:text-8xl lg:text-[5.8rem] xl:text-[6.6rem] font-black text-foreground tracking-[-0.04em] leading-[0.91] mb-5">
+          <h1 className="heading-font text-4xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.2rem] font-black text-foreground tracking-[-0.04em] leading-[0.93] mb-5">
             <span className="block overflow-hidden py-1">
               <motion.span
                 custom={0}
@@ -92,7 +93,7 @@ export const HeroSection = () => {
                 variants={lineMaskVariants}
                 className="block text-foreground"
               >
-                AVISHKAR
+                <CyberScrambleText text="AVISHKAR" />
               </motion.span>
             </span>
             <span className="block overflow-hidden py-1">
@@ -101,9 +102,9 @@ export const HeroSection = () => {
                 initial="hidden"
                 animate="visible"
                 variants={lineMaskVariants}
-                className="block text-foreground/80 hover:text-foreground transition-colors"
+                className="block text-foreground/85 hover:text-foreground transition-colors"
               >
-                MORE
+                <CyberScrambleText text="MORE" />
               </motion.span>
             </span>
           </h1>

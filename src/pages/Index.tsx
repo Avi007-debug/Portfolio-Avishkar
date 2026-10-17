@@ -14,6 +14,7 @@ import AchievementsSection from "@/components/AchievementsSection";
 import GitHubCalendarSection from "@/components/GitHubCalendarSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import CyberMarquee from "@/components/CyberMarquee";
 
 export const Index = () => {
   return (
@@ -37,6 +38,9 @@ export const Index = () => {
       <main id="main-content" tabIndex={-1}>
         {/* 01 // Identity & Signature Hero Animation */}
         <HeroSection />
+
+        {/* Cyber Industrial Marquee Ticker */}
+        <CyberMarquee />
 
         {/* 02 // Engineering Dossier & Core Focus */}
         <AboutSection />

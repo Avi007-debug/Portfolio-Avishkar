@@ -84,13 +84,20 @@ export const TechStackVisualization = () => (
     {/* ── Orbital Graph Visualization — Desktop ── */}
     <div className="hidden lg:flex justify-center my-8">
       <div className="relative select-none" style={{ width: SIZE, height: SIZE }}>
-        {/* SVG layer: ring guides + spoke lines */}
+        {/* SVG layer: ring guides + spoke lines + radar scanner */}
         <svg
           className="absolute inset-0 pointer-events-none"
           width={SIZE}
           height={SIZE}
           viewBox={`0 0 ${SIZE} ${SIZE}`}
         >
+          <defs>
+            <linearGradient id="radarSweepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#06b6d4" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+
           {/* Outer radar orbit guide ring */}
           <circle
             cx={CX}
@@ -98,7 +105,7 @@ export const TechStackVisualization = () => (
             r={RADIUS + 6}
             stroke="currentColor"
             className="text-border/60"
-            strokeWidth="1"
+            strokeWidth="1.5"
             fill="none"
           />
           {/* Inner guide ring */}
@@ -112,6 +119,24 @@ export const TechStackVisualization = () => (
             strokeDasharray="4 4"
             fill="none"
           />
+
+          {/* ── Active Rotating Threat Radar Sweep Beam ── */}
+          <g className="origin-center animate-[spin_7s_linear_infinite]" style={{ transformOrigin: `${CX}px ${CY}px` }}>
+            <line
+              x1={CX}
+              y1={CY}
+              x2={CX + RADIUS + 6}
+              y2={CY}
+              stroke="currentColor"
+              className="text-cyan-400"
+              strokeWidth="1.8"
+            />
+            {/* Trailing wedge */}
+            <path
+              d={`M ${CX} ${CY} L ${CX + RADIUS + 6} ${CY} A ${RADIUS + 6} ${RADIUS + 6} 0 0 0 ${CX + (RADIUS + 6) * Math.cos(-Math.PI / 6)} ${CY + (RADIUS + 6) * Math.sin(-Math.PI / 6)} Z`}
+              fill="url(#radarSweepGrad)"
+            />
+          </g>
           {/* Spoke lines */}
           {categories.map((cat) => {
             const rad = (cat.angle * Math.PI) / 180;
