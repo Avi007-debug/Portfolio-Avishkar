@@ -94,8 +94,9 @@ export const Navbar = () => {
         {/* Desktop Right Actions: Theme Toggle + Resume CTA */}
         <div className="hidden md:flex items-center gap-3">
           <button
+            type="button"
             onClick={toggle}
-            className="p-2 border-2 border-border/80 text-muted-foreground hover:text-foreground hover:border-accent hover:shadow-[2px_2px_0px_0px_#06b6d4] transition-all bg-card"
+            className="p-2 border-2 border-border/80 text-muted-foreground hover:text-foreground hover:border-accent hover:shadow-[2px_2px_0px_0px_#06b6d4] transition-all bg-card cursor-pointer"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
           >
             {theme === "dark" ? <Sun className="w-4 h-4 text-cyan-400" /> : <Moon className="w-4 h-4 text-zinc-900" />}
@@ -115,16 +116,18 @@ export const Navbar = () => {
         {/* Mobile Actions */}
         <div className="md:hidden flex items-center gap-2">
           <button
+            type="button"
             onClick={toggle}
-            className="p-2 border-2 border-border/80 text-muted-foreground hover:text-foreground bg-card"
+            className="p-2 border-2 border-border/80 text-muted-foreground hover:text-foreground bg-card cursor-pointer"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun className="w-4 h-4 text-cyan-400" /> : <Moon className="w-4 h-4 text-zinc-900" />}
           </button>
 
           <button
+            type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 border-2 border-border/80 text-foreground bg-card"
+            className="p-2 border-2 border-border/80 text-foreground bg-card cursor-pointer"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

@@ -125,8 +125,16 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
       {/* Card Content */}
       <div className="dossier-card p-6 flex-1 transition-colors group">
         <div
+          role="button"
+          tabIndex={0}
           onClick={() => setIsExpanded(!isExpanded)}
-          className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 cursor-pointer select-none"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              setIsExpanded(!isExpanded);
+            }
+          }}
+          className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 cursor-pointer select-none focus:outline-none focus:ring-1 focus:ring-accent"
         >
           <div>
             <div className="flex items-center gap-2 flex-wrap mb-1">

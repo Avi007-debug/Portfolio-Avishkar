@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
 import { ArrowUpRight, Github, Globe, Search, X, Layers, Code2, ShieldAlert } from "lucide-react";
@@ -267,6 +267,22 @@ export const ProjectsSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  // Prevent background scrolling and enable Escape key dismissal when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setSelectedProject(null);
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = prevOverflow;
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [selectedProject]);
+
   const filteredProjects = projects.filter((project) => {
     const matchesCategory = activeCategory === "All" || project.categories.includes(activeCategory);
     const matchesSearch =
@@ -307,6 +323,7 @@ export const ProjectsSection = () => {
           {categoryList.map((cat) => (
             <button
               key={cat}
+              type="button"
               onClick={() => setActiveCategory(cat)}
               className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider font-bold transition-all duration-150 select-none border-2 ${
                 activeCategory === cat
@@ -330,6 +347,7 @@ export const ProjectsSection = () => {
           />
           {searchQuery && (
             <button
+              type="button"
               onClick={() => setSearchQuery("")}
               className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
             >
@@ -417,8 +435,9 @@ export const ProjectsSection = () => {
                   {/* Links & Deep Dive button */}
                   <div className="flex items-center justify-between pt-1">
                     <button
+                      type="button"
                       onClick={() => setSelectedProject(project)}
-                      className="mono text-xs text-foreground/80 hover:text-accent flex items-center gap-1 font-semibold transition-colors"
+                      className="mono text-xs text-foreground/80 hover:text-accent flex items-center gap-1 font-semibold transition-colors cursor-pointer select-none"
                     >
                       <span>Specs &amp; Details</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -489,9 +508,10 @@ export const ProjectsSection = () => {
             >
               {/* Close Button */}
               <button
+                type="button"
                 onClick={() => setSelectedProject(null)}
                 aria-label="Close Specification"
-                className="absolute right-4 top-4 p-1.5 border-2 border-border/80 light:border-black bg-card hover:bg-accent/20 text-foreground transition-colors"
+                className="absolute right-4 top-4 p-1.5 border-2 border-border/80 light:border-black bg-card hover:bg-accent/20 text-foreground transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>

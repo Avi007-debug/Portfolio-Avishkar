@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface BrutalistTiltCardProps {
@@ -17,10 +17,19 @@ export const BrutalistTiltCard: React.FC<BrutalistTiltCardProps> = ({
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
-  const [shadowOffset, setShadowOffset] = useState({ x: 5, y: 5 });
+  const isTouchDevice = useRef(false);
+
+  useEffect(() => {
+    isTouchDevice.current =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia("(hover: none)").matches;
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouchDevice.current) return;
     if (!cardRef.current) return;
+
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -28,18 +37,14 @@ export const BrutalistTiltCard: React.FC<BrutalistTiltCardProps> = ({
     const dx = x / rect.width - 0.5;
     const dy = y / rect.height - 0.5;
 
-    setRotateX(-dy * 8); // max 4 deg tilt
-    setRotateY(dx * 8);
-    setShadowOffset({
-      x: 5 - dx * 4,
-      y: 5 - dy * 4,
-    });
+    // Subtle 4 degree tilt max to avoid excessive distortion or layout jump
+    setRotateX(-dy * 5);
+    setRotateY(dx * 5);
   };
 
   const handleMouseLeave = () => {
     setRotateX(0);
     setRotateY(0);
-    setShadowOffset({ x: 5, y: 5 });
   };
 
   return (
@@ -52,14 +57,14 @@ export const BrutalistTiltCard: React.FC<BrutalistTiltCardProps> = ({
         rotateX,
         rotateY,
       }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
       style={{
         perspective: 900,
         transformStyle: "preserve-3d",
-        boxShadow: `${shadowOffset.x}px ${shadowOffset.y}px 0px 0px currentColor`,
+        willChange: "transform",
         ...style,
       }}
-      className={`transition-shadow duration-150 ${className}`}
+      className={`transition-colors ${className}`}
     >
       {children}
     </motion.div>

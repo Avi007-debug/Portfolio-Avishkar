@@ -4,26 +4,36 @@ interface CyberScrambleTextProps {
   text: string;
   className?: string;
   scrambleOnMount?: boolean;
+  maxScrambles?: number;
 }
 
-const CYBER_GLYPHS = "!<>-_\\/[]{}—=+*^?#01X_";
+// Fixed-aspect cyber glyphs to prevent text width oscillation and jitter
+const CYBER_GLYPHS = "0123456789ABCDEF!#*+/?<>_X";
 
 export const CyberScrambleText: React.FC<CyberScrambleTextProps> = ({
   text,
   className = "",
   scrambleOnMount = false,
+  maxScrambles = 2,
 }) => {
   const [displayText, setDisplayText] = useState(text);
   const isScrambling = useRef(false);
+  // Strictly limit scrambles to max 2 times per page refresh
+  const scrambleCount = useRef(0);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const startScramble = () => {
+    if (scrambleCount.current >= maxScrambles) return;
     if (isScrambling.current) return;
     isScrambling.current = true;
+    scrambleCount.current += 1;
 
     let iteration = 0;
     const maxIterations = text.length;
 
-    const interval = setInterval(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+
+    timerRef.current = setInterval(() => {
       setDisplayText(() =>
         text
           .split("")
@@ -38,26 +48,33 @@ export const CyberScrambleText: React.FC<CyberScrambleTextProps> = ({
       );
 
       if (iteration >= maxIterations) {
-        clearInterval(interval);
+        if (timerRef.current) clearInterval(timerRef.current);
         setDisplayText(text);
         isScrambling.current = false;
       }
 
       iteration += 1 / 2;
-    }, 30);
+    }, 28);
   };
 
   useEffect(() => {
     if (scrambleOnMount) {
       startScramble();
     }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [scrambleOnMount]);
+
+  const canScramble = scrambleCount.current < maxScrambles;
 
   return (
     <span
-      onMouseEnter={startScramble}
-      className={`cursor-pointer inline-block transition-colors ${className}`}
-      title="Interactive Cyber Scramble"
+      onMouseEnter={canScramble ? startScramble : undefined}
+      className={`inline-block tabular-nums select-none transition-colors ${
+        canScramble ? "cursor-pointer" : ""
+      } ${className}`}
+      title={canScramble ? "Cyber Decryption (2x max per refresh)" : undefined}
     >
       {displayText}
     </span>
@@ -65,3 +82,4 @@ export const CyberScrambleText: React.FC<CyberScrambleTextProps> = ({
 };
 
 export default CyberScrambleText;
+

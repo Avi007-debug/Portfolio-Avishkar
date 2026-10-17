@@ -15,7 +15,14 @@ export const TerminalIntro: React.FC = () => {
   const [currentChar, setCurrentChar] = useState(0);
   const [phase, setPhase] = useState<"cmd" | "output">("cmd");
   const [isInteractive, setIsInteractive] = useState(false);
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalBodyRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll inside terminal container only (never scrolling window)
+  const scrollToBottomInternal = () => {
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
+    }
+  };
 
   // Auto-typing initial sequence
   useEffect(() => {
@@ -34,6 +41,7 @@ export const TerminalIntro: React.FC = () => {
             return updated;
           });
           setCurrentChar((c) => c + 1);
+          scrollToBottomInternal();
         }, 26 + Math.random() * 16);
         return () => clearTimeout(timeout);
       } else {
@@ -44,6 +52,7 @@ export const TerminalIntro: React.FC = () => {
         });
         setPhase("output");
         setCurrentChar(0);
+        scrollToBottomInternal();
       }
     } else {
       const timeout = setTimeout(() => {
@@ -55,6 +64,7 @@ export const TerminalIntro: React.FC = () => {
         setCurrentCmd((c) => c + 1);
         setPhase("cmd");
         setCurrentChar(0);
+        scrollToBottomInternal();
       }, 150);
       return () => clearTimeout(timeout);
     }
@@ -78,9 +88,10 @@ export const TerminalIntro: React.FC = () => {
       { text: matched.output, isCommand: false, done: true },
     ]);
 
+    // Internal terminal scroll only - never touches window scroll
     setTimeout(() => {
-      terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 50);
+      scrollToBottomInternal();
+    }, 20);
   };
 
   const isTyping = !isInteractive && currentCmd < commands.length;
@@ -104,7 +115,10 @@ export const TerminalIntro: React.FC = () => {
         </div>
 
         {/* Terminal body */}
-        <div className="terminal-body bg-[#05070d] p-4 md:p-5 mono text-xs md:text-sm space-y-2.5 min-h-[220px] max-h-[270px] overflow-y-auto">
+        <div
+          ref={terminalBodyRef}
+          className="terminal-body bg-[#05070d] p-4 md:p-5 mono text-xs md:text-sm space-y-2.5 min-h-[220px] max-h-[270px] overflow-y-auto scroll-smooth"
+        >
           {lines.map((line, i) =>
             line ? (
               <motion.div
@@ -134,7 +148,6 @@ export const TerminalIntro: React.FC = () => {
               </span>
             </div>
           )}
-          <div ref={terminalEndRef} />
         </div>
 
         {/* Interactive Command Chips Bar */}
@@ -144,16 +157,24 @@ export const TerminalIntro: React.FC = () => {
             <button
               key={c.cmd}
               type="button"
-              onClick={() => runManualCommand(c.cmd)}
-              className="px-2 py-0.5 border border-zinc-700 bg-zinc-900/90 text-cyan-400 hover:bg-cyan-400 hover:text-black hover:border-cyan-300 font-bold rounded-none whitespace-nowrap transition-colors cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                runManualCommand(c.cmd);
+              }}
+              className="px-2 py-0.5 border border-zinc-700 bg-zinc-900/90 text-cyan-400 hover:bg-cyan-400 hover:text-black hover:border-cyan-300 font-bold rounded-none whitespace-nowrap transition-colors cursor-pointer select-none active:translate-y-0.5"
             >
               {c.cmd}
             </button>
           ))}
           <button
             type="button"
-            onClick={() => runManualCommand("clear")}
-            className="px-2 py-0.5 border border-red-500/50 bg-red-950/30 text-red-400 hover:bg-red-500 hover:text-white font-bold rounded-none whitespace-nowrap transition-colors ml-auto cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              runManualCommand("clear");
+            }}
+            className="px-2 py-0.5 border border-red-500/50 bg-red-950/30 text-red-400 hover:bg-red-500 hover:text-white font-bold rounded-none whitespace-nowrap transition-colors ml-auto cursor-pointer select-none active:translate-y-0.5"
           >
             clear
           </button>

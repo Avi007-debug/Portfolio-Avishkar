@@ -44,8 +44,9 @@ export const ContactSection = () => {
 
           <div className="flex flex-wrap items-center gap-3">
             <button
+              type="button"
               onClick={copyEmail}
-              className="btn-cyber-outline text-xs py-2.5 px-4"
+              className="btn-cyber-outline text-xs py-2.5 px-4 cursor-pointer"
               aria-label="Copy email address"
             >
               {copied ? (

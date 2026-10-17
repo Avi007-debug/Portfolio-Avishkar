@@ -1,5 +1,6 @@
 import SectionWrapper from "./SectionWrapper";
 import { Shield, Network, Terminal, Cpu, Key, Lock, CheckCircle2 } from "lucide-react";
+import CyberScrambleText from "./CyberScrambleText";
 
 const technicalFocusAreas = [
   {
@@ -40,8 +41,6 @@ const cyberSpecializationMap = [
   { label: "IPC Memory Sandbox", metric: "Pure C Executable Tracing", tag: "POSIX" },
   { label: "RAG & Vector Pipelines", metric: "50k+ Clinical Embeddings", tag: "INFERENCE" },
 ];
-
-import CyberScrambleText from "./CyberScrambleText";
 
 export const AboutSection = () => {
   return (
