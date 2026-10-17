@@ -1,29 +1,44 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ReactNode, useRef } from "react";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface Props {
   id: string;
   children: ReactNode;
   className?: string;
+  index?: string;
+  tag?: string;
 }
 
-const SectionWrapper = ({ id, children, className = "" }: Props) => {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
+export const SectionWrapper = ({ id, children, className = "", index, tag }: Props) => {
   return (
-    <section ref={ref} id={id} className={`relative py-24 px-6 overflow-hidden ${className}`}>
-      {/* Subtle section divider line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
-      <motion.div style={{ y, opacity }} className="max-w-6xl mx-auto relative z-10">
-        {children}
-      </motion.div>
+    <section
+      id={id}
+      className={`relative py-20 md:py-24 px-6 border-t border-border/40 overflow-hidden ${className}`}
+    >
+      <div className="max-w-6xl mx-auto relative z-10">
+        {(index || tag) && (
+          <div className="flex items-center gap-2 mb-4 select-none">
+            {index && (
+              <span className="mono text-[11px] font-bold text-accent tracking-wider">
+                // {index}
+              </span>
+            )}
+            {tag && (
+              <span className="cyber-label">
+                {tag}
+              </span>
+            )}
+          </div>
+        )}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {children}
+        </motion.div>
+      </div>
     </section>
   );
 };

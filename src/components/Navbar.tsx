@@ -1,29 +1,27 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, FileText } from "lucide-react";
+import { Sun, Moon, FileText, Menu, X } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
+import AmLogo from "./AmLogo";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Certs", href: "#certifications" },
-  { label: "GitHub", href: "#github" },
+  { label: "Dossier", href: "#about" },
+  { label: "Academics", href: "#education" },
+  { label: "Timeline", href: "#experience" },
+  { label: "Archive", href: "#projects" },
+  { label: "Capabilities", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
 
-const sectionIds = navItems.map((n) => n.href.slice(1));
-
-const Navbar = () => {
+export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const { theme, toggle } = useTheme();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -34,133 +32,150 @@ const Navbar = () => {
           if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { threshold: 0.25, rootMargin: "-64px 0px -40% 0px" }
+      { threshold: 0.25, rootMargin: "-80px 0px -40% 0px" }
     );
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
+
+    navItems.forEach((item) => {
+      const el = document.getElementById(item.href.slice(1));
       if (el) observer.observe(el);
     });
+
     return () => observer.disconnect();
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         scrolled
-          ? "backdrop-blur-xl border-b border-border/50 bg-background/80 shadow-sm"
-          : "bg-transparent"
+          ? "bg-background/90 backdrop-blur-md border-b border-border/80 shadow-sm"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center text-3xl font-black mono tracking-tighter hover:scale-105 transition-transform duration-300">
-          <span className="logo-text-a">A</span>
-          <span className="logo-text-m">M</span>
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Monogram Brand */}
+        <a
+          href="#hero"
+          className="flex items-center gap-2.5 group select-none"
+          aria-label="Avishkar More Identity"
+        >
+          <AmLogo className="h-7 w-auto" />
+          <div className="flex flex-col">
+            <span className="font-bold text-sm tracking-tight text-foreground leading-none">
+              Avishkar More
+            </span>
+            <span className="mono text-[9px] text-muted-foreground/80 tracking-wider">
+              DOSSIER // RVCE
+            </span>
+          </div>
         </a>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-5">
+        {/* Desktop Navigation Links */}
+        <nav aria-label="Main Navigation" className="hidden md:flex items-center gap-6">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.slice(1);
             return (
               <a
                 key={item.href}
                 href={item.href}
-                className={`text-xs font-medium uppercase tracking-wider transition-all duration-200 relative group ${
-                  isActive ? "text-accent" : "text-muted-foreground hover:text-foreground"
+                className={`mono text-xs uppercase tracking-wider transition-colors duration-150 relative py-1 ${
+                  isActive
+                    ? "text-accent font-semibold"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {item.label}
-                <span
-                  className={`absolute -bottom-0.5 left-0 h-px bg-accent transition-all duration-300 ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                />
+                {isActive && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent" />
+                )}
               </a>
             );
           })}
+        </nav>
 
-          {/* Theme toggle */}
-          <motion.button
+        {/* Desktop Right Actions: Theme Toggle + Resume CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <button
             onClick={toggle}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.92 }}
-            className="p-2 rounded-lg border border-border/60 text-muted-foreground hover:text-accent hover:border-accent/40 transition-all duration-200"
-            aria-label="Toggle theme"
+            className="p-2 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
           >
             {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </motion.button>
+          </button>
 
           <a
             href="https://drive.google.com/drive/folders/11JnB3OYwSR079ygyBRRkkCCn3GJEk7r4?usp=sharing"
             target="_blank"
             rel="noreferrer"
-            className="btn-primary text-xs px-4 py-2 flex items-center gap-1.5"
+            className="btn-cyber-primary text-xs py-1.5 px-3.5"
           >
-            <FileText className="w-3.5 h-3.5" /> Resume
+            <FileText className="w-3.5 h-3.5" />
+            <span>Resume</span>
           </a>
         </div>
 
-        {/* Mobile: theme + hamburger */}
+        {/* Mobile Actions */}
         <div className="md:hidden flex items-center gap-2">
-          <motion.button
+          <button
             onClick={toggle}
-            whileTap={{ scale: 0.9 }}
-            className="p-2 rounded-lg border border-border/60 text-muted-foreground hover:text-accent transition-all"
+            className="p-2 rounded border border-border/80 text-muted-foreground hover:text-foreground"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </motion.button>
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="text-foreground p-1">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              {mobileOpen ? (
-                <path d="M18 6L6 18M6 6l12 12" />
-              ) : (
-                <path d="M3 12h18M3 6h18M3 18h18" />
-              )}
-            </svg>
+          </button>
+
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 rounded border border-border/80 text-foreground"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden backdrop-blur-xl bg-background/90 border-t border-border/50 px-6 py-4 space-y-3"
+            className="md:hidden bg-background/98 backdrop-blur-lg border-b border-border/80 px-6 py-5 space-y-4 shadow-xl"
           >
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`block py-2 text-sm font-medium transition-colors ${
-                  activeSection === item.href.slice(1) ? "text-accent" : "text-muted-foreground hover:text-foreground"
-                }`}
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-            <div className="pt-2 border-t border-border/30">
+            <nav className="flex flex-col space-y-2.5">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`mono text-xs uppercase tracking-wider py-1.5 flex items-center justify-between ${
+                    activeSection === item.href.slice(1)
+                      ? "text-accent font-bold"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  <span className="mono text-[10px] text-muted-foreground/60">&rarr;</span>
+                </a>
+              ))}
+            </nav>
+
+            <div className="pt-3 border-t border-border/60">
               <a
                 href="https://drive.google.com/drive/folders/11JnB3OYwSR079ygyBRRkkCCn3GJEk7r4?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-primary text-xs px-4 py-2 inline-flex items-center gap-1.5"
                 onClick={() => setMobileOpen(false)}
+                className="btn-cyber-primary text-xs w-full py-2.5 justify-center"
               >
-                <FileText className="w-3.5 h-3.5" /> Resume
+                <FileText className="w-3.5 h-3.5" />
+                <span>Download Resume (PDF)</span>
               </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </header>
   );
 };
 

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Briefcase, Users, Smartphone, ChevronDown, ChevronUp, Sparkles, MapPin, Github, Globe, Linkedin } from "lucide-react";
+import { Briefcase, Users, Smartphone, ChevronDown, ChevronUp, MapPin, Github, Globe, Linkedin, ArrowUpRight } from "lucide-react";
 
 interface Experience {
   title: string;
   org: string;
   period: string;
   location: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
   shortDescription: string;
   tech: string[];
   points: string[];
@@ -26,7 +26,7 @@ const experiences: Experience[] = [
     period: "June 2026 – Present",
     location: "International",
     icon: Users,
-    shortDescription: "Leading technical strategy, automation platforms, and community infrastructure to make emerging tech accessible.",
+    shortDescription: "Leading technical strategy, community infrastructure, and developer workshops for an international engineering community.",
     tech: ["Node.js", "React", "TypeScript", "Vercel", "GitHub Actions", "Discord API"],
     points: [
       "Leading technical strategy and platform development for an international developer community.",
@@ -44,11 +44,11 @@ const experiences: Experience[] = [
   },
   {
     title: "Technical Co-Founder & Technical Lead",
-    org: "CatchUpX (Pre-launch EdTech Startup)",
+    org: "CatchUpX (EdTech Platform)",
     period: "Jan 2026 – Aug 2026",
     location: "Remote",
     icon: Briefcase,
-    shortDescription: "Architected an AI-powered EdTech platform functioning as a multi-tenant School Management System integrated with an adaptive learning gap diagnostic engine.",
+    shortDescription: "Architected a multi-tenant School Management System integrated with a real-time cognitive learning gap diagnostic engine.",
     tech: ["Python", "FastAPI", "Next.js", "TypeScript", "PostgreSQL", "AWS App Runner", "Groq LLM API", "Docker", "SQLAlchemy", "JWT"],
     points: [
       "Architected and deployed an AI-driven EdTech platform using Next.js and FastAPI, supporting multi-tenant role-based access for students, teachers, and parents.",
@@ -71,7 +71,7 @@ const experiences: Experience[] = [
     period: "Feb 2026 – Jun 2026",
     location: "Remote",
     icon: Smartphone,
-    shortDescription: "Built RAG pipelines and multi-tool agent workflows for a production-grade AI platform (MedAssist Healthcare Agent).",
+    shortDescription: "Built RAG retrieval pipelines and multi-tool agent workflows for the MedAssist healthcare monitoring platform.",
     tech: ["Python", "TypeScript", "PostgreSQL", "RAG Pipelines", "LLMs", "REST APIs"],
     points: [
       "Developed a RAG-based AI platform (MedAssist) using TypeScript, Python, PostgreSQL, and LLM-powered retrieval pipelines.",
@@ -85,7 +85,7 @@ const experiences: Experience[] = [
     ],
     github: "https://github.com/Avi007-debug/Team_Agent_Wars_Healthcare-Monitoring-AI-Agent",
     live: "https://team-agent-wars-healthcare-monitori.vercel.app/",
-    note: "Frontend application interface is live & ready; backend AI API cloud server free trial has expired (offline)."
+    note: "Frontend interface is live; backend AI API free-tier cloud server has expired."
   },
   {
     title: "Development Lead",
@@ -93,7 +93,7 @@ const experiences: Experience[] = [
     period: "May 2025 – Present",
     location: "Bangalore, India",
     icon: Briefcase,
-    shortDescription: "Leading technical initiatives and contributing to one of RVCE's largest developer communities by organizing major technical events and hackathons.",
+    shortDescription: "Leading technical operations and hackathon logistics for RVCE's developer community, coordinating major student technical initiatives.",
     tech: ["Event Execution", "Project Management", "Leadership", "Technical Operations"],
     points: [
       "Organized and coordinated large-scale hackathons, workshops, and technical events.",
@@ -110,99 +110,120 @@ const experiences: Experience[] = [
 ];
 
 const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(index === 0); // Expand first by default
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="flex gap-6"
-    >
-      {/* Icon timeline node */}
-      <div className="hidden md:flex flex-col items-center">
-        <motion.div
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_15px_rgba(var(--neon-blue-rgb),0.15)]"
-        >
-          <exp.icon className="w-4 h-4 text-accent" />
-        </motion.div>
+    <div className="flex gap-4 sm:gap-6 relative">
+      {/* Node Marker */}
+      <div className="hidden sm:flex flex-col items-center">
+        <div className="w-3 h-3 rounded-none bg-accent/20 border border-accent flex items-center justify-center flex-shrink-0 z-10 mt-6">
+          <div className="w-1.5 h-1.5 bg-accent" />
+        </div>
       </div>
 
-      {/* Card Body */}
-      <motion.div
-        layout
-        onClick={() => setIsExpanded(!isExpanded)}
-        whileHover={{ y: -2 }}
-        className="glass-card p-6 flex-1 cursor-pointer transition-all duration-300 relative overflow-hidden group select-none"
-      >
-        {/* Glow effect on hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[inherit]"
-          style={{ background: "linear-gradient(135deg, hsl(var(--neon-blue) / 0.05), transparent 60%)" }}
-        />
-
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-2">
+      {/* Card Content */}
+      <div className="dossier-card p-6 flex-1 transition-colors group">
+        <div
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 cursor-pointer select-none"
+        >
           <div>
-            <h3 className="font-bold text-foreground heading-font text-lg flex items-center gap-2">
-              {exp.title}
-              {exp.metrics && (
-                <Sparkles className="w-4 h-4 text-accent animate-pulse" />
-              )}
-            </h3>
-            <p className="text-accent text-sm font-medium mt-0.5">{exp.org}</p>
-            <div className="flex items-center gap-4 text-xs text-muted-foreground mono mt-1.5 flex-wrap">
-              <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
+            <div className="flex items-center gap-2 flex-wrap mb-1">
+              <h3 className="heading-font text-lg sm:text-xl font-bold text-foreground">
+                {exp.title}
+              </h3>
+              <span className="mono text-xs text-accent font-semibold">
+                @ {exp.org}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3 text-[11px] mono text-muted-foreground flex-wrap">
+              <span className="text-foreground/90 font-medium">
                 {exp.period}
               </span>
+              <span>&bull;</span>
               <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
+                <MapPin className="w-3 h-3" />
                 {exp.location}
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-muted-foreground group-hover:text-accent font-medium mt-2 md:mt-0 transition-colors self-end md:self-start">
-            <span>{isExpanded ? "Click to collapse" : "Click to expand"}</span>
-            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          <div className="flex items-center gap-1.5 text-xs mono text-muted-foreground group-hover:text-foreground transition-colors self-end sm:self-start pt-1">
+            <span>{isExpanded ? "COLLAPSE" : "DETAILS"}</span>
+            {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
           </div>
         </div>
 
-        <p className="text-sm text-secondary-foreground mt-3 leading-relaxed">
+        <p className="text-xs sm:text-sm text-secondary-foreground mt-3 leading-relaxed">
           {exp.shortDescription}
         </p>
 
-        {/* Expandable Content */}
+        {/* Expandable Details */}
         <AnimatePresence initial={false}>
           {isExpanded && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="overflow-hidden mt-4 pt-4 border-t border-border/50 space-y-4"
-              onClick={(e) => e.stopPropagation()} // Prevent card collapse on clicking buttons or links
+              transition={{ duration: 0.25 }}
+              className="overflow-hidden mt-4 pt-4 border-t border-border/40 space-y-4"
             >
-              {/* Cost Saving Note */}
+              {/* Notice note if offline */}
               {exp.note && (
-                <div className="px-4 py-2.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse flex-shrink-0" />
-                  <span>{exp.note}</span>
+                <div className="px-3 py-1.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-500 dark:text-amber-400 text-xs mono">
+                  {exp.note}
                 </div>
               )}
 
-              {/* Links Row */}
+              {/* Verified Metrics */}
+              {exp.metrics && (
+                <div>
+                  <h4 className="cyber-label mb-2">VERIFIED METRICS</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    {exp.metrics.map((m) => (
+                      <div key={m.label} className="p-2.5 rounded bg-secondary/50 border border-border/40 text-center">
+                        <p className="text-lg font-bold text-accent heading-font">{m.value}</p>
+                        <p className="mono text-[9px] text-muted-foreground uppercase">{m.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Responsibilities list */}
+              <div>
+                <h4 className="cyber-label mb-2">KEY ARCHITECTURAL HIGHLIGHTS</h4>
+                <ul className="space-y-1.5">
+                  {exp.points.map((p, j) => (
+                    <li key={j} className="text-xs text-secondary-foreground flex items-start gap-2 leading-relaxed">
+                      <span className="w-1.5 h-1.5 rounded-none bg-accent/60 mt-1.5 flex-shrink-0" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Tech stack */}
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {exp.tech.map((t) => (
+                  <span key={t} className="tech-tag text-[10px]">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* Links */}
               {(exp.github || exp.live || exp.linkedin) && (
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2.5 pt-2">
                   {exp.github && (
                     <a
                       href={exp.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-outline flex items-center gap-2 text-xs py-1.5 px-3.5 bg-card/45"
+                      className="btn-cyber-outline text-xs py-1.5 px-3"
                     >
-                      <Github className="w-4 h-4" /> Code Repository
+                      <Github className="w-3.5 h-3.5" /> Repository
                     </a>
                   )}
                   {exp.live && (
@@ -210,9 +231,9 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
                       href={exp.live}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-primary flex items-center gap-2 text-xs py-1.5 px-3.5"
+                      className="btn-cyber-primary text-xs py-1.5 px-3"
                     >
-                      <Globe className="w-4 h-4" /> Live Site
+                      <Globe className="w-3.5 h-3.5" /> Live Platform
                     </a>
                   )}
                   {exp.linkedin && (
@@ -220,84 +241,43 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
                       href={exp.linkedin}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-outline flex items-center gap-2 text-xs py-1.5 px-3.5 border-accent/30 text-accent hover:bg-accent/5 hover:border-accent/60"
+                      className="btn-cyber-outline text-xs py-1.5 px-3"
                     >
-                      <Linkedin className="w-4 h-4 text-accent" /> LinkedIn Profile
+                      <Linkedin className="w-3.5 h-3.5" /> LinkedIn
                     </a>
                   )}
                 </div>
               )}
-
-              {/* Metrics Grid */}
-              {exp.metrics && (
-                <div>
-                  <h4 className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mono mb-2.5">
-                    Quantified Impact
-                  </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {exp.metrics.map((m, k) => (
-                      <div key={k} className="p-3 rounded-lg bg-card/40 border border-border/40 text-center">
-                        <p className="text-xl font-bold text-accent heading-font">{m.value}</p>
-                        <p className="text-[10px] text-muted-foreground font-medium mt-0.5">{m.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Contributions */}
-              <div>
-                <h4 className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mono mb-2">
-                  Key Contributions & Responsibilities
-                </h4>
-                <ul className="space-y-2">
-                  {exp.points.map((p, j) => (
-                    <li key={j} className="text-sm text-secondary-foreground flex items-start gap-2 leading-relaxed">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Technologies */}
-              <div>
-                <h4 className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mono mb-2">
-                  Skills & Tools Leveraged
-                </h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {exp.tech.map((t) => (
-                    <span key={t} className="tech-badge text-[10px] px-2 py-0.5 bg-accent/5">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 
-const ExperienceSection = () => (
-  <SectionWrapper id="experience">
-    <h2 className="section-heading">
-      <span className="gradient-text">Experience History</span>
-    </h2>
+export const ExperienceSection = () => {
+  return (
+    <SectionWrapper id="experience" index="04" tag="STRUCTURED TIMELINE">
+      <div className="mb-10">
+        <h2 className="editorial-heading">
+          Experience &amp; Technical Leadership
+        </h2>
+        <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
+          Chronological engineering roles, startup leadership, and community infrastructure
+        </p>
+      </div>
 
-    <div className="relative">
-      {/* Timeline line */}
-      <div className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-neon-blue via-neon-violet to-transparent hidden md:block" />
+      <div className="relative space-y-6">
+        {/* Fine vertical timeline spine */}
+        <div className="absolute left-[5px] top-6 bottom-6 w-px bg-border/60 hidden sm:block" />
 
-      <div className="space-y-8">
-        {experiences.map((exp, i) => (
-          <ExperienceCard key={i} exp={exp} index={i} />
+        {experiences.map((exp, index) => (
+          <ExperienceCard key={exp.title + exp.org} exp={exp} index={index} />
         ))}
       </div>
-    </div>
-  </SectionWrapper>
-);
+    </SectionWrapper>
+  );
+};
 
 export default ExperienceSection;

@@ -1,62 +1,80 @@
-import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Trophy, Star, Award, Users, ShieldAlert } from "lucide-react";
+import { Trophy, Star, Award, Users, ShieldCheck } from "lucide-react";
 
 const achievements = [
   {
     icon: Trophy,
-    title: "Prayatna 3.0 Hackathon 2nd Runner-Up",
-    description: "Secured 2nd Runner-Up at Prayatna 3.0 Hackathon among 500+ participants.",
+    title: "Prayatna 3.0 Hackathon — 2nd Runner-Up",
+    metric: "TOP 3 / 500+ BUILDERS",
+    description: "Secured 2nd Runner-Up at Prayatna 3.0 Hackathon, developing an integrated technical solution evaluated across speed, security, and scalability.",
   },
   {
     icon: Star,
-    title: "National Top 1% in Entrance Exams",
-    description: "Achieved JEE Advanced AIR 15,207, MHT-CET 99.002 percentile, and COMEDK AIR 779.",
+    title: "National Top 1% Standardized Standing",
+    metric: "99.002%ile & AIR 15,207",
+    description: "Achieved AIR 15,207 in JEE Advanced 2024, 99.002 percentile in MHT-CET 2024, and AIR 779 in COMEDK UGET 2024.",
   },
   {
     icon: Award,
-    title: "Academic Excellence at RVCE",
-    description: "Maintaining exceptional academic standing (CGPA 9.74) in CSE (Cybersecurity) — top of batch.",
+    title: "Batch Rank 1 Academic Excellence",
+    metric: "9.74 CGPA (RVCE)",
+    description: "Maintained exceptional academic standing (9.74 CGPA) across 3 years of rigorous Computer Science & Cybersecurity engineering.",
   },
   {
     icon: Users,
-    title: "Co-Founder & Tech Lead — Heapify",
-    description: "Co-founded Heapify Global Community, managing web infrastructure, technical strategy, and hosting developer sessions.",
+    title: "Co-Founder — Heapify Global Community",
+    metric: "500+ DEVELOPERS",
+    description: "Co-founded an international engineering network, designing web infrastructure, organizing 10+ developer workshops and 3 hackathons.",
   },
   {
-    icon: Trophy, // Or another relevant icon like Calendar/Sparkles
-    title: "Development Lead — GDG RVCE",
-    description: "Coordinated technical workshops and hackathons, managing logistics and communication for 800+ participants.",
+    icon: ShieldCheck,
+    title: "Technical Lead — GDG RVCE Operations",
+    metric: "800+ PARTICIPANTS",
+    description: "Directed technical coordination, finalist logistics, and mentor communications for flagship university developer hackathons.",
   },
 ];
 
-const AchievementsSection = () => (
-  <SectionWrapper id="achievements">
-    <h2 className="section-heading">
-      <span className="gradient-text">Achievements</span>
-    </h2>
+export const AchievementsSection = () => (
+  <SectionWrapper id="achievements" tag="KEY HONORS & MILESTONES">
+    <div className="mb-8">
+      <h2 className="editorial-heading">
+        Recognitions &amp; Milestones
+      </h2>
+      <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
+        Competitively verified hackathon placements, academic rankings, and leadership impact
+      </p>
+    </div>
 
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {achievements.map((a, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1, duration: 0.5, type: "spring" }}
-          whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-          className="glass-card p-6 gradient-border"
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {achievements.map((item) => (
+        <div
+          key={item.title}
+          className="dossier-card p-6 flex flex-col justify-between group hover:border-accent/50 transition-colors"
         >
-          <div className="flex items-start gap-4">
-            <div className="p-3 rounded-xl bg-accent/10 neon-glow-cyan flex-shrink-0">
-              <a.icon className="w-5 h-5 text-accent" />
+          <div>
+            <div className="flex items-center justify-between mb-3 text-xs mono">
+              <span className="p-1.5 rounded bg-secondary text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                <item.icon className="w-4 h-4" />
+              </span>
+              <span className="mono text-[10px] font-bold text-accent tracking-wider">
+                {item.metric}
+              </span>
             </div>
-            <div>
-              <h3 className="font-bold text-foreground heading-font text-base leading-snug">{a.title}</h3>
-              <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{a.description}</p>
-            </div>
+
+            <h3 className="heading-font font-bold text-foreground text-base mb-2">
+              {item.title}
+            </h3>
+
+            <p className="text-xs text-secondary-foreground leading-relaxed">
+              {item.description}
+            </p>
           </div>
-        </motion.div>
+
+          <div className="pt-4 mt-4 border-t border-border/30 text-[10px] mono text-muted-foreground/60 flex items-center justify-between">
+            <span>VERIFIED MILESTONE</span>
+            <span>&bull;</span>
+          </div>
+        </div>
       ))}
     </div>
   </SectionWrapper>

@@ -1,122 +1,125 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { GraduationCap, BookOpen, Award } from "lucide-react";
+import { GraduationCap, BookOpen, Award, CheckCircle } from "lucide-react";
 
-const EducationSection = () => (
-  <SectionWrapper id="education">
-    <h2 className="section-heading">
-      <span className="gradient-text">Education</span>
-    </h2>
+export const EducationSection = () => (
+  <SectionWrapper id="education" index="03" tag="ACADEMIC RIGOR & CREDENTIALS">
+    <div className="mb-10">
+      <h2 className="editorial-heading">
+        Academic Trajectory &amp; Examination Ranks
+      </h2>
+      <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
+        Verified institutional credentials, engineering specialization, and standardized percentiles
+      </p>
+    </div>
 
-    <div className="relative">
-      {/* Timeline line */}
-      <div className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-neon-blue via-neon-violet to-transparent hidden md:block" />
+    <div className="space-y-6">
+      {/* RVCE — Primary Degree */}
+      <div className="dossier-card p-6 md:p-8 border-l-4 border-l-accent">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2.5 flex-wrap">
+              <span className="p-1.5 rounded bg-accent/10 text-accent">
+                <GraduationCap className="w-4 h-4" />
+              </span>
+              <h3 className="heading-font text-xl md:text-2xl font-bold text-foreground">
+                RV College of Engineering (RVCE)
+              </h3>
+              <span className="mono text-[10px] font-semibold px-2 py-0.5 rounded bg-accent/15 text-accent border border-accent/30 uppercase">
+                3rd Year Undergraduate
+              </span>
+            </div>
 
-      <div className="space-y-8">
-        {/* RVCE */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex gap-6"
-        >
-          <div className="hidden md:flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_15px_rgba(var(--neon-blue-rgb),0.15)]">
-              <GraduationCap className="w-5 h-5 text-accent" />
+            <p className="text-foreground/90 font-medium text-sm md:text-base">
+              Bachelor of Engineering in Computer Science and Engineering (Cyber Security)
+            </p>
+
+            <p className="mono text-xs text-muted-foreground">
+              2024 &ndash; 2028 &bull; Bangalore, India
+            </p>
+
+            <div className="pt-2 text-xs text-secondary-foreground leading-relaxed max-w-2xl">
+              Specializing in active directory defense, network threat analysis, kernel packet sniffing, distributed systems, and modern AI/ML inference pipelines.
             </div>
           </div>
-          <div className="glass-card p-6 md:p-8 flex-1 gradient-border">
-            <div className="flex items-start justify-between flex-wrap gap-2">
-              <div>
-                <div className="flex items-center gap-2 flex-wrap mb-1">
-                  <h3 className="text-xl font-bold text-foreground heading-font">RV College of Engineering</h3>
-                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-accent/15 text-accent border border-accent/20 font-semibold">3rd Year</span>
+
+          <div className="p-4 rounded bg-secondary/50 border border-border/60 text-center min-w-[140px] self-start">
+            <p className="cyber-label text-[9px] mb-0.5">CURRENT CGPA</p>
+            <p className="text-3xl font-black text-accent heading-font">9.74</p>
+            <p className="mono text-[10px] text-muted-foreground mt-0.5">Rank 1 / Batch Top</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Grid: Pre-University + School */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* GT School & Junior College */}
+        <div className="dossier-card p-6 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between border-b border-border/40 pb-3 mb-3">
+              <div className="flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-accent" />
+                <h3 className="heading-font font-bold text-foreground text-base">
+                  GT School &amp; Junior College
+                </h3>
+              </div>
+              <span className="mono text-xs font-bold text-foreground">
+                89% (HSC)
+              </span>
+            </div>
+
+            <p className="mono text-xs text-muted-foreground mb-3">
+              Science (PCM + Computer Science) &bull; 2022 &ndash; 2024 &bull; Pune
+            </p>
+
+            <div className="space-y-2 pt-1">
+              <p className="cyber-label text-[10px]">STANDARDIZED EXAM RESULTS</p>
+              {[
+                { exam: "JEE Advanced 2024", rank: "AIR 15,207 (Top 1%)" },
+                { exam: "MHT-CET 2024", rank: "99.002 Percentile" },
+                { exam: "COMEDK UGET 2024", rank: "AIR 779" },
+              ].map((res) => (
+                <div key={res.exam} className="flex items-center justify-between text-xs mono">
+                  <span className="text-secondary-foreground">{res.exam}</span>
+                  <span className="text-accent font-semibold">{res.rank}</span>
                 </div>
-                <p className="text-accent font-medium">B.E. Computer Science and Engineering (Cyber Security)</p>
-                <p className="text-sm text-muted-foreground mono mt-1">2024 – 2028 | Bangalore, India</p>
-              </div>
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, type: "spring" }}
-                className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/20"
-              >
-                <p className="text-xs text-muted-foreground">Current CGPA</p>
-                <p className="text-2xl font-bold text-accent heading-font">9.74</p>
-              </motion.div>
+              ))}
             </div>
           </div>
-        </motion.div>
 
-        {/* GT School */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15, duration: 0.6 }}
-          className="flex gap-6"
-        >
-          <div className="hidden md:flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0 z-10">
-              <BookOpen className="w-5 h-5 text-primary" />
-            </div>
+          <div className="pt-4 mt-4 border-t border-border/30 text-[10px] mono text-muted-foreground">
+            STATE BOARD // HIGHER SECONDARY
           </div>
-          <div className="glass-card p-6 md:p-8 flex-1">
-            <div className="flex items-start justify-between flex-wrap gap-2">
-              <div>
-                <h3 className="text-lg font-bold text-foreground heading-font">GT School and Junior College</h3>
-                <p className="text-primary font-medium text-sm">Science (PCM + CS), Grade 12</p>
-                <p className="text-sm text-muted-foreground mono mt-1">2022 – 2024 | Pune, India</p>
-                <div className="mt-4 space-y-2">
-                  {[
-                    "AIR 15,207 — JEE Advanced 2024",
-                    "99.002 percentile — MHT-CET 2024",
-                    "AIR 779 — COMEDK UGET",
-                  ].map((a) => (
-                    <p key={a} className="text-sm text-secondary-foreground flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                      {a}
-                    </p>
-                  ))}
-                </div>
-              </div>
-              <div className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/20">
-                <p className="text-xs text-muted-foreground">HSC Board</p>
-                <p className="text-2xl font-bold text-primary heading-font">89%</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        </div>
 
         {/* Pawar Public School */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="flex gap-6"
-        >
-          <div className="hidden md:flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 z-10">
-              <Award className="w-5 h-5 text-accent" />
-            </div>
-          </div>
-          <div className="glass-card p-6 md:p-8 flex-1">
-            <div className="flex items-start justify-between flex-wrap gap-2">
-              <div>
-                <h3 className="text-lg font-bold text-foreground heading-font">Pawar Public School</h3>
-                <p className="text-accent font-medium text-sm">Nanded City, Pune, Maharashtra</p>
-                <p className="text-sm text-muted-foreground mono mt-1">10th CBSE Board</p>
+        <div className="dossier-card p-6 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between border-b border-border/40 pb-3 mb-3">
+              <div className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-accent" />
+                <h3 className="heading-font font-bold text-foreground text-base">
+                  Pawar Public School
+                </h3>
               </div>
-              <div className="px-4 py-2 rounded-lg bg-accent/10 border border-accent/20">
-                <p className="text-xs text-muted-foreground">Score</p>
-                <p className="text-2xl font-bold text-accent heading-font">97.6%</p>
-              </div>
+              <span className="mono text-xs font-bold text-accent">
+                97.6% (CBSE)
+              </span>
             </div>
+
+            <p className="mono text-xs text-muted-foreground mb-3">
+              10th CBSE Board &bull; 2020 &ndash; 2022 &bull; Pune, Maharashtra
+            </p>
+
+            <p className="text-xs text-secondary-foreground leading-relaxed pt-1">
+              Foundation in analytical mathematics, science, and computer applications with institutional academic honors.
+            </p>
           </div>
-        </motion.div>
+
+          <div className="pt-4 mt-4 border-t border-border/30 text-[10px] mono text-muted-foreground">
+            CENTRAL BOARD // SECONDARY EDUCATION
+          </div>
+        </div>
       </div>
     </div>
   </SectionWrapper>

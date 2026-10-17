@@ -1,42 +1,89 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Code, Server, Brain, Shield, Cloud, Wrench } from "lucide-react";
+import { Code, Server, Brain, Shield, Cloud, Terminal } from "lucide-react";
 
-const categories = [
-  { name: "Languages",  icon: Code,   items: ["Python", "TypeScript", "JavaScript", "C / C++", "Java", "SQL"],      angle: 0   },
-  { name: "Frameworks", icon: Server, items: ["React", "Flutter", "Node.js", "Express.js", "FastAPI", "Flask", "Django"], angle: 60  },
-  { name: "AI / ML",    icon: Brain,  items: ["LLMs", "RAG", "Prompt Eng.", "AWS Bedrock", "Computer Vision", "Scikit-learn"], angle: 120 },
-  { name: "Security",   icon: Shield, items: ["Net Security", "AD Security", "IDS / IPS", "Threat Detection", "Wireshark / Nmap"], angle: 180 },
-  { name: "Database & Cloud", icon: Cloud,  items: ["PostgreSQL", "Supabase", "AWS Lambda", "Docker", "MySQL / SQLite"], angle: 240 },
-  { name: "Tools",      icon: Wrench, items: ["Git / GitHub", "Linux", "Arduino", "Postman", "Vercel / Render"],    angle: 300 },
-];
-
-// Orbit geometry constants — all pixel math uses these so center is always consistent
-const SIZE   = 620;   // canvas side length (px)
-const CX     = SIZE / 2;  // 310 — geometric center X
-const CY     = SIZE / 2;  // 310 — geometric center Y
-const RADIUS = 230;
-const NODE   = 112;   // w-28 = 7 rem = 112 px
-const CENTER_R = 68;  // half of center bubble diameter (136 px)
-
-// Return tooltip placement class based on the spoke angle
-function tooltipClass(angle: number): string {
-  if (angle === 0)                        return "left-full ml-2 top-1/2 -translate-y-1/2";
-  if (angle > 0   && angle <= 135)        return "top-full mt-2 left-1/2 -translate-x-1/2";
-  if (angle === 180)                      return "right-full mr-2 top-1/2 -translate-y-1/2";
-  /* 181 – 359 (upper half) */            return "bottom-full mb-2 left-1/2 -translate-x-1/2";
+interface TechCategory {
+  name: string;
+  tag: string;
+  icon: React.ComponentType<{ className?: string }>;
+  items: string[];
+  angle: number;
 }
 
-const TechStackVisualization = () => (
-  <SectionWrapper id="tech-stack">
-    <h2 className="section-heading text-center">
-      <span className="gradient-text">Tech Stack</span>
-    </h2>
+const categories: TechCategory[] = [
+  {
+    name: "Languages",
+    tag: "CORE RUNTIMES",
+    icon: Code,
+    items: ["Python", "TypeScript", "JavaScript", "C (POSIX)", "C++", "SQL"],
+    angle: 0,
+  },
+  {
+    name: "Frameworks & APIs",
+    tag: "SERVICES",
+    icon: Server,
+    items: ["React 18", "Next.js", "FastAPI", "Node.js / Express", "Flask", "Flutter"],
+    angle: 60,
+  },
+  {
+    name: "AI & Computer Vision",
+    tag: "INFERENCE & RAG",
+    icon: Brain,
+    items: ["RAG Pipelines", "Groq LLM API", "OpenCV", "DeepFace", "Scikit-Learn", "SHAP"],
+    angle: 120,
+  },
+  {
+    name: "Cybersecurity",
+    tag: "THREAT DEFENSE",
+    icon: Shield,
+    items: ["Temporal Hypergraphs", "Active Directory", "Scapy Packet Sniffing", "Intrusion Detection", "PostgreSQL RLS"],
+    angle: 180,
+  },
+  {
+    name: "Database & Cloud",
+    tag: "DATA & ORCHESTRATION",
+    icon: Cloud,
+    items: ["PostgreSQL (Triggers)", "Supabase", "Docker ECR", "AWS App Runner", "AWS Lambda", "SQLAlchemy"],
+    angle: 240,
+  },
+  {
+    name: "Systems & Low-Level",
+    tag: "IPC & KERNEL",
+    icon: Terminal,
+    items: ["POSIX pthreads", "IPC Memory Tracing", "Linux (ZSH)", "UNIX Sockets", "Arduino / ESP"],
+    angle: 300,
+  },
+];
 
-    {/* ── Orbit visualization — desktop only ── */}
-    <div className="hidden lg:flex justify-center mb-16">
-      <div className="relative" style={{ width: SIZE, height: SIZE }}>
+// Orbit geometry constants
+const SIZE = 640;
+const CX = SIZE / 2; // 320
+const CY = SIZE / 2; // 320
+const RADIUS = 230;
+const NODE = 118;
+const CENTER_R = 72;
 
+function tooltipClass(angle: number): string {
+  if (angle === 0) return "left-full ml-3 top-1/2 -translate-y-1/2";
+  if (angle > 0 && angle <= 135) return "top-full mt-3 left-1/2 -translate-x-1/2";
+  if (angle === 180) return "right-full mr-3 top-1/2 -translate-y-1/2";
+  return "bottom-full mb-3 left-1/2 -translate-x-1/2";
+}
+
+export const TechStackVisualization = () => (
+  <SectionWrapper id="skills" index="06" tag="GRAPH CAPABILITIES ARCHITECTURE">
+    <div className="mb-10 text-center md:text-left">
+      <h2 className="editorial-heading">
+        Technical Capabilities &amp; System Graph
+      </h2>
+      <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
+        Interactive topological network map depicting full-stack engineering and security vectors
+      </p>
+    </div>
+
+    {/* ── Orbital Graph Visualization — Desktop ── */}
+    <div className="hidden lg:flex justify-center my-8">
+      <div className="relative select-none" style={{ width: SIZE, height: SIZE }}>
         {/* SVG layer: ring guides + spoke lines */}
         <svg
           className="absolute inset-0 pointer-events-none"
@@ -44,63 +91,82 @@ const TechStackVisualization = () => (
           height={SIZE}
           viewBox={`0 0 ${SIZE} ${SIZE}`}
         >
-          {/* Outer orbit guide ring */}
+          {/* Outer radar orbit guide ring */}
           <circle
-            cx={CX} cy={CY} r={RADIUS + 6}
-            stroke="hsl(var(--border) / 0.18)" strokeWidth="1" fill="none"
+            cx={CX}
+            cy={CY}
+            r={RADIUS + 6}
+            stroke="currentColor"
+            className="text-border/60"
+            strokeWidth="1"
+            fill="none"
           />
           {/* Inner guide ring */}
           <circle
-            cx={CX} cy={CY} r={RADIUS * 0.55}
-            stroke="hsl(var(--border) / 0.10)" strokeWidth="1" fill="none"
+            cx={CX}
+            cy={CY}
+            r={RADIUS * 0.55}
+            stroke="currentColor"
+            className="text-border/40"
+            strokeWidth="1"
+            strokeDasharray="4 4"
+            fill="none"
           />
-          {/* Spoke lines — dashed, from edge of center bubble to edge of each orbit node */}
+          {/* Spoke lines */}
           {categories.map((cat) => {
-            const rad  = (cat.angle * Math.PI) / 180;
-            const cos  = Math.cos(rad);
-            const sin  = Math.sin(rad);
-            // Start just outside the center bubble, end just before the orbit node face
-            const x1 = CX + (CENTER_R + 8)  * cos;
-            const y1 = CY + (CENTER_R + 8)  * sin;
+            const rad = (cat.angle * Math.PI) / 180;
+            const cos = Math.cos(rad);
+            const sin = Math.sin(rad);
+            const x1 = CX + (CENTER_R + 8) * cos;
+            const y1 = CY + (CENTER_R + 8) * sin;
             const x2 = CX + (RADIUS - NODE / 2 - 8) * cos;
             const y2 = CY + (RADIUS - NODE / 2 - 8) * sin;
             return (
               <line
                 key={cat.name}
-                x1={x1} y1={y1} x2={x2} y2={y2}
-                stroke="hsl(var(--neon-blue) / 0.18)"
-                strokeWidth="1"
-                strokeDasharray="5 4"
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="currentColor"
+                className="text-accent/40"
+                strokeWidth="1.2"
+                strokeDasharray="4 3"
               />
             );
           })}
         </svg>
 
-        {/* Center node — pixel-positioned to match orbit math exactly */}
+        {/* Center Cyber Core Node */}
         <motion.div
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="absolute z-10"
           style={{
-            width:  CENTER_R * 2,
+            width: CENTER_R * 2,
             height: CENTER_R * 2,
-            left:   CX - CENTER_R,
-            top:    CY - CENTER_R,
+            left: CX - CENTER_R,
+            top: CY - CENTER_R,
           }}
         >
-          <div className="w-full h-full rounded-full glass-card flex flex-col items-center justify-center gap-0.5 border border-accent/40">
-            <p className="text-xs mono text-accent font-semibold leading-tight">Engineering</p>
-            <p className="text-xs mono text-muted-foreground leading-tight">Stack</p>
+          <div className="w-full h-full rounded-full dossier-card flex flex-col items-center justify-center border border-accent/60 shadow-xl bg-card">
+            <div className="w-2 h-2 rounded-full bg-accent animate-ping mb-1" />
+            <p className="text-[11px] mono text-accent font-bold tracking-wider leading-tight">
+              CYBER CORE
+            </p>
+            <p className="text-[10px] mono text-muted-foreground leading-tight uppercase">
+              CAPABILITIES
+            </p>
           </div>
         </motion.div>
 
-        {/* Orbit nodes — positioned so their geometric center is exactly at (CX + R·cos, CY + R·sin) */}
+        {/* Orbit Category Nodes */}
         {categories.map((cat, i) => {
-          const rad   = (cat.angle * Math.PI) / 180;
+          const rad = (cat.angle * Math.PI) / 180;
           const nodeLeft = CX + RADIUS * Math.cos(rad) - NODE / 2;
-          const nodeTop  = CY + RADIUS * Math.sin(rad) - NODE / 2;
+          const nodeTop = CY + RADIUS * Math.sin(rad) - NODE / 2;
 
           return (
             <motion.div
@@ -108,26 +174,41 @@ const TechStackVisualization = () => (
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 0.5 }}
+              transition={{ delay: i * 0.1, duration: 0.45 }}
               className="absolute group"
               style={{ left: nodeLeft, top: nodeTop, width: NODE, height: NODE }}
             >
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{ repeat: Infinity, duration: 3 + i * 0.5, ease: "easeInOut" }}
-                className="w-full h-full glass-card rounded-2xl flex flex-col items-center justify-center gap-1 cursor-default group-hover:border-accent/40 transition-colors"
-              >
-                <cat.icon className="w-5 h-5 text-accent" />
-                <span className="text-xs font-medium text-foreground text-center px-1">{cat.name}</span>
-                <span className="text-[10px] text-muted-foreground mono">{cat.items.length} skills</span>
-              </motion.div>
+              <div className="w-full h-full dossier-card p-3 rounded-lg flex flex-col items-center justify-center gap-1.5 cursor-pointer group-hover:border-accent transition-colors shadow-sm bg-card">
+                <cat.icon className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
+                <span className="text-xs font-bold text-foreground text-center leading-tight">
+                  {cat.name}
+                </span>
+                <span className="text-[9px] mono text-muted-foreground/80">
+                  {cat.items.length} TECHNOLOGIES
+                </span>
+              </div>
 
-              {/* Tooltip — direction changes per quadrant to avoid overflow */}
-              <div className={`absolute ${tooltipClass(cat.angle)} opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 w-36`}>
-                <div className="glass-card p-3 rounded-xl shadow-xl">
-                  {cat.items.map((item) => (
-                    <div key={item} className="text-xs text-foreground/80 py-0.5 border-b border-border/10 last:border-0">{item}</div>
-                  ))}
+              {/* Detailed Hover Inspection Card */}
+              <div
+                className={`absolute ${tooltipClass(
+                  cat.angle
+                )} opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-30 w-44`}
+              >
+                <div className="dossier-card p-3 rounded-lg shadow-2xl bg-card border border-accent/40">
+                  <div className="cyber-label text-[9px] text-accent mb-1.5 pb-1 border-b border-border/40">
+                    {cat.tag}
+                  </div>
+                  <ul className="space-y-1">
+                    {cat.items.map((item) => (
+                      <li
+                        key={item}
+                        className="text-[11px] mono text-foreground/90 py-0.5 flex items-center gap-1.5"
+                      >
+                        <span className="w-1 h-1 bg-accent rounded-none" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </motion.div>
@@ -136,24 +217,26 @@ const TechStackVisualization = () => (
       </div>
     </div>
 
-    {/* ── Grid fallback — mobile / tablet ── */}
-    <div className="lg:hidden grid grid-cols-2 md:grid-cols-3 gap-4">
+    {/* ── Grid Fallback — Mobile & Tablet ── */}
+    <div className="lg:hidden grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       {categories.map((cat, i) => (
         <motion.div
           key={cat.name}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: i * 0.1, duration: 0.5 }}
-          className="glass-card p-5"
+          transition={{ delay: i * 0.08, duration: 0.4 }}
+          className="dossier-card p-5"
         >
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-2 mb-2 border-b border-border/40 pb-2">
             <cat.icon className="w-4 h-4 text-accent" />
-            <span className="text-sm font-medium text-foreground">{cat.name}</span>
+            <h3 className="text-sm font-bold text-foreground">{cat.name}</h3>
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5 pt-1">
             {cat.items.map((item) => (
-              <span key={item} className="tech-badge text-[10px] px-2 py-1">{item}</span>
+              <span key={item} className="tech-tag text-[10px]">
+                {item}
+              </span>
             ))}
           </div>
         </motion.div>

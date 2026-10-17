@@ -1,152 +1,221 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, ArrowDown, FileText } from "lucide-react";
-import ParticleField from "./ParticleField";
+import { ArrowDown, FileText, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 import TerminalIntro from "./TerminalIntro";
 
-const HeroSection = () => {
+export const HeroSection = () => {
+  // Coordinated timeline animation variants with subtle cubic-bezier easing
+  const easeTransition = [0.16, 1, 0.3, 1];
+
+  const lineMaskVariants = {
+    hidden: { y: "115%" },
+    visible: (i: number) => ({
+      y: "0%",
+      transition: {
+        duration: 0.85,
+        ease: easeTransition,
+        delay: 0.15 + i * 0.14,
+      },
+    }),
+  };
+
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 14 },
+    visible: (delay: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.65,
+        ease: easeTransition,
+        delay,
+      },
+    }),
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 animated-gradient-bg">
-      <ParticleField />
+    <section
+      id="hero"
+      aria-label="Identity & Overview"
+      className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-24 pb-10 px-6 max-w-7xl mx-auto w-full"
+    >
+      {/* ── Stage 1: Technical Dossier Header Metadata ── */}
+      <motion.div
+        custom={0.05}
+        initial="hidden"
+        animate="visible"
+        variants={fadeUpVariants}
+        className="w-full flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-3 text-[11px] mono text-muted-foreground select-none"
+      >
+        <div className="flex items-center gap-3">
+          <span className="font-semibold text-foreground/90 tracking-wider">
+            DOSSIER // 2026.01
+          </span>
+          <span className="text-border">|</span>
+          <span className="hidden sm:inline">RVCE // CSE (CYBERSECURITY)</span>
+        </div>
 
-      {/* Ambient glow orbs */}
-      <div className="hero-glow animate-pulse-glow" style={{ top: "5%", left: "15%", background: "hsl(217 91% 60%)" }} />
-      <div className="hero-glow animate-pulse-glow" style={{ top: "50%", right: "5%", background: "hsl(263 70% 50%)", animationDelay: "2s" }} />
-      <div className="hero-glow animate-pulse-glow" style={{ bottom: "10%", left: "35%", background: "hsl(187 92% 41%)", animationDelay: "4s", width: "350px", height: "350px" }} />
+        <div className="flex items-center gap-4">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[10px] font-medium tracking-wide">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>PROFILE / ACTIVE</span>
+          </div>
+          <span className="hidden md:inline text-muted-foreground/60">
+            LOC: 12.92° N, 77.49° E
+          </span>
+        </div>
+      </motion.div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full pt-28 pb-20">
-        {/* Two-column layout: text left, terminal right */}
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
-
-          {/* ── Left: Main Content ── */}
+      {/* ── Main Asymmetric Editorial Grid ── */}
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center my-auto py-8">
+        {/* Left Column: Typographic Centerpiece (7 cols on desktop) */}
+        <div className="lg:col-span-7 flex flex-col justify-center text-left">
+          {/* Identity Sub-label */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
+            custom={0.12}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUpVariants}
+            className="mb-3 flex items-center gap-2"
           >
-            {/* Availability badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/30 bg-green-500/8 text-green-400 text-xs font-medium mb-8 cursor-default"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-              </span>
-              Open to Internships &amp; Collaborations
-            </motion.div>
+            <span className="w-2 h-2 rounded-none bg-accent" />
+            <span className="cyber-label text-accent font-semibold">
+              TECHNICAL IDENTITY &bull; SYSTEMS RESEARCH
+            </span>
+          </motion.div>
 
-            {/* Name */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.7 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight heading-font"
-            >
-              <span className="gradient-text">Avishkar More</span>
-            </motion.h1>
-
-            {/* Title */}
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.6 }}
-              className="text-lg font-semibold text-accent mb-3"
-            >
-              Cybersecurity Engineering Student
-            </motion.p>
-
-            {/* Tag line */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.45, duration: 0.6 }}
-              className="mono text-[11px] text-muted-foreground mb-7 tracking-widest uppercase"
-            >
-              AI · Systems · IoT · Computer Vision · ML · Cloud
-            </motion.p>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.55, duration: 0.6 }}
-              className="text-secondary-foreground max-w-md mb-10 leading-relaxed text-sm md:text-base mx-auto lg:mx-0"
-            >
-              3rd-year CSE (Cybersecurity) student at RV College of Engineering
-              with a <span className="text-accent font-semibold">CGPA of 9.74</span>, building secure, intelligent systems
-              that solve real-world problems.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65, duration: 0.6 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-3"
-            >
-              {/* Resume — primary, most prominent */}
-              <a
-                href="https://drive.google.com/drive/folders/11JnB3OYwSR079ygyBRRkkCCn3GJEk7r4?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary flex items-center gap-2 text-sm font-semibold"
+          {/* ── Stage 2: Signature Line-by-Line Typographic Reveal ── */}
+          <h1 className="heading-font text-5xl sm:text-7xl md:text-8xl lg:text-[5.8rem] xl:text-[6.6rem] font-black text-foreground tracking-[-0.04em] leading-[0.91] mb-5">
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                custom={0}
+                initial="hidden"
+                animate="visible"
+                variants={lineMaskVariants}
+                className="block text-foreground"
               >
-                <FileText className="w-4 h-4" /> View Resume
-              </a>
-              <a href="#projects" className="btn-outline flex items-center gap-2">
-                View Projects <ArrowDown className="w-4 h-4" />
-              </a>
+                AVISHKAR
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                custom={1}
+                initial="hidden"
+                animate="visible"
+                variants={lineMaskVariants}
+                className="block text-foreground/80 hover:text-foreground transition-colors"
+              >
+                MORE
+              </motion.span>
+            </span>
+          </h1>
+
+          {/* ── Stage 3: Professional Role & Editorial Summary ── */}
+          <motion.div
+            custom={0.42}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUpVariants}
+            className="space-y-3 max-w-xl"
+          >
+            <p className="mono text-xs sm:text-sm uppercase tracking-wider text-accent font-semibold">
+              Cybersecurity &amp; Distributed Systems Engineer
+            </p>
+
+            <p className="text-secondary-foreground text-sm sm:text-base leading-relaxed font-normal">
+              3rd-year engineering student at <strong className="text-foreground font-semibold">RV College of Engineering</strong> with a verified <span className="mono text-accent font-semibold px-1 py-0.5 rounded bg-accent/10 border border-accent/20 text-xs">CGPA of 9.74</span>. Architecting graph-intelligence security platforms, real-time ML intrusion filters, and high-concurrency systems.
+            </p>
+          </motion.div>
+
+          {/* ── Stage 4: Restrained Actions & Links ── */}
+          <motion.div
+            custom={0.55}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUpVariants}
+            className="flex flex-wrap items-center gap-3 pt-6"
+          >
+            <a href="#projects" className="btn-cyber-primary group">
+              <span>Explore Archive</span>
+              <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
+            </a>
+
+            <a
+              href="https://drive.google.com/drive/folders/11JnB3OYwSR079ygyBRRkkCCn3GJEk7r4?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-cyber-outline"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Resume (PDF)</span>
+            </a>
+
+            <div className="h-5 w-px bg-border/80 mx-1 hidden sm:block" />
+
+            <div className="flex items-center gap-1.5">
               <a
                 href="https://github.com/Avi007-debug"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-outline flex items-center gap-2"
+                aria-label="GitHub Profile"
+                className="p-2.5 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
               >
-                <Github className="w-4 h-4" /> GitHub
+                <Github className="w-4 h-4" />
               </a>
               <a
                 href="https://www.linkedin.com/in/avishkarmore/"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-outline flex items-center gap-2"
+                aria-label="LinkedIn Profile"
+                className="p-2.5 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
               >
-                <Linkedin className="w-4 h-4" /> LinkedIn
+                <Linkedin className="w-4 h-4" />
               </a>
-            </motion.div>
-          </motion.div>
-
-          {/* ── Right: Terminal (desktop) ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block"
-          >
-            <TerminalIntro />
+              <a
+                href="#contact"
+                aria-label="Direct Email"
+                className="p-2.5 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+            </div>
           </motion.div>
         </div>
 
-        {/* Terminal — mobile/tablet (below content) */}
+        {/* Right Column: Terminal Console Workstation (5 cols on desktop) */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="lg:hidden mt-10"
+          custom={0.35}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUpVariants}
+          className="lg:col-span-5 w-full flex justify-center"
         >
           <TerminalIntro />
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* ── Stage 5: Finishing Technical Details & Scroll Indicator ── */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
+        custom={0.65}
+        initial="hidden"
+        animate="visible"
+        variants={fadeUpVariants}
+        className="w-full pt-4 border-t border-border/60 flex flex-wrap items-center justify-between gap-4 text-[10px] mono text-muted-foreground/80 select-none"
       >
-        <ArrowDown className="w-5 h-5 text-muted-foreground" />
+        <div className="flex items-center gap-6">
+          <span>
+            CORE: <strong className="text-foreground">TEMPORAL GRAPHS / IDS / RAG</strong>
+          </span>
+          <span className="hidden sm:inline">
+            RANK: <strong className="text-foreground">TOP 1% JEE ADV / MHT-CET</strong>
+          </span>
+        </div>
+
+        <a
+          href="#about"
+          className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors"
+        >
+          <span>INDEX 02 // DOSSIER</span>
+          <ArrowDown className="w-3 h-3 animate-bounce" />
+        </a>
       </motion.div>
     </section>
   );
