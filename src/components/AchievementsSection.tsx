@@ -53,7 +53,7 @@ export const AchievementsSection = () => (
         >
           <div>
             <div className="flex items-center justify-between mb-3 text-xs mono">
-              <span className="p-1.5 rounded bg-secondary text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+              <span className="p-2 bg-secondary text-accent border border-accent/40 group-hover:bg-accent group-hover:text-black transition-colors">
                 <item.icon className="w-4 h-4" />
               </span>
               <span className="mono text-[10px] font-bold text-accent tracking-wider">

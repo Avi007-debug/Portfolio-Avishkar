@@ -43,22 +43,22 @@ export const HeroSection = () => {
         initial="hidden"
         animate="visible"
         variants={fadeUpVariants}
-        className="w-full flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-3 text-[11px] mono text-muted-foreground select-none"
+        className="w-full flex flex-wrap items-center justify-between gap-3 border-b-2 border-border/80 light:border-black pb-3 text-[11px] mono text-muted-foreground select-none"
       >
         <div className="flex items-center gap-3">
-          <span className="font-semibold text-foreground/90 tracking-wider">
+          <span className="font-bold text-foreground tracking-wider border-2 border-accent/80 light:border-black px-2 py-0.5 bg-card shadow-[2px_2px_0px_0px_#06b6d4] light:shadow-[2px_2px_0px_0px_#000]">
             DOSSIER // 2026.01
           </span>
           <span className="text-border">|</span>
-          <span className="hidden sm:inline">RVCE // CSE (CYBERSECURITY)</span>
+          <span className="hidden sm:inline font-bold">RVCE // CSE (CYBERSECURITY)</span>
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[10px] font-medium tracking-wide">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 border-2 border-emerald-500/80 bg-emerald-950/40 text-emerald-400 text-[10px] font-black tracking-wide shadow-[2px_2px_0px_0px_#10b981]">
+            <span className="w-2 h-2 bg-emerald-400 animate-pulse" />
             <span>PROFILE / ACTIVE</span>
           </div>
-          <span className="hidden md:inline text-muted-foreground/60">
+          <span className="hidden md:inline text-muted-foreground/80 font-mono">
             LOC: 12.92° N, 77.49° E
           </span>
         </div>
@@ -156,7 +156,7 @@ export const HeroSection = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub Profile"
-                className="p-2.5 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
+                className="p-2.5 border-2 border-border/80 light:border-black text-foreground hover:bg-accent/10 hover:border-accent hover:shadow-[2px_2px_0px_0px_#06b6d4] transition-all bg-card"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -165,14 +165,14 @@ export const HeroSection = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn Profile"
-                className="p-2.5 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
+                className="p-2.5 border-2 border-border/80 light:border-black text-foreground hover:bg-accent/10 hover:border-accent hover:shadow-[2px_2px_0px_0px_#06b6d4] transition-all bg-card"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href="#contact"
                 aria-label="Direct Email"
-                className="p-2.5 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
+                className="p-2.5 border-2 border-border/80 light:border-black text-foreground hover:bg-accent/10 hover:border-accent hover:shadow-[2px_2px_0px_0px_#06b6d4] transition-all bg-card"
               >
                 <Mail className="w-4 h-4" />
               </a>
@@ -198,23 +198,23 @@ export const HeroSection = () => {
         initial="hidden"
         animate="visible"
         variants={fadeUpVariants}
-        className="w-full pt-4 border-t border-border/60 flex flex-wrap items-center justify-between gap-4 text-[10px] mono text-muted-foreground/80 select-none"
+        className="w-full mt-6 py-2.5 px-4 border-2 border-border/80 light:border-black bg-card/60 flex flex-wrap items-center justify-between gap-4 text-xs mono text-muted-foreground select-none shadow-[3px_3px_0px_0px_#06b6d4] light:shadow-[3px_3px_0px_0px_#000]"
       >
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 font-bold">
           <span>
             CORE: <strong className="text-foreground">TEMPORAL GRAPHS / IDS / RAG</strong>
           </span>
-          <span className="hidden sm:inline">
-            RANK: <strong className="text-foreground">TOP 1% JEE ADV / MHT-CET</strong>
+          <span className="hidden sm:inline border-l-2 border-border/80 pl-4">
+            RANK: <strong className="text-accent">TOP 1% JEE ADV / MHT-CET</strong>
           </span>
         </div>
 
         <a
           href="#about"
-          className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors"
+          className="inline-flex items-center gap-1.5 text-accent hover:text-foreground font-black transition-colors"
         >
           <span>INDEX 02 // DOSSIER</span>
-          <ArrowDown className="w-3 h-3 animate-bounce" />
+          <ArrowDown className="w-3.5 h-3.5" />
         </a>
       </motion.div>
     </section>

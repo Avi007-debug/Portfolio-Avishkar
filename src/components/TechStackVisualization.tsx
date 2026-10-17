@@ -151,12 +151,12 @@ export const TechStackVisualization = () => (
             top: CY - CENTER_R,
           }}
         >
-          <div className="w-full h-full rounded-full dossier-card flex flex-col items-center justify-center border border-accent/60 shadow-xl bg-card">
-            <div className="w-2 h-2 rounded-full bg-accent animate-ping mb-1" />
-            <p className="text-[11px] mono text-accent font-bold tracking-wider leading-tight">
+          <div className="w-full h-full border-2 border-accent light:border-black shadow-[4px_4px_0px_0px_#06b6d4] light:shadow-[4px_4px_0px_0px_#000000] flex flex-col items-center justify-center bg-card rounded-none">
+            <div className="w-2 h-2 bg-accent animate-ping mb-1" />
+            <p className="text-[11px] mono text-accent font-black tracking-wider leading-tight">
               CYBER CORE
             </p>
-            <p className="text-[10px] mono text-muted-foreground leading-tight uppercase">
+            <p className="text-[10px] mono text-muted-foreground leading-tight uppercase font-bold">
               CAPABILITIES
             </p>
           </div>
@@ -178,12 +178,12 @@ export const TechStackVisualization = () => (
               className="absolute group"
               style={{ left: nodeLeft, top: nodeTop, width: NODE, height: NODE }}
             >
-              <div className="w-full h-full dossier-card p-3 rounded-lg flex flex-col items-center justify-center gap-1.5 cursor-pointer group-hover:border-accent transition-colors shadow-sm bg-card">
+              <div className="w-full h-full border-2 border-border/80 light:border-black p-3 flex flex-col items-center justify-center gap-1.5 cursor-pointer shadow-[3px_3px_0px_0px_#06b6d4] light:shadow-[3px_3px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all bg-card rounded-none">
                 <cat.icon className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
-                <span className="text-xs font-bold text-foreground text-center leading-tight">
+                <span className="text-xs font-black text-foreground text-center leading-tight uppercase font-sans">
                   {cat.name}
                 </span>
-                <span className="text-[9px] mono text-muted-foreground/80">
+                <span className="text-[9px] mono text-muted-foreground font-bold">
                   {cat.items.length} TECHNOLOGIES
                 </span>
               </div>
@@ -192,19 +192,19 @@ export const TechStackVisualization = () => (
               <div
                 className={`absolute ${tooltipClass(
                   cat.angle
-                )} opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-30 w-44`}
+                )} opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-30 w-48`}
               >
-                <div className="dossier-card p-3 rounded-lg shadow-2xl bg-card border border-accent/40">
-                  <div className="cyber-label text-[9px] text-accent mb-1.5 pb-1 border-b border-border/40">
+                <div className="border-2 border-accent light:border-black p-3.5 shadow-[5px_5px_0px_0px_#06b6d4] light:shadow-[5px_5px_0px_0px_#000000] bg-card rounded-none">
+                  <div className="cyber-label text-[9px] text-accent font-bold mb-1.5 pb-1 border-b border-border/60">
                     {cat.tag}
                   </div>
                   <ul className="space-y-1">
                     {cat.items.map((item) => (
                       <li
                         key={item}
-                        className="text-[11px] mono text-foreground/90 py-0.5 flex items-center gap-1.5"
+                        className="text-[11px] mono text-foreground py-0.5 flex items-center gap-1.5 font-medium"
                       >
-                        <span className="w-1 h-1 bg-accent rounded-none" />
+                        <span className="w-1.5 h-1.5 bg-accent" />
                         <span>{item}</span>
                       </li>
                     ))}

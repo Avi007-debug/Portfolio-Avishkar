@@ -182,9 +182,9 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
                   <h4 className="cyber-label mb-2">VERIFIED METRICS</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                     {exp.metrics.map((m) => (
-                      <div key={m.label} className="p-2.5 rounded bg-secondary/50 border border-border/40 text-center">
-                        <p className="text-lg font-bold text-accent heading-font">{m.value}</p>
-                        <p className="mono text-[9px] text-muted-foreground uppercase">{m.label}</p>
+                      <div key={m.label} className="p-2.5 border-2 border-border/80 light:border-black bg-card shadow-[2px_2px_0px_0px_#06b6d4] light:shadow-[2px_2px_0px_0px_#000000] text-center">
+                        <p className="text-lg font-black text-accent heading-font">{m.value}</p>
+                        <p className="mono text-[9px] text-muted-foreground uppercase font-bold">{m.label}</p>
                       </div>
                     ))}
                   </div>

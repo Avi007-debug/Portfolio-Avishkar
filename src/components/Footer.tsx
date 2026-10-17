@@ -14,7 +14,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-border/60 py-12 px-6 bg-background select-none">
+    <footer className="border-t-2 border-border/80 light:border-black py-12 px-6 bg-background select-none">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left: Brand Monogram & Meta */}
         <div className="flex items-center gap-3">
@@ -23,12 +23,14 @@ export const Footer = () => {
             className="flex items-center gap-2.5 group select-none"
             aria-label="Back to top"
           >
-            <AmLogo className="h-6 w-auto" />
-            <span className="font-bold text-sm tracking-tight text-foreground">
+            <div className="border-2 border-accent/80 p-1 bg-black shadow-[2px_2px_0px_0px_#06b6d4]">
+              <AmLogo className="h-5 w-auto" />
+            </div>
+            <span className="font-black text-sm tracking-tight text-foreground uppercase">
               Avishkar More
             </span>
           </a>
-          <div className="text-[11px] mono text-muted-foreground">
+          <div className="text-[11px] mono text-muted-foreground font-bold">
             <span>AVISHKAR MORE</span> &bull; <span>CYBERSECURITY &amp; SYSTEMS</span>
           </div>
         </div>
@@ -42,22 +44,22 @@ export const Footer = () => {
               target={href.startsWith("mailto") ? undefined : "_blank"}
               rel="noreferrer"
               aria-label={label}
-              className="p-2 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
+              className="p-2 border-2 border-border/80 light:border-black bg-card shadow-[2px_2px_0px_0px_#06b6d4] light:shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all text-foreground"
             >
-              <Icon className="w-3.5 h-3.5" />
+              <Icon className="w-4 h-4" />
             </a>
           ))}
         </div>
 
         {/* Right: Back to top & Copyright */}
-        <div className="flex items-center gap-4 text-xs mono text-muted-foreground/80">
+        <div className="flex items-center gap-4 text-xs mono text-muted-foreground font-bold">
           <span>&copy; {new Date().getFullYear()} AVISHKAR MORE</span>
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="p-1.5 rounded border border-border/60 hover:text-foreground hover:border-accent/40 transition-colors"
+            className="p-2 border-2 border-border/80 light:border-black bg-card shadow-[2px_2px_0px_0px_#06b6d4] light:shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 text-foreground transition-all"
           >
-            <ArrowUp className="w-3.5 h-3.5" />
+            <ArrowUp className="w-4 h-4" />
           </button>
         </div>
       </div>

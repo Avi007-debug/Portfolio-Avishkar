@@ -43,10 +43,10 @@ export const EducationSection = () => (
             </div>
           </div>
 
-          <div className="p-4 rounded bg-secondary/50 border border-border/60 text-center min-w-[140px] self-start">
-            <p className="cyber-label text-[9px] mb-0.5">CURRENT CGPA</p>
+          <div className="p-4 border-2 border-accent light:border-black bg-card shadow-[4px_4px_0px_0px_#06b6d4] light:shadow-[4px_4px_0px_0px_#000000] text-center min-w-[140px] self-start">
+            <p className="cyber-label text-[9px] mb-0.5 text-accent font-black">CURRENT CGPA</p>
             <p className="text-3xl font-black text-accent heading-font">9.74</p>
-            <p className="mono text-[10px] text-muted-foreground mt-0.5">Rank 1 / Batch Top</p>
+            <p className="mono text-[10px] text-muted-foreground mt-0.5 font-bold">RANK 1 / BATCH TOP</p>
           </div>
         </div>
       </div>

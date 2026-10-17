@@ -49,7 +49,7 @@ export const CertificationsSection = () => (
           className="dossier-card p-5 flex items-center justify-between gap-4 group transition-colors hover:border-accent/60 select-none"
         >
           <div className="flex items-start gap-3.5">
-            <div className="p-2 rounded bg-secondary text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors flex-shrink-0 mt-0.5">
+            <div className="p-2 bg-secondary text-accent border border-accent/50 group-hover:bg-accent group-hover:text-black transition-colors flex-shrink-0 mt-0.5">
               <BadgeCheck className="w-4 h-4" />
             </div>
             <div>

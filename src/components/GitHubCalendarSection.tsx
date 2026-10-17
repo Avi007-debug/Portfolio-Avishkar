@@ -135,7 +135,7 @@ export const GitHubCalendarSection = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {stats.topLangs.map((lang) => (
-              <div key={lang.name} className="p-3 rounded bg-secondary/40 border border-border/40">
+              <div key={lang.name} className="p-3 border-2 border-border/80 light:border-black bg-card shadow-[2px_2px_0px_0px_#06b6d4] light:shadow-[2px_2px_0px_0px_#000000]">
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-xs font-semibold text-foreground">{lang.name}</span>
                   <span className="mono text-[11px] text-accent font-bold">{lang.pct}%</span>

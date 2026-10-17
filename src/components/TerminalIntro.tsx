@@ -60,24 +60,24 @@ const TerminalIntro = () => {
 
   return (
     <div className="w-full max-w-lg mx-auto select-none">
-      <div className="terminal-window rounded border border-border/80 overflow-hidden shadow-xl scanline-box">
-        {/* Title bar */}
-        <div className="terminal-titlebar flex items-center justify-between px-3.5 py-2.5 border-b border-border/60">
+      <div className="terminal-window border-2 border-accent light:border-black rounded-none overflow-hidden shadow-[6px_6px_0px_0px_#06b6d4] light:shadow-[6px_6px_0px_0px_#000000] scanline-box">
+        {/* Brutalist Title bar */}
+        <div className="terminal-titlebar flex items-center justify-between px-3.5 py-2 border-b-2 border-border/80 light:border-black bg-[#0d1220]">
           <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+            <span className="w-2.5 h-2.5 bg-red-500 rounded-none border border-red-400" />
+            <span className="w-2.5 h-2.5 bg-amber-400 rounded-none border border-amber-300" />
+            <span className="w-2.5 h-2.5 bg-emerald-400 rounded-none border border-emerald-300" />
           </div>
-          <span className="mono text-[10px] text-muted-foreground/80 tracking-widest uppercase">
-            avishkar@rvce: ~
+          <span className="mono text-[10px] text-zinc-300 tracking-widest uppercase font-bold">
+            AVISHKAR@RVCE: ~ (BASH)
           </span>
-          <span className="mono text-[9px] text-accent/80 font-mono tracking-wider">
+          <span className="mono text-[9px] text-cyan-400 font-bold border border-cyan-500/40 px-1 bg-cyan-950/40">
             [SYS_OK]
           </span>
         </div>
 
         {/* Terminal body */}
-        <div className="terminal-body bg-[#0a0d16] p-4 md:p-5 mono text-xs md:text-sm space-y-2.5 min-h-[220px] max-h-[290px] overflow-y-auto">
+        <div className="terminal-body bg-[#05070d] p-4 md:p-5 mono text-xs md:text-sm space-y-2.5 min-h-[220px] max-h-[290px] overflow-y-auto">
           {lines.map((line, i) =>
             line ? (
               <motion.div
@@ -87,8 +87,8 @@ const TerminalIntro = () => {
                 transition={{ duration: 0.15 }}
                 className={
                   line.isCommand
-                    ? "text-cyan-400 font-semibold tracking-wide"
-                    : "text-zinc-100 pl-3.5 border-l border-zinc-700/80 text-xs md:text-[13px] leading-relaxed font-mono"
+                    ? "text-cyan-400 font-bold tracking-wide"
+                    : "text-zinc-100 pl-3.5 border-l-2 border-cyan-500/40 text-xs md:text-[13px] leading-relaxed font-mono"
                 }
               >
                 {line.text}
@@ -96,24 +96,24 @@ const TerminalIntro = () => {
             ) : null
           )}
           {isTyping && (
-            <span className="inline-block w-1.5 h-3.5 bg-cyan-400 animate-pulse rounded-none ml-1 align-middle" />
+            <span className="inline-block w-2 h-4 bg-cyan-400 animate-pulse rounded-none ml-1 align-middle" />
           )}
           {!isTyping && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-cyan-400/80 text-xs pt-1"
+              className="text-cyan-400 text-xs pt-1 font-bold"
             >
               ❯ <span className="animate-pulse">_</span>
             </motion.div>
           )}
         </div>
 
-        {/* Status footer bar */}
-        <div className="px-3.5 py-1.5 bg-black/40 border-t border-border/40 flex items-center justify-between mono text-[9px] text-muted-foreground/70">
-          <span>UTF-8 // ZSH</span>
-          <span>BUFFER: STABLE</span>
+        {/* Brutalist Console Status Bar */}
+        <div className="px-3.5 py-1.5 bg-[#0a0f1d] border-t-2 border-border/60 light:border-black flex items-center justify-between mono text-[10px] text-zinc-400">
+          <span className="text-zinc-400">UTF-8 // ZSH</span>
+          <span className="text-emerald-400 font-bold tracking-wider">[STATUS: ONLINE]</span>
         </div>
       </div>
     </div>

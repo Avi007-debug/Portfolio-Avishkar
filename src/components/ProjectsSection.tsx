@@ -300,16 +300,16 @@ export const ProjectsSection = () => {
       </div>
 
       {/* ── Controls: Filter Tabs + Search Input ── */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 pb-4 border-b border-border/40">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 pb-4 border-b-2 border-border/80 light:border-black">
         <div className="flex flex-wrap gap-2">
           {categoryList.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-3 py-1.5 rounded font-mono text-xs tracking-wider transition-all duration-200 select-none ${
+              className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider font-bold transition-all duration-150 select-none border-2 ${
                 activeCategory === cat
-                  ? "bg-foreground text-background font-semibold"
-                  : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary border border-border/40"
+                  ? "bg-accent text-black border-accent shadow-[3px_3px_0px_0px_#ffffff] light:shadow-[3px_3px_0px_0px_#000000]"
+                  : "bg-card text-muted-foreground hover:text-foreground border-border/80 light:border-black hover:border-accent"
               }`}
             >
               {cat}
@@ -324,7 +324,7 @@ export const ProjectsSection = () => {
             placeholder="Search systems, tech, or protocols..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-8 pr-7 py-1.5 rounded bg-secondary/50 border border-border/60 focus:outline-none focus:border-accent text-xs mono text-foreground placeholder:text-muted-foreground/60 transition-colors"
+            className="w-full pl-8 pr-7 py-1.5 border-2 border-border/80 light:border-black bg-card focus:outline-none focus:border-accent focus:shadow-[3px_3px_0px_0px_#06b6d4] light:focus:shadow-[3px_3px_0px_0px_#000000] text-xs mono text-foreground placeholder:text-muted-foreground/60 transition-all rounded-none"
           />
           {searchQuery && (
             <button
@@ -477,16 +477,16 @@ export const ProjectsSection = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 16 }}
               transition={{ duration: 0.2 }}
-              className="dossier-card w-full max-w-2xl my-auto max-h-[calc(100vh-7.5rem)] overflow-y-auto p-6 sm:p-8 relative z-10 flex flex-col gap-6 shadow-2xl"
+              className="w-full max-w-2xl my-auto max-h-[calc(100vh-7.5rem)] overflow-y-auto p-6 sm:p-8 relative z-10 flex flex-col gap-6 bg-card border-2 border-accent light:border-black shadow-[8px_8px_0px_0px_#06b6d4] light:shadow-[8px_8px_0px_0px_#000000] rounded-none"
               style={{
-                borderTop: `4px solid ${selectedProject.accent}`,
+                borderTop: `6px solid ${selectedProject.accent}`,
               }}
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedProject(null)}
                 aria-label="Close Specification"
-                className="absolute right-4 top-4 p-1.5 rounded hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                className="absolute right-4 top-4 p-1.5 border-2 border-border/80 light:border-black bg-card hover:bg-accent/20 text-foreground transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>

@@ -47,8 +47,8 @@ export const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border/80 shadow-sm"
-          : "bg-transparent border-b border-transparent"
+          ? "bg-background/95 border-b-2 border-border/90 shadow-[0px_4px_0px_0px_rgba(6,182,212,0.2)]"
+          : "bg-background/80 border-b-2 border-border/40"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -58,35 +58,34 @@ export const Navbar = () => {
           className="flex items-center gap-2.5 group select-none"
           aria-label="Avishkar More Identity"
         >
-          <AmLogo className="h-7 w-auto" />
+          <div className="border-2 border-accent/80 p-1 bg-black shadow-[2px_2px_0px_0px_#06b6d4]">
+            <AmLogo className="h-6 w-auto" />
+          </div>
           <div className="flex flex-col">
-            <span className="font-bold text-sm tracking-tight text-foreground leading-none">
+            <span className="font-black text-sm tracking-tight text-foreground leading-none uppercase">
               Avishkar More
             </span>
-            <span className="mono text-[9px] text-muted-foreground/80 tracking-wider">
+            <span className="mono text-[9px] text-accent font-bold tracking-wider">
               DOSSIER // RVCE
             </span>
           </div>
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav aria-label="Main Navigation" className="hidden md:flex items-center gap-6">
+        <nav aria-label="Main Navigation" className="hidden md:flex items-center gap-5">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.slice(1);
             return (
               <a
                 key={item.href}
                 href={item.href}
-                className={`mono text-xs uppercase tracking-wider transition-colors duration-150 relative py-1 ${
+                className={`mono text-xs uppercase tracking-wider transition-colors duration-150 relative py-1 px-1 font-bold ${
                   isActive
-                    ? "text-accent font-semibold"
+                    ? "text-accent border-b-2 border-accent"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {item.label}
-                {isActive && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent" />
-                )}
               </a>
             );
           })}
@@ -96,10 +95,10 @@ export const Navbar = () => {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={toggle}
-            className="p-2 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
+            className="p-2 border-2 border-border/80 text-muted-foreground hover:text-foreground hover:border-accent hover:shadow-[2px_2px_0px_0px_#06b6d4] transition-all bg-card"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
           >
-            {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {theme === "dark" ? <Sun className="w-4 h-4 text-cyan-400" /> : <Moon className="w-4 h-4 text-zinc-900" />}
           </button>
 
           <a
@@ -109,7 +108,7 @@ export const Navbar = () => {
             className="btn-cyber-primary text-xs py-1.5 px-3.5"
           >
             <FileText className="w-3.5 h-3.5" />
-            <span>Resume</span>
+            <span>RESUME</span>
           </a>
         </div>
 
@@ -117,15 +116,15 @@ export const Navbar = () => {
         <div className="md:hidden flex items-center gap-2">
           <button
             onClick={toggle}
-            className="p-2 rounded border border-border/80 text-muted-foreground hover:text-foreground"
+            className="p-2 border-2 border-border/80 text-muted-foreground hover:text-foreground bg-card"
             aria-label="Toggle theme"
           >
-            {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {theme === "dark" ? <Sun className="w-4 h-4 text-cyan-400" /> : <Moon className="w-4 h-4 text-zinc-900" />}
           </button>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 rounded border border-border/80 text-foreground"
+            className="p-2 border-2 border-border/80 text-foreground bg-card"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

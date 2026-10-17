@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,46 +6,46 @@
 
 @layer base {
   :root {
-    /* ── Dark mode (default): Engineering Charcoal Foundation ── */
-    --background: 224 24% 5%;
-    --foreground: 210 20% 95%;
+    /* ── Dark mode (default): Cyber-Brutalist Deep Obsidian Base ── */
+    --background: 222 50% 4%;       /* #05070c */
+    --foreground: 210 40% 98%;      /* #f8fafc */
 
-    --card: 224 22% 8%;
-    --card-foreground: 210 20% 95%;
+    --card: 224 45% 6%;             /* #080c14 */
+    --card-foreground: 210 40% 98%;
 
-    --popover: 224 22% 8%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 224 45% 6%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 187 92% 43%;
-    --primary-foreground: 224 24% 5%;
+    --primary: 187 100% 45%;        /* Electric Cyber Cyan #00e5ff */
+    --primary-foreground: 222 50% 4%;
 
-    --secondary: 224 18% 12%;
-    --secondary-foreground: 210 18% 85%;
+    --secondary: 222 35% 10%;       /* #0f1624 */
+    --secondary-foreground: 210 30% 90%;
 
-    --muted: 224 16% 12%;
-    --muted-foreground: 215 15% 58%;
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 187 92% 43%;
-    --accent-foreground: 224 24% 5%;
+    --accent: 187 100% 45%;         /* #06b6d4 */
+    --accent-foreground: 222 50% 4%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 224 16% 15%;
-    --input: 224 16% 15%;
-    --ring: 187 92% 43%;
+    --border: 187 80% 35%;          /* Electric cyan border accent */
+    --input: 222 30% 14%;
+    --ring: 187 100% 45%;
 
-    /* Restrained, sharp architectural radius */
-    --radius: 0.375rem;
+    /* Pure Brutalist: Zero rounded corners */
+    --radius: 0px;
 
     /* Technical cyber accents */
     --neon-blue: 217 91% 60%;
     --neon-violet: 263 70% 55%;
-    --neon-cyan: 187 92% 43%;
+    --neon-cyan: 187 100% 45%;
     --cyber-amber: 38 95% 52%;
     --cyber-emerald: 158 84% 44%;
 
-    /* Project-specific accent tokens */
+    /* Project accents */
     --proj-hyperad: 158 84% 44%;
     --proj-smartstay: 38 95% 52%;
     --proj-smartsecure: 217 91% 60%;
@@ -54,57 +54,58 @@
     --proj-trustcircle: 265 85% 66%;
     --proj-moodvue: 280 80% 64%;
 
-    --glass-bg: 224 22% 7%;
-    --glass-border: 224 16% 17%;
+    --glass-bg: 222 50% 5%;
+    --glass-border: 187 80% 35%;
   }
 
-  /* ── Technical Editorial Light Mode ── */
+  /* ── Cyber-Brutalist Light Mode (Blueprint Tint + Jet Black Borders) ── */
   .light {
-    --background: 210 30% 98%;
-    --foreground: 224 60% 8%;
+    --background: 214 36% 94%;      /* #ecf2f8 blueprint off-white */
+    --foreground: 222 50% 8%;       /* #080d1a deep ink black */
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 60% 8%;
+    --card: 0 0% 100%;              /* #ffffff crisp white */
+    --card-foreground: 222 50% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 224 60% 8%;
+    --popover-foreground: 222 50% 8%;
 
-    --primary: 187 95% 32%;
+    --primary: 199 89% 45%;         /* Vibrant Blueprint Electric Blue #0284c7 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 25% 94%;
-    --secondary-foreground: 224 60% 12%;
+    --secondary: 215 28% 90%;       /* #dfe7f1 */
+    --secondary-foreground: 222 50% 12%;
 
-    --muted: 215 25% 93%;
-    --muted-foreground: 215 16% 42%;
+    --muted: 215 25% 88%;
+    --muted-foreground: 215 20% 38%;
 
-    --accent: 187 95% 32%;
+    --accent: 199 89% 45%;          /* #0284c7 */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 20% 86%;
-    --input: 215 20% 86%;
-    --ring: 187 95% 32%;
+    --border: 222 50% 10%;          /* Stark black borders #000000 */
+    --input: 215 25% 88%;
+    --ring: 199 89% 45%;
+
+    --radius: 0px;
 
     --neon-blue: 217 88% 46%;
     --neon-violet: 263 70% 48%;
-    --neon-cyan: 187 95% 32%;
+    --neon-cyan: 199 89% 45%;
     --cyber-amber: 32 95% 42%;
     --cyber-emerald: 158 84% 32%;
 
-    /* Project accents for light mode */
     --proj-hyperad: 158 84% 32%;
     --proj-smartstay: 32 95% 42%;
     --proj-smartsecure: 217 88% 46%;
-    --proj-masteralgo: 187 95% 32%;
+    --proj-masteralgo: 199 89% 45%;
     --proj-sherlock: 330 81% 48%;
     --proj-trustcircle: 265 85% 52%;
     --proj-moodvue: 280 80% 48%;
 
     --glass-bg: 0 0% 100%;
-    --glass-border: 215 20% 86%;
+    --glass-border: 222 50% 10%;
   }
 }
 
@@ -115,7 +116,19 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased selection:bg-accent/20 selection:text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    /* Subtle blueprint coordinate grid */
+    background-image: 
+      linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  .light body {
+    background-image: 
+      linear-gradient(rgba(2, 132, 199, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(2, 132, 199, 0.06) 1px, transparent 1px);
+    background-size: 36px 36px;
   }
 
   html {
@@ -124,7 +137,7 @@
 }
 
 @layer components {
-  /* Minimal editorial typography */
+  /* Minimal & Brutalist typography */
   .heading-font {
     font-family: 'Space Grotesk', 'Inter', sans-serif;
     letter-spacing: -0.03em;
@@ -135,160 +148,199 @@
   }
 
   .cyber-label {
-    @apply mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground font-medium select-none;
+    @apply mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold select-none;
   }
 
-  /* Restrained cyber dossier container */
+  /* ── Neo-Brutalist Dossier Card ── */
   .dossier-card {
     background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    transition: border-color 0.25s ease, background-color 0.25s ease;
+    border: 2px solid hsl(var(--border));
+    border-radius: 0px;
+    box-shadow: 4px 4px 0px 0px hsl(var(--accent) / 0.5);
+    transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
   }
 
   .dossier-card:hover {
-    border-color: hsl(var(--accent) / 0.4);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px hsl(var(--accent));
+    border-color: hsl(var(--accent));
   }
 
-  /* Thin low-contrast section divider */
+  .light .dossier-card {
+    border: 2px solid #000000;
+    box-shadow: 4px 4px 0px 0px #0284c7;
+  }
+
+  .light .dossier-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px #000000;
+    border-color: #000000;
+  }
+
+  /* Brutalist Section Divider */
   .section-divider {
     width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+    height: 2px;
+    background: hsl(var(--border) / 0.6);
   }
 
-  /* Fine hair-line border utilities */
-  .hairline-border {
-    border: 1px solid hsl(var(--border));
+  .light .section-divider {
+    background: #000000;
   }
 
-  .hairline-border-t {
-    border-top: 1px solid hsl(var(--border));
-  }
-
-  .hairline-border-b {
-    border-bottom: 1px solid hsl(var(--border));
-  }
-
-  /* Restrained technical buttons */
+  /* ── Heavy Brutalist Buttons ── */
   .btn-cyber-primary {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded font-mono text-xs uppercase tracking-wider font-semibold transition-all duration-200 select-none;
-    background: hsl(var(--foreground));
-    color: hsl(var(--background));
-    border: 1px solid hsl(var(--foreground));
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 font-mono text-xs uppercase tracking-wider font-black select-none;
+    background: hsl(var(--accent));
+    color: #000000;
+    border: 2px solid hsl(var(--accent));
+    border-radius: 0px;
+    box-shadow: 4px 4px 0px 0px #ffffff;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
 
   .btn-cyber-primary:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #ffffff;
+  }
+
+  .btn-cyber-primary:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px #ffffff;
+  }
+
+  .light .btn-cyber-primary {
     background: hsl(var(--accent));
-    border-color: hsl(var(--accent));
-    color: hsl(var(--accent-foreground));
-    transform: translateY(-1px);
+    color: #ffffff;
+    border: 2px solid #000000;
+    box-shadow: 4px 4px 0px 0px #000000;
+  }
+
+  .light .btn-cyber-primary:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #000000;
+  }
+
+  .light .btn-cyber-primary:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px #000000;
   }
 
   .btn-cyber-outline {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded font-mono text-xs uppercase tracking-wider font-medium transition-all duration-200 select-none;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 font-mono text-xs uppercase tracking-wider font-bold select-none;
     background: transparent;
     color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--border));
+    border: 2px solid hsl(var(--foreground));
+    border-radius: 0px;
+    box-shadow: 4px 4px 0px 0px hsl(var(--accent));
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
   }
 
   .btn-cyber-outline:hover {
-    border-color: hsl(var(--accent) / 0.6);
-    background: hsl(var(--accent) / 0.05);
-    color: hsl(var(--foreground));
-    transform: translateY(-1px);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px hsl(var(--accent));
+    background: hsl(var(--accent) / 0.1);
   }
 
-  /* Subtle technical badge */
+  .btn-cyber-outline:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px hsl(var(--accent));
+  }
+
+  .light .btn-cyber-outline {
+    border: 2px solid #000000;
+    box-shadow: 4px 4px 0px 0px #000000;
+  }
+
+  .light .btn-cyber-outline:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #000000;
+    background: #0284c715;
+  }
+
+  .light .btn-cyber-outline:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px #000000;
+  }
+
+  /* ── Brutalist Stencil Tags ── */
   .tech-tag {
-    @apply px-2.5 py-1 text-[11px] mono font-medium rounded transition-colors duration-200 inline-flex items-center;
+    @apply px-2.5 py-1 text-[11px] mono font-bold inline-flex items-center;
     background: hsl(var(--secondary));
-    color: hsl(var(--secondary-foreground));
-    border: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border) / 0.7);
+    border-radius: 0px;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
   }
 
   .tech-tag:hover {
-    border-color: hsl(var(--accent) / 0.5);
-    color: hsl(var(--foreground));
+    border-color: hsl(var(--accent));
+    color: hsl(var(--accent));
+    background: hsl(var(--secondary) / 0.9);
+  }
+
+  .light .tech-tag {
+    border: 1.5px solid #000000;
+    background: #ffffff;
+    box-shadow: 2px 2px 0px 0px #000000;
+  }
+
+  .light .tech-tag:hover {
+    border-color: #0284c7;
+    color: #0284c7;
   }
 
   /* Section heading with index */
   .editorial-heading {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground heading-font;
+    @apply text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground heading-font uppercase;
   }
 
-  /* Scanline effect for small decorative technical zones */
-  .scanline-box {
-    position: relative;
-    overflow: hidden;
-  }
-  .scanline-box::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      to bottom,
-      transparent 0px,
-      transparent 2px,
-      hsl(var(--foreground) / 0.02) 3px,
-      transparent 4px
-    );
+  /* Brutalist Terminal Window */
+  .terminal-window {
+    background: #05070d;
+    border: 2px solid hsl(var(--accent));
+    border-radius: 0px;
+    box-shadow: 6px 6px 0px 0px hsl(var(--accent) / 0.6);
   }
 
-  /* Logo styling */
-  .logo-text-a {
-    color: hsl(var(--accent));
+  .light .terminal-window {
+    background: #05070d;
+    border: 2px solid #000000;
+    box-shadow: 6px 6px 0px 0px #0284c7;
   }
-  .logo-text-m {
-    color: hsl(var(--foreground));
+
+  .terminal-titlebar {
+    background: #0d1220;
+    border-bottom: 2px solid hsl(var(--accent) / 0.4);
+  }
+
+  .light .terminal-titlebar {
+    background: #0d1220;
+    border-bottom: 2px solid #000000;
+  }
+
+  .terminal-body {
+    background: #05070d;
+  }
+
+  .light .terminal-body {
+    background: #05070d;
   }
 }
 
 /* Subtle editorial scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted));
-  border-radius: 2px;
+  background: hsl(var(--accent));
+  border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
-}
-
-/* Terminal window styling (restrained & clean) */
-.terminal-window {
-  background: hsl(224 25% 6% / 0.98);
-  border: 1px solid hsl(224 16% 18%);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
-}
-
-.light .terminal-window {
-  background: hsl(220 20% 8% / 0.98);
-  border: 1px solid hsl(215 20% 25%);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
-}
-
-.terminal-titlebar {
-  background: hsl(224 22% 9%);
-  border-bottom: 1px solid hsl(224 16% 16%);
-}
-
-.light .terminal-titlebar {
-  background: hsl(220 20% 12%);
-  border-bottom: 1px solid hsl(215 20% 22%);
-}
-
-.terminal-body {
-  background: hsl(224 25% 5%);
-}
-
-.light .terminal-body {
-  background: hsl(220 20% 7%);
+  background: hsl(var(--foreground));
 }
 
 /* Clean line animation */

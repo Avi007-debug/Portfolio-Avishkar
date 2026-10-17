@@ -88,12 +88,12 @@ export const SectionIndex = () => {
               {num}
             </span>
 
-            {/* Minimalist Line Indicator - Clean, transparent, zero blurry box */}
+            {/* Brutalist Block Tick Indicator */}
             <span
-              className={`h-0.5 transition-all duration-300 rounded-full ${
+              className={`transition-all duration-200 rounded-none ${
                 isActive
-                  ? "w-5 bg-accent shadow-[0_0_8px_rgba(6,182,212,0.6)]"
-                  : "w-2 bg-border/80 group-hover:w-3.5 group-hover:bg-foreground/60"
+                  ? "w-5 h-1 bg-accent shadow-[2px_2px_0px_0px_#06b6d4] light:shadow-[2px_2px_0px_0px_#000000]"
+                  : "w-2.5 h-0.5 bg-border/80 light:bg-black/60 group-hover:w-4 group-hover:bg-accent"
               }`}
             />
           </button>
