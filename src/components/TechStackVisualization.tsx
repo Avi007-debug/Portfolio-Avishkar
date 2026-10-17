@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
 import { Code, Server, Brain, Shield, Cloud, Terminal } from "lucide-react";
+import CyberScrambleText from "./CyberScrambleText";
 
 interface TechCategory {
   name: string;
@@ -74,7 +75,7 @@ export const TechStackVisualization = () => (
   <SectionWrapper id="skills" index="06" tag="GRAPH CAPABILITIES ARCHITECTURE">
     <div className="mb-10 text-center md:text-left">
       <h2 className="editorial-heading">
-        Technical Capabilities &amp; System Graph
+        <CyberScrambleText text="Technical Capabilities & System Graph" />
       </h2>
       <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
         Interactive topological network map depicting full-stack engineering and security vectors

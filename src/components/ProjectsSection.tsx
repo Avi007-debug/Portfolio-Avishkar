@@ -2,6 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
 import { ArrowUpRight, Github, Globe, Search, X, Layers, Code2, ShieldAlert } from "lucide-react";
+import BrutalistTiltCard from "./BrutalistTiltCard";
+import CyberScrambleText from "./CyberScrambleText";
 
 interface Project {
   title: string;
@@ -281,7 +283,7 @@ export const ProjectsSection = () => {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
           <h2 className="editorial-heading">
-            Selected Engineering Projects
+            <CyberScrambleText text="Selected Engineering Projects" />
           </h2>
           <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
             Archived systems across graph security, low-latency C pipelines, and multi-tenant AI
@@ -344,20 +346,22 @@ export const ProjectsSection = () => {
             const projectNum = String(idx + 1).padStart(2, "0");
 
             return (
-              <motion.article
+              <motion.div
                 layout
                 key={project.title}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.25 }}
-                className="dossier-card flex flex-col justify-between p-6 relative group overflow-hidden"
-                style={{
-                  // Project-specific accent subtle left border indicator
-                  borderLeft: `3px solid ${project.accent}`,
-                }}
+                className="h-full"
               >
-                <div>
+                <BrutalistTiltCard
+                  className="dossier-card flex flex-col justify-between p-6 relative group overflow-hidden h-full"
+                  style={{
+                    borderLeft: `4px solid ${project.accent}`,
+                  }}
+                >
+                  <div>
                   {/* Top metadata line: Project Number + Role/Highlight */}
                   <div className="flex items-center justify-between mb-3 text-[11px] mono">
                     <span
@@ -444,7 +448,8 @@ export const ProjectsSection = () => {
                     </div>
                   </div>
                 </div>
-              </motion.article>
+              </BrutalistTiltCard>
+            </motion.div>
             );
           })}
         </AnimatePresence>

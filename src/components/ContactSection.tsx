@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { Mail, Linkedin, Github, FileText, Copy, Check, ArrowUpRight } from "lucide-react";
+import CyberScrambleText from "./CyberScrambleText";
 
 export const ContactSection = () => {
   const [copied, setCopied] = useState(false);
@@ -15,14 +16,14 @@ export const ContactSection = () => {
   return (
     <SectionWrapper id="contact" index="08" tag="DIRECT COMMUNICATION">
       <div className="max-w-4xl mx-auto py-8">
-        <div className="border-b border-border/60 pb-8 mb-10">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs mono mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        <div className="border-b-2 border-border/80 light:border-black pb-8 mb-10">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 border-2 border-emerald-600 dark:border-emerald-400 bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 shadow-[2px_2px_0px_0px_#065f46] dark:shadow-[2px_2px_0px_0px_#10b981] text-xs mono mb-6 font-bold">
+            <span className="w-2 h-2 bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
             <span>COMMUNICATION CHANNEL // OPEN</span>
           </div>
 
           <h2 className="heading-font text-4xl sm:text-5xl md:text-6xl font-black text-foreground tracking-tight leading-[1.05] mb-4">
-            Let's build secure, intelligent systems together.
+            <CyberScrambleText text="Let's build secure, intelligent systems together." />
           </h2>
 
           <p className="text-secondary-foreground text-sm sm:text-base leading-relaxed max-w-2xl">

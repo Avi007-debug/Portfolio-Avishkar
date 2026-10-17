@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
 import { Briefcase, Users, Smartphone, ChevronDown, ChevronUp, MapPin, Github, Globe, Linkedin, ArrowUpRight } from "lucide-react";
+import CyberScrambleText from "./CyberScrambleText";
 
 interface Experience {
   title: string;
@@ -261,7 +262,7 @@ export const ExperienceSection = () => {
     <SectionWrapper id="experience" index="04" tag="STRUCTURED TIMELINE">
       <div className="mb-10">
         <h2 className="editorial-heading">
-          Experience &amp; Technical Leadership
+          <CyberScrambleText text="Experience & Technical Leadership" />
         </h2>
         <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
           Chronological engineering roles, startup leadership, and community infrastructure

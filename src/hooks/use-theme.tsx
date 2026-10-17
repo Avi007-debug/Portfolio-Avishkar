@@ -1,13 +1,19 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import ThemeGlitchWipe from "@/components/ThemeGlitchWipe";
 
 type Theme = "dark" | "light";
 
 interface ThemeContextType {
   theme: Theme;
   toggle: () => void;
+  isGlitching: boolean;
 }
 
-const ThemeContext = createContext<ThemeContextType>({ theme: "dark", toggle: () => {} });
+const ThemeContext = createContext<ThemeContextType>({
+  theme: "dark",
+  toggle: () => {},
+  isGlitching: false,
+});
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -18,6 +24,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     }
     return "dark";
   });
+  const [isGlitching, setIsGlitching] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -39,10 +46,21 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const toggle = () => {
-    setTheme((t) => (t === "dark" ? "light" : "dark"));
+    setIsGlitching(true);
+    setTimeout(() => {
+      setTheme((t) => (t === "dark" ? "light" : "dark"));
+    }, 40);
+    setTimeout(() => {
+      setIsGlitching(false);
+    }, 260);
   };
 
-  return <ThemeContext.Provider value={{ theme, toggle }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme, toggle, isGlitching }}>
+      <ThemeGlitchWipe active={isGlitching} />
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export const useTheme = () => useContext(ThemeContext);

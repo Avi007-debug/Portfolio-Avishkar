@@ -1,5 +1,6 @@
 import SectionWrapper from "./SectionWrapper";
 import { Trophy, Star, Award, Users, ShieldCheck } from "lucide-react";
+import CyberScrambleText from "./CyberScrambleText";
 
 const achievements = [
   {
@@ -38,7 +39,7 @@ export const AchievementsSection = () => (
   <SectionWrapper id="achievements" tag="KEY HONORS & MILESTONES">
     <div className="mb-8">
       <h2 className="editorial-heading">
-        Recognitions &amp; Milestones
+        <CyberScrambleText text="Recognitions & Milestones" />
       </h2>
       <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
         Competitively verified hackathon placements, academic rankings, and leadership impact

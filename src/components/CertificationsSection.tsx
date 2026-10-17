@@ -1,5 +1,6 @@
 import SectionWrapper from "./SectionWrapper";
 import { BadgeCheck, ExternalLink } from "lucide-react";
+import CyberScrambleText from "./CyberScrambleText";
 
 const certs = [
   {
@@ -32,7 +33,7 @@ export const CertificationsSection = () => (
   <SectionWrapper id="certifications" index="07" tag="INDUSTRY CREDENTIALS">
     <div className="mb-8">
       <h2 className="editorial-heading">
-        Verified Certifications &amp; Accreditations
+        <CyberScrambleText text="Verified Certifications & Accreditations" />
       </h2>
       <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
         Official cloud computing, artificial intelligence, and data platform credentials

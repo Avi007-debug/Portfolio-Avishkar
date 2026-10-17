@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
 import { GraduationCap, BookOpen, Award, CheckCircle } from "lucide-react";
+import CyberScrambleText from "./CyberScrambleText";
 
 export const EducationSection = () => (
   <SectionWrapper id="education" index="03" tag="ACADEMIC RIGOR & CREDENTIALS">
     <div className="mb-10">
       <h2 className="editorial-heading">
-        Academic Trajectory &amp; Examination Ranks
+        <CyberScrambleText text="Academic Trajectory & Examination Ranks" />
       </h2>
       <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
         Verified institutional credentials, engineering specialization, and standardized percentiles

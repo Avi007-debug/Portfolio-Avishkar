@@ -41,12 +41,14 @@ const cyberSpecializationMap = [
   { label: "RAG & Vector Pipelines", metric: "50k+ Clinical Embeddings", tag: "INFERENCE" },
 ];
 
+import CyberScrambleText from "./CyberScrambleText";
+
 export const AboutSection = () => {
   return (
     <SectionWrapper id="about" index="02" tag="ENGINEERING DOSSIER">
       <div className="flex flex-col gap-2 mb-10">
         <h2 className="editorial-heading">
-          Technical Profile &amp; Core Systems
+          <CyberScrambleText text="Technical Profile & Core Systems" />
         </h2>
         <p className="mono text-xs text-muted-foreground uppercase tracking-wider">
           Systematic overview of architecture, academic rigor, and research vectors
