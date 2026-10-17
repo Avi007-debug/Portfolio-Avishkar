@@ -15,7 +15,7 @@ export const SectionWrapper = ({ id, children, className = "", index, tag }: Pro
       id={id}
       className={`relative py-20 md:py-24 px-6 border-t border-border/40 overflow-hidden ${className}`}
     >
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {(index || tag) && (
           <div className="flex items-center gap-2 mb-4 select-none">
             {index && (

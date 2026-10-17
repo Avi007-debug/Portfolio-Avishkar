@@ -67,8 +67,8 @@ export const HeroSection = () => {
 
       {/* ── Main Asymmetric Editorial Grid ── */}
       <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center my-auto py-8">
-        {/* Left Column: Typographic Centerpiece (7 cols on desktop) */}
-        <div className="lg:col-span-7 flex flex-col justify-center text-left">
+        {/* Left Column: Typographic Centerpiece (6 cols on desktop) */}
+        <div className="lg:col-span-6 flex flex-col justify-center text-left">
           {/* Identity Sub-label */}
           <motion.div
             custom={0.12}
@@ -181,13 +181,13 @@ export const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Right Column: Terminal Console Workstation (5 cols on desktop) */}
+        {/* Right Column: Terminal Console Workstation (6 cols on desktop) */}
         <motion.div
           custom={0.35}
           initial="hidden"
           animate="visible"
           variants={fadeUpVariants}
-          className="lg:col-span-5 w-full flex justify-center"
+          className="lg:col-span-6 w-full flex justify-center lg:justify-end"
         >
           <TerminalIntro />
         </motion.div>
