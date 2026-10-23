@@ -7,6 +7,9 @@ interface CapabilityCategory {
   icon: React.ComponentType<{ className?: string }>;
   capabilities: { name: string; context: string }[];
 }
+const HIDE_PROJECT_1 =
+  import.meta.env.VITE_HIDE_PROJECT_1 === "true" ||
+  import.meta.env.VITE_HIDE_PROJECT_1 === "1";
 
 const capabilityMatrix: CapabilityCategory[] = [
   {
@@ -14,7 +17,12 @@ const capabilityMatrix: CapabilityCategory[] = [
     tag: "PRIMARY VECTOR",
     icon: Shield,
     capabilities: [
-      { name: "Active Directory Security", context: "Temporal Hypergraph Attack Path Analysis (HyperAD)" },
+      {
+        name: "Active Directory Security",
+        context: HIDE_PROJECT_1
+          ? "Temporal Hypergraph Attack Path Analysis & Risk Scoring"
+          : "Temporal Hypergraph Attack Path Analysis (HyperAD)",
+      },
       { name: "Intrusion Detection (IDS/IPS)", context: "Kernel-level Scapy packet capture & ML classifiers (SmartSecure)" },
       { name: "Model Interpretability", context: "SHAP Explainability for real-time security alerts" },
       { name: "Network Protocol Analysis", context: "Wireshark, Nmap, bidirectional CICIDS flow aggregation" },

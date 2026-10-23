@@ -18,8 +18,12 @@ interface Project {
   impact?: string;
   accent: string;
 }
+// Environment toggle to hide Project #1 (HyperAD) and dynamically renumber the catalog
+const HIDE_PROJECT_1 =
+  import.meta.env.VITE_HIDE_PROJECT_1 === "true" ||
+  import.meta.env.VITE_HIDE_PROJECT_1 === "1";
 
-const projects: Project[] = [
+const rawProjects: Project[] = [
   {
     title: "HyperAD",
     subtitle: "Active Directory Attack Path Analysis Platform",
@@ -260,6 +264,11 @@ const projects: Project[] = [
   }
 ];
 
+// Active projects list: dynamically hides Project #1 (HyperAD) when HIDE_PROJECT_1 is enabled
+const projects: Project[] = HIDE_PROJECT_1
+  ? rawProjects.filter((p) => p.title !== "HyperAD")
+  : rawProjects;
+
 const categoryList = ["All", "Cybersecurity", "AI & ML", "Full Stack", "IoT & Systems"];
 
 export const ProjectsSection = () => {
@@ -361,7 +370,10 @@ export const ProjectsSection = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, idx) => {
-            const projectNum = String(idx + 1).padStart(2, "0");
+            const projectCatalogIndex = projects.findIndex((p) => p.title === project.title);
+            const projectNum = String(
+              activeCategory === "All" && !searchQuery ? idx + 1 : projectCatalogIndex + 1
+            ).padStart(2, "0");
 
             return (
               <motion.div

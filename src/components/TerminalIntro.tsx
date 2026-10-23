@@ -1,11 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+const HIDE_PROJECT_1 =
+  import.meta.env.VITE_HIDE_PROJECT_1 === "true" ||
+  import.meta.env.VITE_HIDE_PROJECT_1 === "1";
 
 const commands = [
   { cmd: "whoami", output: "Avishkar More" },
   { cmd: "cat role.txt", output: "Cybersecurity & Distributed Systems Engineer" },
   { cmd: "echo $ACADEMICS", output: "9.74 CGPA @ RV College of Engineering" },
-  { cmd: "ls focus/", output: "HyperAD  SmartSecureIDS  CatchUpX  MasterAlgo" },
+  {
+    cmd: "ls focus/",
+    output: HIDE_PROJECT_1
+      ? "SmartStay  SmartSecureIDS  CatchUpX  MasterAlgo"
+      : "HyperAD  SmartSecureIDS  CatchUpX  MasterAlgo",
+  },
   { cmd: "./status.sh", output: "● ACTIVE — Open for 2026 Internships & Research" },
 ];
 

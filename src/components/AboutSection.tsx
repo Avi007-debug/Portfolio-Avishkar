@@ -1,12 +1,17 @@
 import SectionWrapper from "./SectionWrapper";
 import { Shield, Network, Terminal, Cpu, Key, Lock, CheckCircle2 } from "lucide-react";
 import CyberScrambleText from "./CyberScrambleText";
+const HIDE_PROJECT_1 =
+  import.meta.env.VITE_HIDE_PROJECT_1 === "true" ||
+  import.meta.env.VITE_HIDE_PROJECT_1 === "1";
 
 const technicalFocusAreas = [
   {
     icon: Shield,
     title: "Graph Intelligence & AD Defense",
-    detail: "Modeling enterprise identity relationships as temporal hypergraphs in HyperAD to detect multi-hop privilege escalation attack paths before exploitation.",
+    detail: HIDE_PROJECT_1
+      ? "Modeling enterprise identity relationships as temporal hypergraphs to detect multi-hop privilege escalation attack paths before exploitation."
+      : "Modeling enterprise identity relationships as temporal hypergraphs in HyperAD to detect multi-hop privilege escalation attack paths before exploitation.",
   },
   {
     icon: Network,
