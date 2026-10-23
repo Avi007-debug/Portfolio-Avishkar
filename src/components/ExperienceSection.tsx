@@ -4,6 +4,13 @@ import SectionWrapper from "./SectionWrapper";
 import { Briefcase, Users, Smartphone, ChevronDown, ChevronUp, MapPin, Github, Globe, Linkedin, ArrowUpRight } from "lucide-react";
 import CyberScrambleText from "./CyberScrambleText";
 
+interface RoleTrack {
+  role: string;
+  period: string;
+  badge?: string;
+  description?: string;
+}
+
 interface Experience {
   title: string;
   org: string;
@@ -14,6 +21,7 @@ interface Experience {
   tech: string[];
   points: string[];
   metrics?: { label: string; value: string }[];
+  timelineTrack?: RoleTrack[];
   github?: string;
   live?: string;
   linkedin?: string;
@@ -44,27 +52,44 @@ const experiences: Experience[] = [
     linkedin: "https://www.linkedin.com/in/heapify-global-community-7bb767414/",
   },
   {
-    title: "Technical Co-Founder & Technical Lead",
-    org: "CatchUpX (EdTech Platform)",
-    period: "Jan 2026 – Aug 2026",
-    location: "Remote",
+    title: "Development Lead",
+    org: "Google Developer Groups (GDG) RVCE",
+    period: "May 2025 – Present",
+    location: "Bangalore, India",
     icon: Briefcase,
-    shortDescription: "Architected a multi-tenant School Management System integrated with a real-time cognitive learning gap diagnostic engine.",
-    tech: ["Python", "FastAPI", "Next.js", "TypeScript", "PostgreSQL", "AWS App Runner", "Groq LLM API", "Docker", "SQLAlchemy", "JWT"],
+    shortDescription: "Elevated from Junior Core Team to Development Lead, directing technical operations and hackathon logistics for 800+ developers across RVCE's flagship technical community.",
+    timelineTrack: [
+      {
+        role: "Development Lead",
+        period: "Aug 2026 – Present",
+        badge: "CURRENT LEAD",
+        description: "Directing technical operations, developer initiatives, and hackathon logistics."
+      },
+      {
+        role: "Junior Core Team (JCT)",
+        period: "Nov 2025 – July 2026",
+        badge: "PROMOTED",
+        description: "Managed hackathon finalist logistics, student operations, and technical workshops."
+      },
+      {
+        role: "Community Member",
+        period: "May 2025 – Nov 2025",
+        badge: "JOINED",
+        description: "Joined GDG RVCE community; engaged in technical sessions and open-source hackathons."
+      }
+    ],
+    tech: ["Event Execution", "Technical Operations", "Project Management", "Team Leadership", "Logistics Architecture"],
     points: [
-      "Architected and deployed an AI-driven EdTech platform using Next.js and FastAPI, supporting multi-tenant role-based access for students, teachers, and parents.",
-      "Engineered a real-time learning gap diagnostic engine integrating Groq LLM API, reducing cognitive analysis latency to sub-seconds while enforcing strict JSON schemas.",
-      "Designed a highly relational PostgreSQL database schema with 19+ tables using SQLAlchemy, optimizing for multi-tenancy isolation and predictive exam analytics.",
-      "Deployed scalable backend microservices on AWS App Runner via Docker ECR, implementing strict security middlewares, rate-limiting, and custom JWT authentication."
+      "Promoted to Development Lead (Aug 2026 – Present) following impactful execution on the Junior Core Team (Nov 2025 – July 2026) after joining GDG RVCE as a member in May 2025.",
+      "Directing technical operations and coordinating flagship hackathons, workshops, and student developer initiatives for 800+ participants.",
+      "Managing 30+ finalist teams, jury panels, industry mentors, and technical judging criteria across multi-track hackathons.",
+      "Organized and executed 10+ hands-on technical workshops spanning Cloud, AI, and Software Engineering to build a resilient developer ecosystem."
     ],
     metrics: [
-      { label: "Schools Piloted", value: "2" },
-      { label: "AI Latency", value: "<1s" },
-      { label: "DB Tables", value: "19+" }
-    ],
-    github: "https://github.com/GhostRiderGaming/CatchupXV1.git",
-    live: "https://CatchupX.in",
-    linkedin: "https://www.linkedin.com/company/catchupx/about/?viewAsMember=true",
+      { label: "Hackathon Participants", value: "800+" },
+      { label: "Finalist Teams Managed", value: "30+" },
+      { label: "Technical Events", value: "10+" }
+    ]
   },
   {
     title: "AI Engineering Intern",
@@ -89,24 +114,27 @@ const experiences: Experience[] = [
     note: "Frontend interface is live; backend AI API free-tier cloud server has expired."
   },
   {
-    title: "Development Lead",
-    org: "Google Developer Groups (GDG) RVCE",
-    period: "May 2025 – Present",
-    location: "Bangalore, India",
+    title: "Technical Co-Founder & Technical Lead",
+    org: "CatchUpX (EdTech Platform)",
+    period: "Jan 2026 – Aug 2026",
+    location: "Remote",
     icon: Briefcase,
-    shortDescription: "Leading technical operations and hackathon logistics for RVCE's developer community, coordinating major student technical initiatives.",
-    tech: ["Event Execution", "Project Management", "Leadership", "Technical Operations"],
+    shortDescription: "Architected a multi-tenant School Management System integrated with a real-time cognitive learning gap diagnostic engine.",
+    tech: ["Python", "FastAPI", "Next.js", "TypeScript", "PostgreSQL", "AWS App Runner", "Groq LLM API", "Docker", "SQLAlchemy", "JWT"],
     points: [
-      "Organized and coordinated large-scale hackathons, workshops, and technical events.",
-      "Worked with cross-functional student teams to improve event execution and participant experience.",
-      "Managed communication with participants, mentors, judges, and sponsors during community events.",
-      "Helped build a stronger developer ecosystem through technical sessions and community initiatives."
+      "Architected and deployed an AI-driven EdTech platform using Next.js and FastAPI, supporting multi-tenant role-based access for students, teachers, and parents.",
+      "Engineered a real-time learning gap diagnostic engine integrating Groq LLM API, reducing cognitive analysis latency to sub-seconds while enforcing strict JSON schemas.",
+      "Designed a highly relational PostgreSQL database schema with 19+ tables using SQLAlchemy, optimizing for multi-tenancy isolation and predictive exam analytics.",
+      "Deployed scalable backend microservices on AWS App Runner via Docker ECR, implementing strict security middlewares, rate-limiting, and custom JWT authentication."
     ],
     metrics: [
-      { label: "Hackathon Participants", value: "800+" },
-      { label: "Finalist Teams Managed", value: "30+" },
-      { label: "Technical Events", value: "10+" }
-    ]
+      { label: "Schools Piloted", value: "2" },
+      { label: "AI Latency", value: "<1s" },
+      { label: "DB Tables", value: "19+" }
+    ],
+    github: "https://github.com/GhostRiderGaming/CatchupXV1.git",
+    live: "https://CatchupX.in",
+    linkedin: "https://www.linkedin.com/company/catchupx/about/?viewAsMember=true",
   }
 ];
 
@@ -167,6 +195,56 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
         <p className="text-xs sm:text-sm text-secondary-foreground mt-3 leading-relaxed">
           {exp.shortDescription}
         </p>
+
+        {/* Role Progression Pathway */}
+        {exp.timelineTrack && (
+          <div className="mt-4 p-3.5 bg-secondary/30 border border-border/70">
+            <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-border/50">
+              <span className="cyber-label text-accent font-bold flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 bg-accent inline-block" />
+                CAREER TRACK &amp; PROGRESSION
+              </span>
+              <span className="mono text-[10px] text-muted-foreground">
+                PROMOTION PATHWAY
+              </span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+              {exp.timelineTrack.map((step, idx) => (
+                <div
+                  key={idx}
+                  className={`p-2.5 border transition-all ${
+                    idx === 0
+                      ? "border-accent/60 bg-accent/5 shadow-[2px_2px_0px_0px_#06b6d4] light:shadow-[2px_2px_0px_0px_#000000]"
+                      : "border-border/60 bg-card/60"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-1 mb-1">
+                    <span
+                      className={`mono text-[9px] uppercase font-bold px-1.5 py-0.5 border ${
+                        idx === 0
+                          ? "text-accent border-accent/40 bg-accent/10"
+                          : "text-muted-foreground border-border/60 bg-secondary/50"
+                      }`}
+                    >
+                      {step.badge || `PHASE 0${3 - idx}`}
+                    </span>
+                    <span className="mono text-[10px] text-foreground font-semibold">
+                      {step.period}
+                    </span>
+                  </div>
+                  <p className="heading-font text-xs font-bold text-foreground mt-1.5">
+                    {step.role}
+                  </p>
+                  {step.description && (
+                    <p className="text-[11px] text-secondary-foreground mt-1 leading-snug">
+                      {step.description}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Expandable Details */}
         <AnimatePresence initial={false}>

@@ -34,7 +34,67 @@ This file contains the detailed, ATS-optimized, and narrative-driven content for
 
 ---
 
-### 2. CatchUpX (Pre-launch EdTech Startup)
+### 2. Google Developer Groups (GDG) RVCE
+**Title:** Development Lead (prev. Junior Core Team & Community Member)
+**Duration:** May 2025 – Present | Bangalore, India
+* **Development Lead:** Aug 2026 – Present
+* **Junior Core Team (JCT):** Nov 2025 – July 2026
+* **Community Member:** May 2025 – Nov 2025
+**Tech Stack:** Event Execution, Project Management, Leadership, Technical Operations, Logistics Architecture
+
+**Responsibilities & Key Contributions:**
+* Promoted to Development Lead (Aug 2026 – Present) following impactful execution on the Junior Core Team (Nov 2025 – July 2026) after joining GDG RVCE as a member in May 2025.
+* Organized and coordinated large-scale hackathons, workshops, and technical events for 800+ student developers.
+* Worked with cross-functional student teams to improve event execution and participant experience.
+* Managed communication with 30+ finalist teams, mentors, judges, and sponsors during community events.
+* Helped build a stronger developer ecosystem through technical sessions and community initiatives across AI, Cloud, and Software Engineering.
+
+**Highlights:**
+* Elevated from Junior Core Team to Development Lead at GDG RVCE.
+* Orchestrated flagship hackathons with 800+ participants and 30+ finalist teams.
+* Supported and organized 10+ technical events and hands-on workshops.
+* Improved leadership, cross-functional communication, and project coordination.
+
+**Key Metrics:**
+* 800+ hackathon participants coordinated
+* 30+ finalist teams managed
+* 10+ technical events supported
+
+---
+
+### 3. Capabl (MedAssist Healthcare Monitoring Platform)
+**Title:** AI Engineering Intern
+**Duration:** Feb 2026 – Jun 2026 | Remote
+**Tech Stack:** Python, TypeScript, PostgreSQL, RAG Pipelines, LLMs, REST APIs
+
+**Responsibilities & Key Contributions:**
+* Built AI applications using LLMs and prompt engineering.
+* Developed backend APIs for AI workflows.
+* Worked on RAG pipelines and vector search systems.
+* Optimized inference pipelines for performance and reliability.
+* Collaborated with engineers to deploy scalable AI solutions.
+* Developed a RAG-based AI platform (MedAssist) using TypeScript, Python, PostgreSQL, and LLM-powered retrieval pipelines.
+* Designed multi-tool agent workflows integrating semantic retrieval, context assembly, and AI-driven response generation.
+* Built backend orchestration APIs and database pipelines through cross-functional collaboration and communication.
+
+**Highlights:**
+* Developed production AI applications.
+* Built REST APIs and backend services.
+* Worked with LLMs and Retrieval-Augmented Generation.
+* Improved inference speed and system reliability.
+
+**Key Metrics:**
+* 4+ internal orchestration APIs built
+* 3 key LLMs integrated (Llama-3, GPT, Claude class)
+* 50k+ vector embeddings processed
+
+**Links:**
+* **Live Prototype (Frontend Ready / Backend Offline):** https://team-agent-wars-healthcare-monitori.vercel.app/
+* **GitHub Repository:** https://github.com/Avi007-debug/Team_Agent_Wars_Healthcare-Monitoring-AI-Agent
+
+---
+
+### 4. CatchUpX (Pre-launch EdTech Startup)
 **Title:** Technical Co-Founder & Technical Lead
 **Duration:** Jan 2026 – Aug 2026 | Remote
 **Tech Stack:** Python, FastAPI, Next.js, TypeScript, PostgreSQL, AWS App Runner, Groq LLM API, Docker, SQLAlchemy, JWT
@@ -71,63 +131,6 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **LinkedIn:** https://www.linkedin.com/company/catchupx/about/?viewAsMember=true
 * **Live Site:** https://CatchupX.in
 * **GitHub Repository:** https://github.com/GhostRiderGaming/CatchupXV1.git
-
----
-
-### 3. Capabl (MedAssist Healthcare Monitoring Platform)
-**Title:** AI Engineering Intern
-**Duration:** Feb 2026 – Jun 2026 | Remote
-**Tech Stack:** Python, TypeScript, PostgreSQL, RAG Pipelines, LLMs, REST APIs
-
-**Responsibilities & Key Contributions:**
-* Built AI applications using LLMs and prompt engineering.
-* Developed backend APIs for AI workflows.
-* Worked on RAG pipelines and vector search systems.
-* Optimized inference pipelines for performance and reliability.
-* Collaborated with engineers to deploy scalable AI solutions.
-* Developed a RAG-based AI platform (MedAssist) using TypeScript, Python, PostgreSQL, and LLM-powered retrieval pipelines.
-* Designed multi-tool agent workflows integrating semantic retrieval, context assembly, and AI-driven response generation.
-* Built backend orchestration APIs and database pipelines through cross-functional collaboration and communication.
-
-**Highlights:**
-* Developed production AI applications.
-* Built REST APIs and backend services.
-* Worked with LLMs and Retrieval-Augmented Generation.
-* Improved inference speed and system reliability.
-
-**Key Metrics:**
-* 4+ internal orchestration APIs built
-* 3 key LLMs integrated (Llama-3, GPT, Claude class)
-* 50k+ vector embeddings processed
-
-**Links:**
-* **Live Prototype (Frontend Ready / Backend Offline):** https://team-agent-wars-healthcare-monitori.vercel.app/
-* **GitHub Repository:** https://github.com/Avi007-debug/Team_Agent_Wars_Healthcare-Monitoring-AI-Agent
-
----
-
-### 4. Google Developer Groups (GDG) RVCE
-**Title:** Development Lead
-**Duration:** May 2025 – Present | Bangalore, India
-**Tech Stack:** Event Execution, Project Management, Leadership, Technical Operations
-
-**Responsibilities & Key Contributions:**
-* Organized and coordinated large-scale hackathons, workshops, and technical events.
-* Worked with cross-functional student teams to improve event execution and participant experience.
-* Managed communication with participants, mentors, judges, and sponsors during community events.
-* Helped build a stronger developer ecosystem through technical sessions and community initiatives.
-* Contributed to planning and execution of AI, Cloud, and Software Engineering events.
-
-**Highlights:**
-* Development Lead at GDG RVCE.
-* Organized multiple developer events and hackathons.
-* Worked with industry speakers and community partners.
-* Improved leadership, communication, and project coordination skills.
-
-**Key Metrics:**
-* 800+ hackathon participants coordinated
-* 30+ finalist teams managed
-* 10+ technical events supported
 
 ---
 
