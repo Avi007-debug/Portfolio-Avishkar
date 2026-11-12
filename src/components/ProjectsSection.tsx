@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { ArrowUpRight, Github, Globe, Search, X, Layers, Code2, ShieldAlert } from "lucide-react";
+import { ArrowUpRight, Github, Globe, Search, X, Layers, Code2, ShieldAlert, Lock } from "lucide-react";
 import BrutalistTiltCard from "./BrutalistTiltCard";
 import CyberScrambleText from "./CyberScrambleText";
 
@@ -17,29 +17,115 @@ interface Project {
   points: string[];
   impact?: string;
   accent: string;
+  status: "Completed" | "Ongoing";
+  isPrivate?: boolean;
+  privateNote?: string;
 }
-// Environment toggle to hide Project #1 (HyperAD) and dynamically renumber the catalog
-const HIDE_PROJECT_1 =
-  import.meta.env.VITE_HIDE_PROJECT_1 === "true" ||
-  import.meta.env.VITE_HIDE_PROJECT_1 === "1";
 
 const rawProjects: Project[] = [
   {
+    title: "PathWarden",
+    subtitle: "Evidence-Driven Attack Path Reconstruction & Threat Forensics",
+    description: "High-scale threat investigation platform ingesting 30 GB+ heterogeneous EDR/SIEM logs under an 8 GB RAM lock with DuckDB, near-linear graph correlation, and an air-gapped on-device Tri-Agent LLM.",
+    tech: ["Python", "FastAPI", "DuckDB", "PyArrow", "Next.js", "Cytoscape.js", "Ollama", "Docker"],
+    github: "https://github.com/Avi007-debug/PathWarden",
+    live: "https://path-warden-delta.vercel.app/",
+    highlight: "Cybersecurity + Big Data",
+    categories: ["Cybersecurity", "AI & ML", "Full Stack"],
+    accent: "#06b6d4", // Glitch Cyan
+    status: "Ongoing",
+    isPrivate: false,
+    points: [
+      "Processes 15 GB to 30 GB+ raw security/EDR logs (20M+ events) under an 8.0 GB RAM lock (<500 MB peak per worker, 3-4 GB overall system usage) via 64 MB streaming chunkers.",
+      "Vectorized DuckDB SQL over PyArrow Parquet views executes columnar joins (event_ts windowing) across millions of records in seconds.",
+      "Graph correlation via O(alpha(N)) Disjoint-set Union-Find with logarithmic degree damping, cutting alert noise by 56%–86%.",
+      "Air-gapped on-device Tri-Agent LLM engine (Ollama / Qwen 2.5 Coder) generating plain-English incident briefings with zero cloud telemetry egress.",
+      "Deterministic forensic chain of custody with byte-offset pointers (ref:file_id:start_byte:line_num) and defensible blast radius reachability."
+    ],
+    impact: "Solves enterprise SecOps alert fatigue by reconstructing full multi-stage attack DAGs from 30 GB raw telemetry under strict memory locks."
+  },
+  {
     title: "HyperAD",
-    subtitle: "Active Directory Attack Path Analysis Platform",
-    description: "Built a graph-intelligence security platform to analyze enterprise Active Directory attack paths using temporal hypergraphs and automated risk reasoning.",
-    tech: ["Python", "TypeScript", "CSS", "Temporal Hypergraphs", "Graph Algorithms"],
+    subtitle: "Active Directory Attack Path Intelligence Platform",
+    description: "Graph-intelligence security platform modeling enterprise Active Directory relationships as temporal hypergraphs, executing deterministic graph algorithms and LangChain ReAct agents.",
+    tech: ["Python", "FastAPI", "React", "D3.js", "Neo4j", "NetworkX", "HyperNetX", "LangChain", "Ollama"],
     github: "https://github.com/Avi007-debug/HyperAD",
     highlight: "Cybersecurity + AI",
     categories: ["Cybersecurity", "AI & ML"],
     accent: "#10b981", // Emerald
+    status: "Completed",
+    isPrivate: true,
+    privateNote: "Private repository due to patent evaluation & IP clearance review",
     points: [
-      "Developed an Active Directory security analysis platform that models enterprise identity relationships as temporal hypergraphs.",
-      "Implemented graph-based attack path detection and risk prioritization for proactive defense planning.",
-      "Designed an AI-assisted reasoning layer to convert graph findings into actionable remediation insights.",
-      "Built full-stack workflows enabling security analysts to investigate, interpret, and respond to privilege escalation risks."
+      "Models Active Directory identity relationships as temporal hypergraphs where edge risk weights decay exponentially over time based on credential staleness.",
+      "Implements deterministic graph algorithms: Temporal Bellman-Ford O(V*E), Tarjan's SCC for circular trust loops, Kleinberg HITS, and Frigioni Dynamic SSSP O(m log n) for real-time incremental updates.",
+      "Built an interactive counterfactual simulator on D3.js allowing analysts to sever compromised ACL edges and preview eliminated attack paths in real time.",
+      "Integrated LangChain ReAct agent with local LLaMA-3 for natural language to Cypher query translation and automated ReportLab PDF audit generation.",
+      "Developed as the practical implementation for an IEEE academic research paper and engineering dossier."
     ],
-    impact: "Uncovers complex, time-dependent attack paths inside Active Directory security matrices before exploitation."
+    impact: "Uncovers complex, time-dependent privilege escalation paths inside Active Directory security matrices before adversary exploitation."
+  },
+  {
+    title: "CipherLens",
+    subtitle: "AI-Powered IPsec Protocol Analyzer & Security Framework",
+    description: "Zero-decryption IPsec VPN assessment framework combining deterministic IKE state dissection with LightGBM + TreeSHAP flow classification, Shannon entropy verification, and NIST SP 800-77 scoring.",
+    tech: ["Python", "FastAPI", "React 19", "LightGBM", "TreeSHAP", "Scapy", "strongSwan", "Tailwind CSS"],
+    github: "https://github.com/Avi007-debug/CipherLens",
+    highlight: "Network Cryptography + XAI",
+    categories: ["Cybersecurity", "AI & ML", "Full Stack"],
+    accent: "#6366f1", // Electric Indigo
+    status: "Completed",
+    isPrivate: false,
+    points: [
+      "Built for NTRO under Smart India Hackathon 2026 (PS 26160) to audit encrypted tunnels without breaking payload privacy.",
+      "Trained a 24-feature LightGBM model classifying opaque ESP tunnels with 96.7%–99.4% accuracy (VoIP 99.4%, DNS Tunnels 99.1%, Bulk Exfil 97.5%) using timing variance and burst cadence.",
+      "Attached local TreeSHAP feature attributions (<15ms) certifying exact decision boundaries and computed real-time Shannon entropy (H(X) ~ 7.94/8.00 bits/byte) to verify ciphertext opacity.",
+      "Engineered deterministic IKEv1/IKEv2 state parser detecting CVE-2002-1623 (Aggressive Mode PSK cracking) and Sweet32 3DES collisions.",
+      "Implemented pre-deployment ipsec.conf policy what-if simulator and automated 0–100 posture scoring anchored to NIST SP 800-77 Rev. 1 & CNSA 2.0."
+    ],
+    impact: "Enables defense and intelligence agencies to detect encrypted tunnel exfiltration and protocol downgrades without decrypting payloads."
+  },
+  {
+    title: "ArgusASM",
+    subtitle: "Attack-Surface Inventory & Merkle Drift Sentinel",
+    description: "Autonomous External Attack-Surface Management (ASM) and cryptographic baseline drift sentinel enforcing strict authorization scope, 4 perimeter probes, explainable hygiene scoring, and SHA-256 Merkle audit chains.",
+    tech: ["Python", "FastAPI", "React 19", "TypeScript", "Vite", "dnspython", "cryptography", "Docker", "Render", "Vercel"],
+    github: "https://github.com/aiori-hackathon/A3-PS011-TC116",
+    live: "https://a3-ps-011-tc-116.vercel.app",
+    highlight: "EASM + Cryptography",
+    categories: ["Cybersecurity", "Full Stack"],
+    accent: "#f59e0b", // Amber
+    status: "Completed",
+    isPrivate: false,
+    points: [
+      "Engineered autonomous external perimeter sentinel for AIORI Hackathon 2026 (PS-011) enforcing strict scope caps (20 domains / 10 hosts) and zero-network-call rejections.",
+      "Built 4 concurrent probes: recursive DNS resolver with cycle detection, TLS X.509 ASN.1 certificate inspector, non-intrusive TCP banner grabber (ports 22, 53, 80, 443, 8080), and dangling cloud CNAME detector (AWS S3, GitHub Pages, Azure).",
+      "Architected stateful drift engine (T0 -> T1 -> T2) with 8 typed events and an explainable 0–100 Perimeter Hygiene scoring model with class deduction caps.",
+      "Integrated tamper-evident SHA-256 Merkle audit chain linking historical snapshot roots for non-repudiation and cryptographic audit verification.",
+      "Built Human-In-The-Loop (HITL) sign-off drawer, emergency kill-switch API, and automated SARIF 2.1.0 and printable executive audit report generators."
+    ],
+    impact: "Provides continuous, tamper-evident visibility over external attack surfaces while strictly guaranteeing non-exploitation safety policies."
+  },
+  {
+    title: "Vajra-OT",
+    subtitle: "Industrial Control Systems (ICS/SCADA) Security Platform",
+    description: "AI-powered OT/ICS security assessment and digital twin simulation platform auditing industrial networks across Purdue Model Zones with Modbus/S7Comm fingerprinting and a local LLM tool router.",
+    tech: ["Python", "FastAPI", "React", "TypeScript", "Modbus TCP", "Siemens S7Comm", "Conpot", "OpenPLC", "Ollama"],
+    github: "https://github.com/Avi007-debug/Vajra-OT",
+    highlight: "OT/ICS Security + Local LLM",
+    categories: ["Cybersecurity", "AI & ML", "IoT & Systems"],
+    accent: "#ef4444", // Red
+    status: "Ongoing",
+    isPrivate: true,
+    privateNote: "Private repository due to ongoing company research & industrial evaluation",
+    points: [
+      "Audits industrial devices across Purdue Model Zones (Level 1/2) with active protocol probes for Modbus TCP (MEI FC 43 Device ID) and Siemens S7Comm (COTP SZL firmware queries).",
+      "Automates industrial vulnerability detection: unauthenticated Modbus FC3 holding register access, default PLC credentials (openplc/admin), cleartext protocols, and firmware CVE matching (CVE-2021-31664, CVSS 9.8).",
+      "Deploys an optimized local LLM tool router (vajra-analyst-lite) under 2-second routing latency with 0ms deterministic keyword offline fallback and strict safety filters.",
+      "Features digital twin simulation lab with interactive SVG topology graph, animated flow particles, real-time node toggling (ONLINE/OFFLINE), and 8-second background threat monitoring.",
+      "Supports zero-code switching between real hardware (Conpot honeypot, OpenPLC on Raspberry Pi) and mocked simulation fallback across 5 industrial PLCs."
+    ],
+    impact: "Bridges the operational technology gap by automating non-disruptive security auditing and digital twin simulation for critical industrial infrastructure."
   },
   {
     title: "SmartStay",
@@ -50,7 +136,9 @@ const rawProjects: Project[] = [
     live: "https://smartstay-ruddy.vercel.app/",
     highlight: "SDE + AI",
     categories: ["AI & ML", "Full Stack"],
-    accent: "#f59e0b", // Solar Amber
+    accent: "#f97316", // Solar Orange
+    status: "Ongoing",
+    isPrivate: false,
     points: [
       "Built a production-ready React + TypeScript front end and Flask API integrated with Supabase for auth, real-time data, and storage.",
       "Integrated Groq AI models to implement 6 AI features (personalized recommendations, sentiment analysis, hidden-charges detector, travel-time estimator, listing description generator, and chatbot).",
@@ -68,6 +156,8 @@ const rawProjects: Project[] = [
     highlight: "Cybersecurity",
     categories: ["Cybersecurity", "AI & ML"],
     accent: "#3b82f6", // Electric Cobalt
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Developed a FastAPI-based real-time IDS using Scapy for packet capture, flow aggregation, and multi-stage ML classifiers.",
       "Built ensemble models (Random Forest / Gradient Boosting) and implemented SHAP explainability for model transparency.",
@@ -85,6 +175,8 @@ const rawProjects: Project[] = [
     highlight: "Systems + SDE",
     categories: ["Full Stack"],
     accent: "#06b6d4", // Glitch Teal / Cyan
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Engineered a full-stack platform utilizing a Node.js API to safely spawn and trace exactly 100 compiled C executables via IPC.",
       "Developed a dynamic React/Vite frontend using Framer Motion to parse complex JSON execution traces into GPU-accelerated step-by-step visual animations.",
@@ -103,6 +195,8 @@ const rawProjects: Project[] = [
     highlight: "SDE & Security",
     categories: ["Full Stack", "Cybersecurity"],
     accent: "#ec4899", // Signal Crimson / Pink
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Architected a full-stack hackathon management platform for participants and admins using React (TypeScript), FastAPI, and PostgreSQL (Supabase), automating team registration and live public leaderboards.",
       "Implemented a resilient submission pipeline with three-layer file validation, supporting datasets up to 10MB via dual storage backends (Supabase Storage and Google Drive API), ensuring secure data collection.",
@@ -121,6 +215,8 @@ const rawProjects: Project[] = [
     highlight: "RAG + AI Agents",
     categories: ["AI & ML", "Full Stack"],
     accent: "#14b8a6", // Teal
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Developed a RAG-powered healthcare monitoring system integrating semantic retrieval, multi-tool agents, and clinical context assembly.",
       "Designed a responsive React frontend interface for patient status visualization and interactive AI assistant communication.",
@@ -138,6 +234,8 @@ const rawProjects: Project[] = [
     highlight: "Mobile + AI",
     categories: ["AI & ML", "IoT & Systems"],
     accent: "#8b5cf6", // Violet
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Developed a cross-platform AI-powered mobile app to proactively assess relationship health and prevent silent degradation.",
       "Designed an insight pipeline that converts behavioral patterns into actionable interventions.",
@@ -155,6 +253,8 @@ const rawProjects: Project[] = [
     highlight: "Computer Vision",
     categories: ["AI & ML"],
     accent: "#a855f7", // Purple
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Built a real-time webcam session analyzer to detect face geometry and classify emotions (DeepFace) with low inference latency.",
       "Developed a Flask backend and React frontend dashboard featuring Recharts visualization for long-term mood history.",
@@ -172,6 +272,8 @@ const rawProjects: Project[] = [
     highlight: "IoT + Security",
     categories: ["IoT & Systems", "Cybersecurity"],
     accent: "#ef4444", // Crimson
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Built an IoT intrusion detection system integrating embedded sensing logic with application-layer monitoring.",
       "Implemented event-driven detection and alert workflows for improved physical security response.",
@@ -190,6 +292,8 @@ const rawProjects: Project[] = [
     highlight: "Computer Vision",
     categories: ["Full Stack"],
     accent: "#22c55e", // Grass Green
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Designed and implemented a deterministic CV pipeline (HSV segmentation, pixel-based metrics) to compute an interpretable Canopy Health Index and store results in Supabase.",
       "Built interactive React dashboards and Leaflet visualizations for region comparisons, temporal trends, and GeoJSON overlays.",
@@ -206,6 +310,8 @@ const rawProjects: Project[] = [
     highlight: "Systems & Networking",
     categories: ["Full Stack", "IoT & Systems"],
     accent: "#6366f1", // Slate Blue
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Implemented multi-threaded and multi-process C servers demonstrating pthreads, shared memory, message queues, and semaphores for IPC and concurrency.",
       "Built a modern Node.js/Socket.IO web server with JWT authentication, AES message encryption, and file upload support.",
@@ -222,6 +328,8 @@ const rawProjects: Project[] = [
     highlight: "Security",
     categories: ["Cybersecurity", "AI & ML"],
     accent: "#0284c7", // Sky Blue
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Developed an AI-enabled security platform that transforms raw signals into actionable threat intelligence.",
       "Designed a modular TypeScript/Python architecture for rapid feature iteration and maintainability.",
@@ -239,6 +347,8 @@ const rawProjects: Project[] = [
     highlight: "IoT + ML",
     categories: ["IoT & Systems"],
     accent: "#10b981", // Mint
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Developed microcontroller firmware (Arduino/ESP) interfacing soil-moisture sensors with centralized relays.",
       "Implemented a gateway ML client loading serialized model artifacts (.pkl) for irrigation scheduling.",
@@ -255,6 +365,8 @@ const rawProjects: Project[] = [
     highlight: "Full-Stack",
     categories: ["Full Stack"],
     accent: "#f97316", // Rust Orange
+    status: "Completed",
+    isPrivate: false,
     points: [
       "Rebuilt a legacy blog engine into a modern React + Flask full-stack platform with PostgreSQL and Supabase media storage.",
       "Implemented modular content types (text, photo, audio, video) and extensions (comments, caching, tags) to maintain Chyrp's extensibility.",
@@ -263,11 +375,6 @@ const rawProjects: Project[] = [
     impact: "Restores flexibility and speed of a legacy engine with a secure, production-grade decoupled stack."
   }
 ];
-
-// Active projects list: dynamically hides Project #1 (HyperAD) when HIDE_PROJECT_1 is enabled
-const projects: Project[] = HIDE_PROJECT_1
-  ? rawProjects.filter((p) => p.title !== "HyperAD")
-  : rawProjects;
 
 const categoryList = ["All", "Cybersecurity", "AI & ML", "Full Stack", "IoT & Systems"];
 
@@ -292,7 +399,7 @@ export const ProjectsSection = () => {
     }
   }, [selectedProject]);
 
-  const filteredProjects = projects.filter((project) => {
+  const filteredProjects = rawProjects.filter((project) => {
     const matchesCategory = activeCategory === "All" || project.categories.includes(activeCategory);
     const matchesSearch =
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -311,7 +418,7 @@ export const ProjectsSection = () => {
             <CyberScrambleText text="Selected Engineering Projects" />
           </h2>
           <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
-            Archived systems across graph security, low-latency C pipelines, and multi-tenant AI
+            Production systems across threat investigation, graph security, cryptography, and full-stack AI
           </p>
         </div>
 
@@ -322,7 +429,7 @@ export const ProjectsSection = () => {
           className="btn-cyber-outline text-xs self-start md:self-auto"
         >
           <Github className="w-3.5 h-3.5" />
-          <span>GitHub Index ({projects.length})</span>
+          <span>GitHub Index ({rawProjects.length})</span>
         </a>
       </div>
 
@@ -370,7 +477,7 @@ export const ProjectsSection = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, idx) => {
-            const projectCatalogIndex = projects.findIndex((p) => p.title === project.title);
+            const projectCatalogIndex = rawProjects.findIndex((p) => p.title === project.title);
             const projectNum = String(
               activeCategory === "All" && !searchQuery ? idx + 1 : projectCatalogIndex + 1
             ).padStart(2, "0");
@@ -392,95 +499,126 @@ export const ProjectsSection = () => {
                   }}
                 >
                   <div>
-                  {/* Top metadata line: Project Number + Role/Highlight */}
-                  <div className="flex items-center justify-between mb-3 text-[11px] mono">
-                    <span
-                      className="font-bold tracking-wider"
-                      style={{ color: project.accent }}
-                    >
-                      // {projectNum}
-                    </span>
-
-                    {project.highlight && (
-                      <span
-                        className="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wide border uppercase"
-                        style={{
-                          backgroundColor: `${project.accent}12`,
-                          borderColor: `${project.accent}30`,
-                          color: project.accent,
-                        }}
-                      >
-                        {project.highlight}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Title & Subtitle */}
-                  <h3 className="heading-font text-xl font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="mono text-xs text-muted-foreground mb-3 leading-snug">
-                    {project.subtitle}
-                  </p>
-
-                  {/* Concise Description */}
-                  <p className="text-secondary-foreground text-xs sm:text-[13px] leading-relaxed mb-4">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div>
-                  {/* Tech stack labels */}
-                  <div className="flex flex-wrap gap-1.5 mb-5 pt-3 border-t border-border/40">
-                    {project.tech.slice(0, 4).map((t) => (
-                      <span key={t} className="tech-tag text-[10px] py-0.5 px-2">
-                        {t}
-                      </span>
-                    ))}
-                    {project.tech.length > 4 && (
-                      <span className="mono text-[10px] text-muted-foreground self-center pl-1">
-                        +{project.tech.length - 4}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Links & Deep Dive button */}
-                  <div className="flex items-center justify-between pt-1">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedProject(project)}
-                      className="mono text-xs text-foreground/80 hover:text-accent flex items-center gap-1 font-semibold transition-colors cursor-pointer select-none"
-                    >
-                      <span>Specs &amp; Details</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </button>
-
-                    <div className="flex items-center gap-2">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${project.title} GitHub Repository`}
-                        className="p-1.5 rounded border border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/50 transition-colors"
-                      >
-                        <Github className="w-3.5 h-3.5" />
-                      </a>
-                      {project.live && (
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`${project.title} Live Deployment`}
-                          className="p-1.5 rounded border border-border/80 text-muted-foreground hover:text-accent hover:border-accent/50 transition-colors"
+                    {/* Top metadata line: Project Number + Status Badge + Highlight / Private */}
+                    <div className="flex items-center justify-between gap-1.5 mb-3 text-[11px] mono flex-wrap">
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className="font-bold tracking-wider"
+                          style={{ color: project.accent }}
                         >
-                          <Globe className="w-3.5 h-3.5" />
-                        </a>
+                          // {projectNum}
+                        </span>
+                        <span
+                          className={`px-1.5 py-0.5 text-[9px] font-mono tracking-wider uppercase border font-semibold ${
+                            project.status === "Ongoing"
+                              ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-400"
+                              : "bg-blue-500/10 border-blue-500/30 text-blue-400"
+                          }`}
+                        >
+                          {project.status === "Ongoing" ? "● Ongoing" : "✓ Completed"}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-1.5">
+                        {project.isPrivate && (
+                          <span
+                            title={project.privateNote || "Private Repository"}
+                            className="px-1.5 py-0.5 text-[9px] font-mono tracking-wider uppercase border border-red-500/40 bg-red-500/10 text-red-400 font-semibold flex items-center gap-1"
+                          >
+                            <Lock className="w-2.5 h-2.5" />
+                            <span>Private</span>
+                          </span>
+                        )}
+                        {project.highlight && (
+                          <span
+                            className="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wide border uppercase"
+                            style={{
+                              backgroundColor: `${project.accent}12`,
+                              borderColor: `${project.accent}30`,
+                              color: project.accent,
+                            }}
+                          >
+                            {project.highlight}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Title & Subtitle */}
+                    <h3 className="heading-font text-xl font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="mono text-xs text-muted-foreground mb-3 leading-snug">
+                      {project.subtitle}
+                    </p>
+
+                    {/* Concise Description */}
+                    <p className="text-secondary-foreground text-xs sm:text-[13px] leading-relaxed mb-4">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    {/* Tech stack labels */}
+                    <div className="flex flex-wrap gap-1.5 mb-5 pt-3 border-t border-border/40">
+                      {project.tech.slice(0, 4).map((t) => (
+                        <span key={t} className="tech-tag text-[10px] py-0.5 px-2">
+                          {t}
+                        </span>
+                      ))}
+                      {project.tech.length > 4 && (
+                        <span className="mono text-[10px] text-muted-foreground self-center pl-1">
+                          +{project.tech.length - 4}
+                        </span>
                       )}
                     </div>
+
+                    {/* Links & Deep Dive button */}
+                    <div className="flex items-center justify-between pt-1">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProject(project)}
+                        className="mono text-xs text-foreground/80 hover:text-accent flex items-center gap-1 font-semibold transition-colors cursor-pointer select-none"
+                      >
+                        <span>Specs &amp; Details</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </button>
+
+                      <div className="flex items-center gap-2">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${project.title} GitHub Repository ${project.isPrivate ? "(Private)" : ""}`}
+                          title={project.isPrivate ? (project.privateNote || "Private Repository") : "View GitHub Repository"}
+                          className={`p-1.5 rounded border transition-colors ${
+                            project.isPrivate
+                              ? "border-red-500/40 text-red-400/80 hover:text-red-400 hover:border-red-500/80"
+                              : "border-border/80 text-muted-foreground hover:text-foreground hover:border-accent/50"
+                          }`}
+                        >
+                          {project.isPrivate ? (
+                            <Lock className="w-3.5 h-3.5" />
+                          ) : (
+                            <Github className="w-3.5 h-3.5" />
+                          )}
+                        </a>
+                        {project.live && (
+                          <a
+                            href={project.live}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`${project.title} Live Deployment`}
+                            className="p-1.5 rounded border border-border/80 text-muted-foreground hover:text-accent hover:border-accent/50 transition-colors"
+                          >
+                            <Globe className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </BrutalistTiltCard>
-            </motion.div>
+                </BrutalistTiltCard>
+              </motion.div>
             );
           })}
         </AnimatePresence>
@@ -546,14 +684,33 @@ export const ProjectsSection = () => {
                       {selectedProject.highlight}
                     </span>
                   )}
+                  <span
+                    className={`text-xs font-mono font-semibold px-2.5 py-0.5 rounded border uppercase ${
+                      selectedProject.status === "Ongoing"
+                        ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-400"
+                        : "bg-blue-500/10 border-blue-500/30 text-blue-400"
+                    }`}
+                  >
+                    {selectedProject.status === "Ongoing" ? "● Ongoing Development" : "✓ Completed Project"}
+                  </span>
                 </div>
                 <p className="mono text-xs font-medium text-accent">
                   {selectedProject.subtitle}
                 </p>
               </div>
 
+              {/* Private Repository Notice */}
+              {selectedProject.isPrivate && (
+                <div className="px-3.5 py-2.5 rounded bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2.5 mono">
+                  <Lock className="w-4 h-4 flex-shrink-0 text-red-400" />
+                  <span>
+                    <strong>Private Repository:</strong> Access is restricted {selectedProject.privateNote ? `(${selectedProject.privateNote})` : "for proprietary/research review"}. Code available for evaluation upon request.
+                  </span>
+                </div>
+              )}
+
               {/* Offline note notice if applicable */}
-              {selectedProject.live && !["Master Algorithm", "CatchUpX"].includes(selectedProject.title) && (
+              {selectedProject.live && !["Master Algorithm", "CatchUpX", "PathWarden", "ArgusASM"].includes(selectedProject.title) && (
                 <div className="px-3.5 py-2 rounded bg-amber-500/10 border border-amber-500/30 text-amber-500 dark:text-amber-400 text-xs flex items-center gap-2 mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse flex-shrink-0" />
                   <span>
@@ -570,10 +727,10 @@ export const ProjectsSection = () => {
                   href={selectedProject.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-cyber-outline text-xs"
+                  className={`btn-cyber-outline text-xs ${selectedProject.isPrivate ? "border-red-500/50 text-red-400 hover:bg-red-500/10" : ""}`}
                 >
-                  <Github className="w-3.5 h-3.5" />
-                  <span>View GitHub Repository</span>
+                  {selectedProject.isPrivate ? <Lock className="w-3.5 h-3.5 text-red-400" /> : <Github className="w-3.5 h-3.5" />}
+                  <span>{selectedProject.isPrivate ? "View Repository (Private)" : "View GitHub Repository"}</span>
                 </a>
                 {selectedProject.live && (
                   <a
