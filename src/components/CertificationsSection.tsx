@@ -4,6 +4,18 @@ import CyberScrambleText from "./CyberScrambleText";
 
 const certs = [
   {
+    title: "Data Science for Engineers",
+    issuer: "NPTEL / SWAYAM (IIT Madras)",
+    id: "NPTEL-DS-ENG",
+    url: "https://drive.google.com/file/d/1k3HjREjZ9LYWhUkrXyffTxBkekKlHZsM/view?usp=sharing",
+  },
+  {
+    title: "Decision Modeling",
+    issuer: "NPTEL / SWAYAM",
+    id: "NPTEL-DEC-MOD",
+    url: "https://drive.google.com/file/d/1Dnv6wox0X5qxCIjdSPARNfQAuvWE4aFr/view?usp=sharing",
+  },
+  {
     title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
     issuer: "Oracle University",
     id: "453503E9...",
@@ -36,7 +48,7 @@ export const CertificationsSection = () => (
         <CyberScrambleText text="Verified Certifications & Accreditations" />
       </h2>
       <p className="mono text-xs text-muted-foreground uppercase tracking-wider mt-1">
-        Official cloud computing, artificial intelligence, and data platform credentials
+        Official credentials across data science, decision modeling, cloud infrastructure, and AI systems
       </p>
     </div>
 

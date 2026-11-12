@@ -162,6 +162,38 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 
 ---
 
+## Certifications & Accreditations
+
+### 1. Data Science for Engineers
+* **Issuer:** NPTEL / SWAYAM (IIT Madras)
+* **Certificate URL:** https://drive.google.com/file/d/1k3HjREjZ9LYWhUkrXyffTxBkekKlHZsM/view?usp=sharing
+
+### 2. Decision Modeling
+* **Issuer:** NPTEL / SWAYAM
+* **Certificate URL:** https://drive.google.com/file/d/1Dnv6wox0X5qxCIjdSPARNfQAuvWE4aFr/view?usp=sharing
+
+### 3. Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate
+* **Issuer:** Oracle University
+* **Credential ID:** 453503E952833C909828DD47F8E97D716421243610E7589BE4142463219C071A
+* **Badge URL:** https://catalog-education.oracle.com/pls/certview/sharebadge?id=453503E952833C909828DD47F8E97D716421243610E7589BE4142463219C071A
+
+### 4. Oracle Cloud Infrastructure 2025 Certified Foundations Associate
+* **Issuer:** Oracle University
+* **Credential ID:** 152541BD0FE6C77F29396920020B963C42EFDC97C5B73D72535B32417D39DC41
+* **Badge URL:** https://catalog-education.oracle.com/pls/certview/sharebadge?id=152541BD0FE6C77F29396920020B963C42EFDC97C5B73D72535B32417D39DC41
+
+### 5. Oracle Cloud Infrastructure 2025 Certified Data Science Professional
+* **Issuer:** Oracle University
+* **Credential ID:** 084C104EBF0BF50B96CD0A951E0CF91BA75630D6CE283BC9E823E4298DCA54D9
+* **Badge URL:** https://catalog-education.oracle.com/pls/certview/sharebadge?id=084C104EBF0BF50B96CD0A951E0CF91BA75630D6CE283BC9E823E4298DCA54D9
+
+### 6. Oracle Data Platform 2025 Foundations Associate
+* **Issuer:** Oracle University
+* **Credential ID:** 084C104EBF0BF50B96CD0A951E0CF91BFD7ED4F1A22F0A56000F90E3347DC655
+* **Badge URL:** https://catalog-education.oracle.com/pls/certview/sharebadge?id=084C104EBF0BF50B96CD0A951E0CF91BFD7ED4F1A22F0A56000F90E3347DC655
+
+---
+
 ## Projects (Ordered by Priority, Excluding Experience Duplicates)
 
 ### 1. PathWarden (Cybersecurity — Threat Hunting & EDR Forensics) [Ongoing]
