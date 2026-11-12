@@ -162,29 +162,144 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 
 ---
 
-## Projects (Ordered by Overall Ranking, Excluding Experience Duplicates)
+## Projects (Ordered by Cybersecurity Industry Priority, Excluding Experience Duplicates)
 
-### 1. HyperAD (Cybersecurity + AI)
-* **Description:** Built a graph-intelligence security platform to analyze Active Directory attack paths using temporal hypergraphs and risk reasoning.
-* **Tech Stack:** Python, TypeScript, CSS, Temporal Hypergraphs, Graph Algorithms
-* **Key Features:**
-  * Active Directory security graph modeling.
-  * Temporal hypergraph-based attack path analysis.
-  * Risk scoring and prioritization insights.
-  * Actionable remediation recommendations.
-* **Technical Implementation:**
-  * Python analytics core for graph algorithms and temporal reasoning.
-  * TypeScript interface/services for security workflow visualization.
-  * Ingestion-to-findings processing pipeline.
+### 1. PathWarden (Cybersecurity — Threat Hunting & EDR Forensics)
+* **Description:** An evidence-driven cyberattack path reconstruction and threat investigation platform transforming large volumes of heterogeneous EDR/SIEM logs into correlated incidents, ordered attack DAGs, explainable detections, reachability assessments, and automated plain-English executive briefings.
+* **Tech Stack:** Python 3.11, FastAPI, DuckDB, PyArrow (Parquet), Next.js 14, TypeScript, Cytoscape.js, Dagre Layout, Tailwind CSS, Ollama (Qwen 2.5 Coder 1.5B / Tri-Agent LLM), Docker Compose, SQLite
+* **Current Developed Capacity & Handling Limits:**
+  * **Dataset Ingestion Volume:** Handles **15 GB to 30 GB+ raw security/EDR logs** (20M+ events) on a single commodity machine.
+  * **Bounded Memory Lock:** Enforces a strict **8.0 GB RAM lock** (peak active memory remains **< 500 MB**) via a 64 MB binary chunk streaming reader with backward newline seeking (`\n`).
+  * **Vectorized Detection & Streaming Joins:** Vectorized DuckDB SQL over PyArrow Parquet views executes native C++ columnar queries, streaming candidate joins (`event_ts BETWEEN t AND t + 600`) across millions of records with sub-second execution.
+  * **Near-Linear Graph Clustering:** Clusters 10,000+ alerts into coherent attack chains via $O(\alpha(N))$ Disjoint-set Union-Find with path compression; bounded BFS reachability (`max_depth=2`, `max_results=50`, `timeout=2.0s`) guarantees $<50\text{ms}$ query latency.
+  * **Noise Reduction Metric:** Merges raw alert storms into structured attack steps, achieving **56% to 86% telemetry noise reduction**.
+* **Key Features & Resume Highlights:**
+  * **Deterministic Forensic Chain of Custody:** Immutable byte-offset source pointers (`ref:file_id:start_byte:line_num`) back to raw logs with zero data loss (`extra` schema bag).
+  * **Air-Gapped On-Device Tri-Agent AI Engine:** Detection Analyst, Forensics/Blast Radius, and Executive Reporter agents running locally on GPU/CPU (Ollama / Qwen 2.5 Coder 1.5B) producing plain-English briefings and containment checklists with **zero cloud telemetry leakage** (100% GDPR, HIPAA, and defense compliant).
+  * **Decoy & Anti-Hub Resistance:** Logarithmic degree damping penalty ($\\max(0.1, 1.0 - 0.5 \\ln(1 + \\text{excess}) \\times 0.15)$) prevents domain controllers/proxies from collapsing the attack graph.
+  * **Observed Access vs. Potential Reachability:** Defensible blast radius strictly differentiating confirmed compromise (`OBSERVED_SESSION`) from potential reachability (`NETWORK_REACHABLE`).
+  * **Hot-Reloadable Sigma Rules:** Config-driven YAML rule engine (`backend/data/rules.yaml`) with zero-downtime hot reloading.
+  * **Side-by-Side Dual Canvas Console:** Next.js Brutalist HUD with Cytoscape.js attack DAG synchronized with an interactive chronological timeline and full-window side-by-side expansion.
 * **Resume Bullet Points:**
-  * Developed an AD security analysis platform that models enterprise identity relationships as temporal hypergraphs.
-  * Implemented graph-based attack path detection and risk prioritization for proactive defense planning.
-  * Designed an AI-assisted reasoning layer to convert graph findings into actionable remediation insights.
-  * Built full-stack workflows enabling security analysts to investigate, interpret, and respond to privilege escalation risks.
-* **Impact / Complexity:** Graph algorithms, temporal modeling, cyber-defense analytics, AI-assisted reasoning.
+  * Architected an evidence-driven incident investigation platform ingesting 30 GB+ (20M+ events) heterogeneous EDR logs under an 8.0 GB RAM lock, maintaining <500 MB peak memory via 64 MB binary streaming chunkers and vectorized DuckDB execution.
+  * Implemented graph-based incident correlation using Disjoint-set Union-Find ($O(\alpha(N))$) and logarithmic degree damping, clustering raw security alerts into attack DAGs while eliminating 56%–86% alert noise.
+  * Engineered an air-gapped on-device Tri-Agent LLM synthesis engine (Ollama/Qwen) delivering automated plain-English executive briefings and containment plans with zero cloud telemetry egress.
+  * Designed deterministic byte-offset forensic pointers (`ref:file_id:start_byte:line_num`) ensuring tamper-evident chain of custody and bounded BFS reachability queries executed in <50ms.
+* **Impact / Complexity:** Big-data log stream processing, low-level binary parsing, sub-linear graph clustering, air-gapped on-device LLM orchestration, enterprise EDR forensics.
+* **GitHub Link:** https://github.com/Avi007-debug/PathWarden
+* **Live Link:** https://path-warden-delta.vercel.app/
+
+---
+
+### 2. ArgusASM (A3-PS011-TC116) (Cybersecurity — External Attack Surface Management & Cryptography)
+* **Description:** Autonomous, strictly authorized, read-only External Attack-Surface Management (ASM) and Cryptographic Baseline Drift Sentinel built for AIORI Hackathon 2026 (Problem Statement PS-011) to discover perimeter assets, audit DNS/TLS/ports, detect dangling cloud CNAMEs, and maintain tamper-evident Merkle audit chains.
+* **Tech Stack:** Python 3.11, FastAPI, React 19, TypeScript, Tailwind CSS, Vite, dnspython, cryptography (pyca), Docker Compose, CoreDNS, SQLite, SHA-256 Merkle Trees, Vercel, Render
+* **Current Developed Capacity & Handling Limits:**
+  * **Scope Enforcement & Caps:** Hard upper bounds enforced in code handling up to **20 domains and 10 hosts** simultaneously; rejects out-of-scope targets before any network packet is dispatched with 0-network-call assurance.
+  * **Probe Throughput & Wire Latency:** Asynchronous multi-probe engine resolves authoritative DNS (A, AAAA, CNAME, MX, TXT, NS with cycle detection up to depth 5), completes TLS 1.2/1.3 handshakes, and audits 5 permitted ports (`22, 53, 80, 443, 8080`) with sub-millisecond wire latency and 3.0s strict timeouts.
+  * **Empirical Lab Validation:** 10/10 seeded lab checks pass (100% recall on expired TLS certs, shadow port 8080, and dangling S3 CNAMEs; 100% precision on clean controls); 51/51 pytest unit/integration tests execute in <0.5s.
+  * **Audit Proof Integrity:** Instantaneous canonical SHA-256 Merkle root computation across hundreds of asset attributes with stateful $T_0 \to T_1 \to T_2$ cryptographic chaining.
+* **Key Features & Resume Highlights:**
+  * **4 Comprehensive Perimeter Probes:** Authoritative DNS resolver with SPF/DMARC parsing, X.509 ASN.1 TLS inspector (flags expiration, mismatch, self-signed), non-intrusive TCP banner grabber, and dangling DNS detector (AWS S3 `NoSuchBucket`, GitHub Pages `404`, Azure Web Apps).
+  * **Stateful Drift Engine & Hygiene Scoring:** Calculates explainable Perimeter Hygiene Score ($0-100$) with transparent deduction caps and classifies 8 typed drift events (`CERT_EXPIRED`, `NEW_SERVICE`, `DANGLING_DNS_ADDED`).
+  * **Cryptographic Merkle Audit Chain:** Deterministic JSON canonicalization and SHA-256 Merkle root hashing chained across historical snapshots ($Root_{n-1} \to Root_n$) guaranteeing immutable, tamper-evident audit receipts.
+  * **Human-In-The-Loop (HITL) Governance Gate:** High-severity perimeter findings automatically quarantine into an operator sign-off gate before triggering remediation alerts.
+  * **Strict Non-Exploitation Policy:** Zero offensive payloads, zero account/bucket claiming, hardware rate-limiting, and an instantaneous emergency kill-switch (`POST /api/v1/killswitch`).
+  * **Executive & Compliance Reporting:** One-click generation of print-ready Executive Perimeter Audits, machine-readable SARIF 2.1.0, and CSV deliverables.
+* **Resume Bullet Points:**
+  * Developed an autonomous External Attack-Surface Management (ASM) sentinel in FastAPI and React 19 enforcing strict authorized scope boundaries (20 domains/10 hosts) and zero-exploitation safety policies.
+  * Engineered 4 concurrent security probes covering recursive DNS resolution, X.509 ASN.1 certificate validation, permitted TCP banner grabs, and dangling cloud CNAME detection (AWS S3, Azure, GitHub Pages).
+  * Architected a stateful drift detection engine with an explainable 0–100 Perimeter Hygiene scoring algorithm and an immutable SHA-256 Merkle audit tree chaining baseline snapshots for tamper-proof non-repudiation.
+  * Implemented Human-In-The-Loop (HITL) sign-off workflows, instantaneous emergency kill-switches, and automated SARIF/PDF compliance export pipelines, passing 51/51 automated security unit tests.
+* **Impact / Complexity:** RFC-compliant network protocol analysis, cryptographic Merkle hash chains, defensive security governance, stateful snapshot diffing.
+* **GitHub Link:** https://github.com/aiori-hackathon/A3-PS011-TC116
+* **Live Link:** https://a3-ps-011-tc-116.vercel.app
+* **Backend API Docs:** https://argus-backend-api-sqrs.onrender.com/docs
+
+---
+
+### 3. CipherLens (Cybersecurity — Network Cryptography & Explainable AI)
+* **Description:** An AI-powered IPsec VPN protocol analyzer and cryptographic security assessment framework built for Smart India Hackathon 2026 under Problem Statement 26160 (National Technical Research Organisation - NTRO) enabling deterministic IKE state dissection and zero-decryption ESP flow classification.
+* **Tech Stack:** Python 3.11, FastAPI, React 19, TypeScript, Tailwind CSS v4, LightGBM, TreeSHAP (XAI), Scapy, strongSwan 5.9, Libreswan, Docker, SQLite, Supabase, Merkle Ledger
+* **Current Developed Capacity & Handling Limits:**
+  * **Encrypted Flow Classification:** Evaluates 24 statistical time-series and size-cadence features on live ESP tunnels, processing multi-megabit encrypted traffic streams with zero payload decryption.
+  * **Classification Accuracy:** Delivers state-of-the-art inference accuracy across encrypted tunnel types: **VoIP (99.4%)**, **HD Video (98.1%)**, **Web Browsing (96.7%)**, **Bulk Data Exfiltration (97.5%)**, and **DNS-over-IPsec Tunnels (99.1%)**.
+  * **Explainability Latency:** Local TreeSHAP computation delivers feature-attribution breakdowns ($\\phi_i$) for every classified flow in $<15\text{ms}$.
+  * **Entropy Verification:** Computes byte-level Shannon entropy ($H(X) \approx 7.94 / 8.00\text{ bits/byte}$) in real time to mathematically certify payload opacity prior to machine learning inference.
+  * **Multi-Node Simulation:** Replays 4 complex attack vectors inside isolated strongSwan/Libreswan network topologies with real-time SOC HUD score updates.
+* **Key Features & Resume Highlights:**
+  * **Zero-Decryption Flow Intelligence:** "Audit the tunnel, never decrypt the payload" — accurately fingerprints applications inside AES-GCM/CBC tunnels based solely on second-order side-channel metadata ($\\Delta t$ packet arrival intervals, burst durations, packet size variance).
+  * **Deterministic IKEv1/IKEv2 Dissector:** Extracts 100% ground truth from cleartext IKE negotiations (RFC 7296 grammar), immediately flagging CVE-2002-1623 (Aggressive Mode PSK crackability) and Sweet32 (3DES 64-bit block collision risks).
+  * **NIST SP 800-77 Rev. 1 & CNSA 2.0 Compliance Scoring:** Dynamic 0–100 posture dial assessing 5 defense dimensions, including Harvest-Now-Decrypt-Later (HNDL) post-quantum risk exposure.
+  * **Policy "What-If" Simulator:** Parses live `ipsec.conf` directives, calculates immediate posture deltas (e.g. $+52\text{ pts}$ on cipher hardening), and auto-generates copy-paste remediation diffs.
+  * **Active Exploit Replay Sandbox:** Interactive sandbox replaying 4 isolated attack classes (Aggressive PSK capture, FREAK export downgrade, Half-Open IKE SA flooding, and ESP replay attacks) with live score-drop telemetry.
+  * **Blockchain Merkle Receipts:** Generates SHA-256 Merkle root audit proofs anchored to an immutable ledger for audit attestation.
+* **Resume Bullet Points:**
+  * Developed an AI-powered IPsec analyzer for NTRO Problem Statement 26160 combining deterministic IKE state parsing with zero-decryption statistical ESP flow classification.
+  * Trained a 24-feature LightGBM model achieving 96.7%–99.4% classification accuracy across VoIP, video, and exfiltration flows in opaque ESP tunnels, backed by local TreeSHAP explainability ($\\phi_i$).
+  * Integrated real-time Shannon entropy verification ($H(X) \approx 7.94 / 8.00\text{ bits/byte}$) to mathematically certify ciphertext opacity before feeding traffic to statistical ML models.
+  * Architected a pre-deployment `ipsec.conf` policy what-if simulator and automated 0–100 posture scoring engine mapped directly to NIST SP 800-77 Rev. 1 and CNSA 2.0 quantum-resistant guidelines.
+* **Impact / Complexity:** Advanced protocol reverse-engineering, explainable machine learning (XAI), cryptographic posture evaluation, zero-decryption side-channel analysis.
+* **GitHub Link:** https://github.com/Avi007-debug/CipherLens
+
+---
+
+### 4. HyperAD (Cybersecurity — Identity & Active Directory Attack Graph Intelligence)
+* **Description:** An agentic AI-driven Active Directory security analytics platform that models enterprise identity relationships as temporal hypergraphs, executing deterministic graph algorithms and LangChain ReAct agents to detect privilege escalation paths, circular trust loops, and compromised blast radiuses.
+* **Tech Stack:** Python 3.11, FastAPI, React, D3.js, Neo4j, NetworkX, HyperNetX, LangChain, Ollama (LLaMA-3), Pydantic, Impacket, ldap3, ReportLab
+* **Current Developed Capacity & Handling Limits:**
+  * **Directory Scale & Graph Size:** Successfully enumerates and models enterprise AD domains with **thousands of objects** (Users, Computers, OUs, Security Groups, GPOs, ACE permissions, and Kerberos SPNs).
+  * **Algorithmic Complexity & Execution Speed:**
+    * Temporal Bellman-Ford computes highest-risk escalation paths in $O(V \cdot E)$.
+    * Tarjan’s Strongly Connected Components detects circular trust loops in linear $O(V + E)$ time.
+    * Kleinberg’s HITS variant computes authority/hub scores in $O(k \cdot E)$.
+    * Frigioni’s Dynamic Single-Source Shortest Path (DSSSP) updates attack paths upon incremental deltas in $O(m \log n)$ instead of recomputing $O(V \cdot E)$ graphs from scratch.
+    * Bidirectional BFS limits blast radius search complexity to $O(b^{d/2})$ with sub-second execution.
+  * **Schema Validation Resilience:** Pydantic validation interceptor (`schema_validator.py`) dynamically sanitizes raw JSON dumps, auto-generating missing attributes to prevent crashes during large domain enumerations.
+* **Key Features & Resume Highlights:**
+  * **Temporal Hypergraph Modeling & Attack Path Decay:** Models AD relationships where edge risk weights decay exponentially over time: $base\_risk \cdot \exp(-\lambda \cdot days\_since\_use)$, reflecting true operational risk (an unused `GenericAll` edge is penalized 97% vs. active credentials).
+  * **HyperNetX Multi-Membership Hyperedges:** Treats Active Directory groups as multi-node hyperedges for structural s-centrality analysis, preserving the underlying `DiGraph` for routing algorithms.
+  * **Counterfactual Remediation Simulator:** Allows security teams to interactively sever a compromised ACL edge on the D3.js graph, re-run graph routing in real time, and quantify exactly how many attack paths are eliminated.
+  * **LangChain ReAct Agent with Cypher Translation:** Built-in AI assistant converts natural language questions (*"Which unmanaged service accounts can reach Domain Admin?"*) into optimized Neo4j Cypher queries.
+  * **Bidirectional Blast Radius Heatmap:** Color-graded D3.js visualizer showing 1-hop and 2-hop compromise perimeters if a specific workstation or identity is phished.
+  * **Academic Rigor:** Designed as the primary subject for an IEEE research paper and academic engineering dossier.
+* **Resume Bullet Points:**
+  * Engineered an Active Directory security intelligence platform modeling identity relationships as temporal hypergraphs using NetworkX, HyperNetX, and Neo4j.
+  * Implemented temporal attack path decay algorithms with exponential staleness weighting ($w \cdot e^{-\lambda t}$) and Frigioni’s Dynamic SSSP ($O(m \log n)$) for real-time incremental path re-evaluations.
+  * Integrated Tarjan’s SCC algorithm ($O(V+E)$) for circular trust loops, Kleinberg HITS for high-value asset ranking, and bidirectional BFS for instant blast radius reachability mapping.
+  * Developed a LangChain ReAct agent integrating local LLaMA-3 models for natural language to Cypher translation, coupled with an interactive D3.js counterfactual remediation simulator.
+* **Impact / Complexity:** Complex graph theory and algorithmic optimization (DAA), temporal modeling, enterprise Windows security (Kerberos/LDAP/ACLs), applied LLM agents.
 * **GitHub Link:** https://github.com/Avi007-debug/HyperAD
 
-### 2. SmartStay (SDE + AI)
+---
+
+### 5. Vajra-OT (Cybersecurity — Industrial Control Systems & SCADA Security)
+* **Description:** An AI-powered OT/ICS cybersecurity assessment and digital twin simulation platform designed to discover, identify, assess, and remediate industrial network threats across the Purdue Enterprise Reference Architecture (Level 1/2) with automated PLC fingerprinting and local LLM orchestration.
+* **Tech Stack:** Python 3.11, FastAPI, React, Vite, TypeScript, Framer Motion, Modbus TCP, Siemens S7Comm, Conpot, OpenPLC, Docker, Ollama (vajra-analyst-lite), WebSockets, Hypothesis
+* **Current Developed Capacity & Handling Limits:**
+  * **Industrial Protocol Auditing:** Actively connects to and dissects **Modbus TCP** (port 502/5020), **Siemens S7Comm** (port 102/1020), and **HTTP/HMI** (port 80/8080), mapping live industrial devices across Purdue Zones (OT-ZONE-A, DMZ).
+  * **Testbed Multi-Mode Execution:** Seamless zero-code auto-switching between real hardware/testbeds (Conpot honeypot, OpenPLC runtime on Raspberry Pi) and mocked simulation fallback (5 simulated industrial PLCs: Siemens S7-1200, Modicon M221, WAGO PFC200, OpenPLC Safety, Conpot Honeypot).
+  * **Local LLM Tool Routing Performance:** Employs a custom-tuned quantized model (`vajra-analyst-lite`) with strict token budgets (<500 token system prompt, 1024 context, temperature=0.0) achieving tool routing latency **under 2.0 seconds** on commodity local hardware.
+  * **Offline Fallback Resilience:** Instantaneous 0 ms fallback to deterministic keyword pattern routing if local LLM is offline or times out; enforces 2-turn conversation windowing to eliminate context bloat.
+  * **Property-Based Testing:** Rigorously validated with Hypothesis testing verifying routing accuracy, prompt token limits, and strict out-of-scope query rejection.
+* **Key Features & Resume Highlights:**
+  * **Deep OT Device Fingerprinting:** Extracts vendor, model, and firmware via Modbus MEI Function Code 43 (Read Device ID Objects 0, 1, 2) and Siemens S7Comm COTP Connection Requests + SZL queries.
+  * **Active OT Vulnerability Engine:** Automatically flags unauthenticated Modbus FC3 holding register read/write access, default PLC credentials (`openplc/openplc`, `admin/admin`), cleartext industrial protocols, and vendor firmware CVEs (e.g. `CVE-2021-31664`, CVSS 9.8).
+  * **Purdue Model Zone & Criticality Mapping:** Automatically categorizes discovered assets by industrial operational criticality (Safety PLC, Conveyor, Packaging) and isolates DMZ deception assets.
+  * **Digital Twin Simulation Lab:** Interactive SVG topology canvas with animated flow particles, real-time node state toggling (ONLINE/OFFLINE), and 8-second background threat monitoring.
+  * **Security & Scope Guardrails:** Built-in routing filters reject unauthorized industrial control actions, out-of-scope probes, and privilege escalation attempts directly at the input gate.
+  * **10 Context-Aware Remediation Workflows:** Provides targeted engineering fixes (signed firmware policies, physical key-switch RUN-mode locks, Modbus/TCP Security encapsulation, network segmentation).
+* **Resume Bullet Points:**
+  * Built an AI-driven OT/ICS security assessment platform in FastAPI and React for auditing industrial devices across Purdue Model Zones (Levels 1 and 2).
+  * Implemented low-level protocol analyzers for Modbus TCP (MEI FC 43 Device Identification) and Siemens S7Comm (COTP SZL firmware queries), automating asset fingerprinting across physical and simulated PLCs.
+  * Engineered an active industrial vulnerability engine detecting unauthenticated Modbus access, default HMI credentials, and high-severity PLC vulnerabilities (`CVE-2021-31664`, CVSS 9.8).
+  * Deployed an optimized local LLM tool router (`vajra-analyst-lite`) achieving <2s intent routing with automated offline fallback and strict industrial safety guardrails, verified via Hypothesis testing.
+* **Impact / Complexity:** Low-level industrial network protocols (Modbus, S7Comm), SCADA/ICS critical infrastructure defense, digital twin simulation, embedded systems safety.
+* **GitHub Link:** https://github.com/Avi007-debug/Vajra-OT
+
+---
+
+### 6. SmartStay (SDE + AI)
 * **Description:** End-to-end PG accommodation platform featuring discovery, management, and AI recommendations.
 * **Tech Stack:** React 18, TypeScript, Flask, Supabase, Groq AI (Llama 3.1), Supabase Real-time
 * **Key Features:**
@@ -205,7 +320,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **GitHub Link:** https://github.com/Avi007-debug/SmartStay
 * **Live Link:** https://smartstay-ruddy.vercel.app/
 
-### 3. SmartSecure IDS (Cybersecurity)
+### 7. SmartSecure IDS (Cybersecurity)
 * **Description:** Real-time multi-stage ML-powered Intrusion Detection System with Scapy sniffing and SHAP explainability.
 * **Tech Stack:** Python, FastAPI, Scapy, Scikit-Learn, SHAP, React
 * **Key Features:**
@@ -222,7 +337,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** Real-time packet processing, ML model deployment, feature engineering, model explainability.
 * **GitHub Link:** https://github.com/Avi007-debug/SmartSecure
 
-### 4. Master Algorithm (SDE)
+### 8. Master Algorithm (SDE)
 * **Description:** A high-performance, interactive algorithm visualization platform bridging a React frontend with a pure C execution engine.
 * **Tech Stack:** React, Node.js, Express, C, Docker, Tailwind CSS, Framer Motion, Vercel, Render
 * **Key Features:**
@@ -243,7 +358,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **GitHub Link:** https://github.com/Avi007-debug/Master_Algorithm
 * **Live Link:** https://master-algorithm.vercel.app/
 
-### 5. Sherlock-D (SDE)
+### 9. Sherlock-D (SDE)
 * **Description:** Secure hackathon operations platform for team formation, file submissions, and real-time rankings.
 * **Tech Stack:** React, TypeScript, FastAPI, PostgreSQL (Supabase), Supabase Auth, SlowAPI
 * **Key Features:**
@@ -263,7 +378,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** Enforces constraints at the database level (triggers/RLS), role escalation prevention, security_barrier views.
 * **GitHub Link:** https://github.com/Google-Developer-Groups-RVCE/Sherlock-D
 
-### 6. TrustCircle (Mobile + AI)
+### 10. TrustCircle (Mobile + AI)
 * **Description:** Proactive relationship wellness app that detects early signs of relationship erosion and recommends preventive actions.
 * **Tech Stack:** Dart, Flutter ecosystem, C++/CMake, Swift, HTML/C
 * **Key Features:**
@@ -281,7 +396,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** AI-driven behavioral inference, predictive risk scoring, mobile-native interoperability.
 * **GitHub Link:** https://github.com/Avi007-debug/TrustCircle
 
-### 7. MoodVue (AI / Computer Vision)
+### 11. MoodVue (AI / Computer Vision)
 * **Description:** Real-time webcam video analyzer utilizing DeepFace and OpenCV to track emotions.
 * **Tech Stack:** Python, Flask, DeepFace, OpenCV, React, Supabase, Docker, Recharts
 * **Key Achievements:**
@@ -295,7 +410,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** Real-time video frame inference, deep learning integration, web session containerization.
 * **GitHub Link:** https://github.com/Avi007-debug/MoodVue
 
-### 8. Perimeter Intrusion Detection (IoT + Cybersecurity)
+### 12. Perimeter Intrusion Detection (IoT + Cybersecurity)
 * **Description:** IoT-based perimeter monitoring solution to detect intrusions and trigger alerts.
 * **Tech Stack:** HTML, C++, Python, IoT Edge, Embedded Sensors
 * **Key Achievements:**
@@ -309,7 +424,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** Hardware sensing integrations, edge logic optimization, cross-layer communications.
 * **GitHub Link:** https://github.com/Avi007-debug/Perimeter_Intrusion_Detection
 
-### 9. Urban Canopy Health Index (UCHI) (Computer Vision)
+### 13. Urban Canopy Health Index (UCHI) (Computer Vision)
 * **Description:** Deterministic, RGB-based computer vision pipeline to compute Canopy Health Index.
 * **Tech Stack:** React, TypeScript, Flask, OpenCV, Leaflet Maps, GeoJSON
 * **Key Features:**
@@ -327,7 +442,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **GitHub Link:** https://github.com/Avi007-debug/Urban_Canopy_Health_Index_UCHI
 * **Live Link:** https://dynamicurbancanopyhealthindex.vercel.app/
 
-### 10. AegisShield (Security)
+### 14. AegisShield (Security)
 * **Description:** Security-focused intelligence platform combining web engineering and AI services for threat workflows.
 * **Tech Stack:** TypeScript, Python, CSS, Threat Intelligence
 * **Key Features:**
@@ -344,7 +459,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** Telemetry ingestion pipelines, cross-language design, threat analytics.
 * **GitHub Link:** https://github.com/Avi007-debug/AegisShield
 
-### 11. Fuel Tracker (Mobile)
+### 15. Fuel Tracker (Mobile)
 * **Description:** Fuel management mobile app to track consumption, costs, and efficiency.
 * **Tech Stack:** Dart, Flutter, HTML, Mobile Analytics
 * **Key Features:**
@@ -361,7 +476,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** Personal telemetry data, local database transactions, mobile build integration.
 * **GitHub Link:** https://github.com/Avi007-debug/Fuel-Tracker-App
 
-### 12. Phantom Mode (AI)
+### 16. Phantom Mode (AI)
 * **Description:** Proactive smartphone context intelligence engine predicting user intent and pre-configuring behaviors.
 * **Tech Stack:** JavaScript, Python, Intent Prediction, Context Learning
 * **Key Features:**
@@ -377,7 +492,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** Predictive AI, context-aware automation, human-behavior modeling, intelligent orchestration.
 * **GitHub Link:** https://github.com/Avi007-debug/Phantom_Mode_PrismOpenClaw
 
-### 13. NetChat (Networking / Systems)
+### 17. NetChat (Networking / Systems)
 * **Description:** Concurrency-focused chat application demonstrating multi-threaded/process UNIX C servers and WebSockets.
 * **Tech Stack:** C (POSIX), Node.js, Socket.IO, JWT, AES Encryption
 * **Key Features:**
@@ -393,7 +508,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** UNIX sockets, IPC concurrency, cryptography encryption, WebSocket connections.
 * **GitHub Link:** https://github.com/Avi007-debug/Netchat
 
-### 14. SmartDrop (IoT)
+### 18. SmartDrop (IoT)
 * **Description:** Prototype IoT irrigation system combining sensor data, ML models, and microcontroller firmware.
 * **Tech Stack:** Arduino, C++, Python, IoT, ML, scikit-learn
 * **Key Features:**
@@ -406,7 +521,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Impact / Complexity:** Microcontroller firmware, ML model serialization (joblib/pickle), edge irrigation control.
 * **GitHub Link:** https://github.com/Avi007-debug/SmartDrop-AI-Driven-Irrigation
 
-### 15. Chyrp Rebuild (Full-Stack)
+### 19. Chyrp Rebuild (Full-Stack)
 * **Description:** Rebuilt Chyrp blog engine as modern full-stack application supporting multiple media types.
 * **Tech Stack:** React, Vite, Flask, PostgreSQL, Supabase, JWT Auth, Gunicorn
 * **Key Features:**
