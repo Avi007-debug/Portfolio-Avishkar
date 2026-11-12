@@ -169,7 +169,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
 * **Tech Stack:** Python 3.11, FastAPI, DuckDB, PyArrow (Parquet), Next.js 14, TypeScript, Cytoscape.js, Dagre Layout, Tailwind CSS, Ollama (Qwen 2.5 Coder 1.5B / Tri-Agent LLM), Docker Compose, SQLite
 * **Current Developed Capacity & Handling Limits:**
   * **Dataset Ingestion Volume:** Handles **15 GB to 30 GB+ raw security/EDR logs** (20M+ events) on a single commodity machine.
-  * **Bounded Memory Lock:** Enforces a strict **8.0 GB RAM lock** (peak active memory remains **< 500 MB**) via a 64 MB binary chunk streaming reader with backward newline seeking (`\n`).
+  * **Bounded Memory Lock:** Enforces a strict **8.0 GB RAM lock** with per-worker peak memory remaining **< 500 MB** (maintaining an overall system usage between **3–4 GB RAM** across concurrent workers) via a 64 MB binary chunk streaming reader with backward newline seeking (`\n`).
   * **Vectorized Detection & Streaming Joins:** Vectorized DuckDB SQL over PyArrow Parquet views executes native C++ columnar queries, streaming candidate joins (`event_ts BETWEEN t AND t + 600`) across millions of records with sub-second execution.
   * **Near-Linear Graph Clustering:** Clusters 10,000+ alerts into coherent attack chains via $O(\alpha(N))$ Disjoint-set Union-Find with path compression; bounded BFS reachability (`max_depth=2`, `max_results=50`, `timeout=2.0s`) guarantees $<50\text{ms}$ query latency.
   * **Noise Reduction Metric:** Merges raw alert storms into structured attack steps, achieving **56% to 86% telemetry noise reduction**.
@@ -181,7 +181,7 @@ An AI-powered EdTech platform functioning as a multi-tenant School Management Sy
   * **Hot-Reloadable Sigma Rules:** Config-driven YAML rule engine (`backend/data/rules.yaml`) with zero-downtime hot reloading.
   * **Side-by-Side Dual Canvas Console:** Next.js Brutalist HUD with Cytoscape.js attack DAG synchronized with an interactive chronological timeline and full-window side-by-side expansion.
 * **Resume Bullet Points:**
-  * Architected an evidence-driven incident investigation platform ingesting 30 GB+ (20M+ events) heterogeneous EDR logs under an 8.0 GB RAM lock, maintaining <500 MB peak memory via 64 MB binary streaming chunkers and vectorized DuckDB execution.
+  * Architected an evidence-driven incident investigation platform ingesting 30 GB+ (20M+ events) heterogeneous EDR logs under an 8.0 GB RAM lock, maintaining <500 MB peak memory per worker (3–4 GB overall system usage) via 64 MB binary streaming chunkers and vectorized DuckDB execution.
   * Implemented graph-based incident correlation using Disjoint-set Union-Find ($O(\alpha(N))$) and logarithmic degree damping, clustering raw security alerts into attack DAGs while eliminating 56%–86% alert noise.
   * Engineered an air-gapped on-device Tri-Agent LLM synthesis engine (Ollama/Qwen) delivering automated plain-English executive briefings and containment plans with zero cloud telemetry egress.
   * Designed deterministic byte-offset forensic pointers (`ref:file_id:start_byte:line_num`) ensuring tamper-evident chain of custody and bounded BFS reachability queries executed in <50ms.
